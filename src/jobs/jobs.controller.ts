@@ -13,8 +13,8 @@ export class JobsController {
 
     @Post('/create')
     async contentapi() {
-        //return this.jobsServise.jobsApiCall()
-        return this.jobsServise.testApiCall()
+        return this.jobsServise.jobsApiCall()
+        //return this.jobsServise.testApiCall()
     }
 
 }

@@ -10,7 +10,7 @@ export class HasuraService {
 
     constructor(private httpService: HttpService) { }
 
-    async findContentCache(getContentdto) {
+    async findJobsCache(getContentdto) {
 
 
         let result = 'where: {'
@@ -28,27 +28,28 @@ export class HasuraService {
         console.log("result", result)
         //console.log("order", order)
         const query = `query MyQuery {
-          cache_db(distinct_on: content_id,${result}) {
-            id
-            content_id
-            work_mode
-            end_date
-            city
-            description
-            country
-            proficiency
-            start_date
-            comapany
-            experience
-            responsiblities
-            skills
-            location_id
-            qualification
-            state
+           jobs_cache(distinct_on: content_id,${result}) {
             age_criteria
-            title
+            city
+            comapany
             content_id
+            country
+            description
+            employee_type
+            end_date
+            experience
+            gender
+            id
+            location_id
+            proficiency
+            qualification
+            responsiblities
+            salary
+            skills
+            start_date
             state
+            title
+            work_mode
           }
           }`;
         try {

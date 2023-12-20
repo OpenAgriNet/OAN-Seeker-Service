@@ -7,7 +7,7 @@ export class JobsService {
     constructor(private readonly hasuraService: HasuraService) { }
 
     async getJobs(getContentdto) {
-        return this.hasuraService.findContentCache(getContentdto);
+        return this.hasuraService.findJobsCache(getContentdto);
     }
 
     async jobsApiCall() {
@@ -60,38 +60,29 @@ export class JobsService {
             console.log(JSON.stringify(response.data));
 
             if (response.data) {
-                //const uniqueSet = new Set();
-                const arrayOfObjects = response.data.responses.map((item) => {
-                    // if (!uniqueSet.has(item.context.bpp_id)) {
-                    // Process the unique item
-                    //|| item.context.bpp_id == 'kvk-nashik-bpp.tekdinext.com'
-                    console.log(item.context.bpp_id);
-
-                    console.log("item", item.context.bpp_id);
-                    var locations = item.locations
-                    for (const iterator of item.message.catalog.providers[0].items) {
-                        let obj = {
-                            content_id: iterator.id,
-                            name: iterator.descriptor.name,
-                            description: iterator.descriptor.long_desc,
-                            //city : locations.find(item => item.id === iterator.location_ids[0]) ? locations.find(item => item.id === iterator.location_ids[0]).city.name : null
+                let arrayOfObjects = []
+                for (const responses of response.data.responses) {
+                    
+                    for (const providers of responses.message.catalog.providers) {
+                        
+                        for (const [index, item] of providers.items.entries()) {
+                            
+                            let obj = {
+                                content_id: item.id,
+                                title: item.descriptor.name,
+                                description: item.descriptor.long_desc,
+                                location_id: item.location_ids[0],
+                                //city: providers.locations.find(item => item.id === items.location_ids[0]) ? providers.locations.find(item => item.id === items.location_ids[0]).city.name : null,
+                                city: providers.locations[index].city.name,
+                                state: providers.locations[index].state.name,
+                                country: providers.locations[index].country.name
+                            }
+                            arrayOfObjects.push(obj)
                         }
-
-                        return obj
                     }
-
-                    // Mark the item as encountered
-                    //uniqueSet.add(item.context.bpp_id);
-                    // }
-
-                });
-
+                }
                 console.log("arrayOfObjects", arrayOfObjects)
-                return arrayOfObjects
-                // const filteredArray = arrayOfObjects.filter(item => item !== undefined);
-
-                // console.log("filteredArray", filteredArray);
-                //return this.hasuraService.insertCacheData(filteredArray)
+                return this.hasuraService.insertCacheData(arrayOfObjects)
             }
 
 
