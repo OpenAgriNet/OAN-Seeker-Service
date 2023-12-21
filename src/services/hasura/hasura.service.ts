@@ -50,6 +50,10 @@ export class HasuraService {
             state
             title
             work_mode
+            provider_id
+            provider_name
+            bpp_id
+            bpp_uri
           }
           }`;
         try {
