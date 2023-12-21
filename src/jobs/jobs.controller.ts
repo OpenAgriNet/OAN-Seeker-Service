@@ -1,4 +1,5 @@
 import { Body, Controller, Post, Request } from '@nestjs/common';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { JobsService } from './jobs.service';
 
 @Controller('jobs')
@@ -15,6 +16,12 @@ export class JobsController {
     async contentapi() {
         return this.jobsServise.jobsApiCall()
         //return this.jobsServise.testApiCall()
+    }
+
+    @Cron(CronExpression.EVERY_10_MINUTES)
+    async jobsApiCall() {
+        console.log('Cron job jobsApiCall executed!');
+        return this.jobsServise.jobsApiCall()
     }
 
 }
