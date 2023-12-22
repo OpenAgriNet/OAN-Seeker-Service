@@ -16,12 +16,10 @@ export class HasuraService {
         let result = 'where: {'
         Object.entries(getContentdto).forEach(([key, value]) => {
             console.log(`${key}: ${value}`);
-            if (key == 'age_criteria' || key == 'country' || key == 'qualification' || key == 'state') {
-                result += `${key}: {_contains: "${value}"}, `;
-            } else {
+           
                 console.log("557", `${key}: ${value}`);
                 result += `${key}: {_eq: "${value}"}, `;
-            }
+            
 
         });
         result += '}'
