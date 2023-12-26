@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { HasuraService } from 'src/services/hasura/hasura.service';
+import { ProxyService } from 'src/services/proxy/proxy.service';
 
 @Injectable()
 export class JobsService {
 
-    constructor(private readonly hasuraService: HasuraService) { }
+    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService) { }
 
     async getJobs(getContentdto) {
         return this.hasuraService.findJobsCache(getContentdto);
@@ -45,20 +46,20 @@ export class JobsService {
             }
         });
 
-        let config = {
-            method: 'post',
-            maxBodyLength: Infinity,
-            url: 'http://65.0.93.247:8001/search',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: data
-        };
+        // let config = {
+        //     method: 'post',
+        //     maxBodyLength: Infinity,
+        //     url: 'http://65.0.93.247:8001/search',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     data: data
+        // };
 
         try {
-            let response = await axios.request(config)
-            console.log(JSON.stringify(response.data));
-
+            // let response = await axios.request(config)
+            // console.log(JSON.stringify(response.data));
+            let response = await this.proxyService.bapCLientApi(data)
             if (response.data) {
                 let arrayOfObjects = []
                 for (const responses of response.data.responses) {
@@ -90,7 +91,6 @@ export class JobsService {
                 console.log("arrayOfObjects", arrayOfObjects)
                 return this.hasuraService.insertCacheData(arrayOfObjects)
             }
-
 
         } catch (error) {
             console.log("error", error)

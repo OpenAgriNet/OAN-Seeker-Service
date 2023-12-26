@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { JobsModule } from './jobs/jobs.module';
 import { HasuraService } from './services/hasura/hasura.service';
+import { ProxyService } from './services/proxy/proxy.service';
 
 @Module({
   imports: [
@@ -16,6 +17,6 @@ import { HasuraService } from './services/hasura/hasura.service';
     JobsModule
   ],
   controllers: [AppController],
-  providers: [AppService, HasuraService],
+  providers: [AppService, HasuraService, ProxyService],
 })
 export class AppModule {}

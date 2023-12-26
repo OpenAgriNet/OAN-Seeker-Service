@@ -1,13 +1,58 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, Request } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ProxyService } from './services/proxy/proxy.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private readonly proxyService: ProxyService) { }
 
   @Get()
   getHello(): string {
     return this.appService.getHello();
   }
-  
+
+  @Post('/search')
+  async searchContent(@Request() request, @Body() body) {
+    let endPoint = 'search'
+    console.log("search method calling...")
+    return await this.proxyService.bapCLientApi2(endPoint, body)
+  }
+
+  @Post('/select')
+  async selectContent(@Request() request, @Body() body) {
+    let endPoint = 'select'
+    console.log("select method calling...")
+    return await this.proxyService.bapCLientApi2(endPoint, body)
+  }
+
+  @Post('/init')
+  async initContent(@Request() request, @Body() body) {
+    let endPoint = 'init'
+    console.log("select method calling...")
+    return await this.proxyService.bapCLientApi2(endPoint, body)
+  }
+
+  @Post('/confirm')
+  async confirmContent(@Request() request, @Body() body) {
+    let endPoint = 'confirm'
+    console.log("confirm method calling...")
+    return await this.proxyService.bapCLientApi2(endPoint, body)
+  }
+
+  @Post('/status')
+  async statusContent(@Request() request, @Body() body) {
+    let endPoint = 'status'
+    console.log("status method calling...")
+    return await this.proxyService.bapCLientApi2(endPoint, body)
+  }
+
+  @Post('/update')
+  async updateContent(@Request() request, @Body() body) {
+    let endPoint = 'update'
+    console.log("update method calling...")
+    return await this.proxyService.bapCLientApi2(endPoint, body)
+  }
+
+
+
 }

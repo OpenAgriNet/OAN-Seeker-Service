@@ -59,6 +59,7 @@ export class HasuraService {
             return response;
         } catch (error) {
             //this.logger.error("Something Went wrong in creating Admin", error);
+            console.log("error", error)
             throw new HttpException('Unable to Fetch content!', HttpStatus.BAD_REQUEST);
         }
     }
