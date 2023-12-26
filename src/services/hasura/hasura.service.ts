@@ -26,7 +26,9 @@ export class HasuraService {
         console.log("result", result)
         //console.log("order", order)
         const query = `query MyQuery {
-           jobs_cache(distinct_on: item_id,${result}) {
+           jobs_cache(distinct_on: unique_id,${result}) {
+            id
+            unique_id
             age_criteria
             city
             comapany
@@ -37,7 +39,6 @@ export class HasuraService {
             end_date
             experience
             gender
-            id
             location_id
             proficiency
             qualification
@@ -68,11 +69,12 @@ export class HasuraService {
         console.log("arrayOfObjects", arrayOfObjects)
         // $provider_id: String, provider_name: String, bpp_id: String, bpp_uri: String
         // provider_id: $provider_id, provider_name: $provider_name, bpp_id: $bpp_id, bpp_uri: $bpp_uri
-        const query = `mutation MyMutation($item_id: String, $title: String, $description: String, $comapany: String, $location_id: String, $city: String, $state: String, $country: String, $qualification: String, $experience: String, $age_criteria: String, $skills: String, $proficiency: String, $work_mode: String, $start_date: String, $end_date: String, $responsiblities: String, $provider_id: String, $provider_name: String, $bpp_id: String, $bpp_uri: String ) { 
-            insert_jobs_cache(objects: {item_id: $item_id, title: $title, description: $description, comapany: $comapany, location_id: $location_id, city: $city, state: $state, country: $country, qualification: $qualification, experience: $experience, age_criteria: $age_criteria, skills: $skills, proficiency: $proficiency, work_mode: $work_mode, start_date: $start_date, end_date: $end_date, responsiblities: $responsiblities, provider_id: $provider_id, provider_name: $provider_name, bpp_id: $bpp_id, bpp_uri: $bpp_uri }) {
+        const query = `mutation MyMutation($item_id: String, $title: String, $description: String, $comapany: String, $location_id: String, $city: String, $state: String, $country: String, $qualification: String, $experience: String, $age_criteria: String, $skills: String, $proficiency: String, $work_mode: String, $start_date: String, $end_date: String, $responsiblities: String, $provider_id: String, $provider_name: String, $bpp_id: String, $bpp_uri: String, $unique_id: String ) { 
+            insert_jobs_cache(objects: {item_id: $item_id, title: $title, description: $description, comapany: $comapany, location_id: $location_id, city: $city, state: $state, country: $country, qualification: $qualification, experience: $experience, age_criteria: $age_criteria, skills: $skills, proficiency: $proficiency, work_mode: $work_mode, start_date: $start_date, end_date: $end_date, responsiblities: $responsiblities, provider_id: $provider_id, provider_name: $provider_name, bpp_id: $bpp_id, bpp_uri: $bpp_uri, unique_id: $unique_id }) {
             returning {
               id
               item_id
+              unique_id
             }
           }
         }

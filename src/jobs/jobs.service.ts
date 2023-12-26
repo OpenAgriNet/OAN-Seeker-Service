@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { HasuraService } from 'src/services/hasura/hasura.service';
 import { ProxyService } from 'src/services/proxy/proxy.service';
+const crypto = require('crypto');
 
 @Injectable()
 export class JobsService {
@@ -69,6 +70,7 @@ export class JobsService {
                         for (const [index, item] of providers.items.entries()) {
 
                             let obj = {
+                                unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
                                 item_id: item.id,
                                 title: item.descriptor.name ? item.descriptor.name : '',
                                 description: item.descriptor.long_desc ? item.descriptor.long_desc: '',
@@ -99,6 +101,19 @@ export class JobsService {
 
 
     }
+
+
+    
+
+    generateFixedId(...strings) {
+      const combinedString = strings.join('-'); // Combine strings using a separator
+      const hash = crypto.createHash('sha256').update(combinedString).digest('hex');
+      return hash;
+    }
+
+    // Example usage
+    // const id = generateFixedId('prefix', 'user', '123');
+    // console.log(id);
 
     async testApiCall() {
         const data = {
