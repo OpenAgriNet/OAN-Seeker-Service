@@ -65,6 +65,39 @@ export class HasuraService {
         }
     }
 
+    async searchResponse(data) {
+
+
+        let result = 'where: {'
+        Object.entries(data).forEach(([key, value]) => {
+            console.log(`${key}: ${value}`);
+           
+                console.log("557", `${key}: ${value}`);
+                result += `${key}: {_eq: "${value}"}, `;
+            
+
+        });
+        result += '}'
+        console.log("result", result)
+        //console.log("order", order)
+        const query = `query MyQuery {
+            response_cache(${result}) {
+                id
+                action
+                transaction_id
+                response
+          }
+          }`;
+        try {
+            const response = await this.queryDb(query);
+            return response;
+        } catch (error) {
+            //this.logger.error("Something Went wrong in creating Admin", error);
+            console.log("error", error)
+            throw new HttpException('Unable to Fetch content!', HttpStatus.BAD_REQUEST);
+        }
+    }
+
     async insertCacheData(arrayOfObjects) {
         console.log("arrayOfObjects", arrayOfObjects)
         // $provider_id: String, provider_name: String, bpp_id: String, bpp_uri: String

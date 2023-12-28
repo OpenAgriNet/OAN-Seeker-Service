@@ -102,6 +102,10 @@ export class JobsService {
 
     }
 
+    async searchResponse(body) {
+        return this.hasuraService.searchResponse(body);
+    }
+
 
     
 

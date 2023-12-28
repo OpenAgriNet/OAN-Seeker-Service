@@ -18,6 +18,11 @@ export class JobsController {
         //return this.jobsServise.testApiCall()
     }
 
+    @Post('/responseSearch')
+    async searchResponse(@Request() request, @Body() body) {
+        return this.jobsServise.searchResponse(body)
+    }
+
     @Cron(CronExpression.EVERY_10_MINUTES)
     async jobsApiCall() {
         console.log('Cron job jobsApiCall executed!');
