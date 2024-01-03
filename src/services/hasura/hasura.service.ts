@@ -157,7 +157,7 @@ export class HasuraService {
 
     async getState() {
         const query = `query MyQuery {
-            jobs_cache(distinct_on: state) {
+            jobs_cache(distinct_on: state,where: { state: { _neq: "" } }) {
               state
             }
           }
