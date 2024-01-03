@@ -44,5 +44,11 @@ export class JobsController {
         return this.jobsServise.getTitle()
     }
 
+    @Cron(CronExpression.EVERY_HOUR)
+    async deleteResponse() {
+        console.log('Cron job deleteResponse executed!');
+        return this.jobsServise.deleteResponse()
+    }
+
     
 }

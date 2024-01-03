@@ -157,7 +157,7 @@ export class HasuraService {
 
     async getState() {
         const query = `query MyQuery {
-            jobs_cache(distinct_on: state) {
+            jobs_cache(distinct_on: state,where: { state: { _neq: "" } }) {
               state
             }
           }
@@ -207,6 +207,21 @@ export class HasuraService {
         }
       }
 
-
-
-}
+      async deleteResponse() {
+        const query = `mutation MyMutation {
+            delete_response_cache(where: {}) {
+              affected_rows
+            }
+          }
+        `;    
+        try {
+          return await this.queryDb(query);
+    
+        } catch (error) {
+    
+          throw new HttpException("Bad request", HttpStatus.BAD_REQUEST);
+        }
+      }
+    
+    
+    }

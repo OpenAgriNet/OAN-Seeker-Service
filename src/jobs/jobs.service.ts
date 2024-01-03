@@ -4012,4 +4012,10 @@ export class JobsService {
     async getTitle() {
         return this.hasuraService.getTitle();
     }
+
+    async deleteResponse() {
+        return this.hasuraService.deleteResponse();
+    }
+
+
 }
