@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Request } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Request } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { JobsService } from './jobs.service';
 
@@ -29,4 +29,20 @@ export class JobsController {
         return this.jobsServise.jobsApiCall()
     }
 
+    @Get('/getState')
+    async getState(){
+        return this.jobsServise.getState()
+    }
+
+    @Get('/getCity')
+    async getCity(@Query('state') state: string){
+        return this.jobsServise.getCity(state)
+    }
+
+    @Get('/getTitle')
+    async getTitle(){
+        return this.jobsServise.getTitle()
+    }
+
+    
 }

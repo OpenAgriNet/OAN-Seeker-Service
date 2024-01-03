@@ -4000,4 +4000,16 @@ export class JobsService {
         //return arrayOfObjects
         return this.hasuraService.insertCacheData(arrayOfObjects)
     }
+
+    async getState() {
+        return this.hasuraService.getState();
+    }
+
+    async getCity(state:string) {
+        return this.hasuraService.getCity(state);
+    }
+
+    async getTitle() {
+        return this.hasuraService.getTitle();
+    }
 }
