@@ -46,7 +46,7 @@ export class JobsController {
 
     @Cron(CronExpression.EVERY_HOUR)
     async deleteResponse() {
-        console.log('Cron job jobsApiCall executed!');
+        console.log('Cron job deleteResponse executed!');
         return this.jobsServise.deleteResponse()
     }
 
