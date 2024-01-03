@@ -154,4 +154,59 @@ export class HasuraService {
 
         }
     }
+
+    async getState() {
+        const query = `query MyQuery {
+            jobs_cache(distinct_on: state) {
+              state
+            }
+          }
+        `;
+
+        try {
+          return await this.queryDb(query);
+    
+        } catch (error) {
+    
+          throw new HttpException("Bad request", HttpStatus.BAD_REQUEST);
+        }
+      }
+
+      async getCity(state:string) {
+        const query = `query MyQuery {
+            jobs_cache(distinct_on: city, where: {state: {_eq: "${state}"}}) {
+              city
+            }
+          }
+        `;
+
+         try {
+          return await this.queryDb(query);
+    
+        } catch (error) {
+    
+          throw new HttpException("Bad request", HttpStatus.BAD_REQUEST);
+        }
+      }
+
+    
+      
+      async getTitle() {
+        const query = `query MyQuery {
+            jobs_cache(distinct_on: title) {
+              title
+            }
+          }
+        `;    
+        try {
+          return await this.queryDb(query);
+    
+        } catch (error) {
+    
+          throw new HttpException("Bad request", HttpStatus.BAD_REQUEST);
+        }
+      }
+
+
+
 }
