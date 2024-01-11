@@ -58,9 +58,9 @@ export class JobsService {
         // };
 
         try {
-            // let response = await axios.request(config)
-            // console.log(JSON.stringify(response.data));
+            
             let response = await this.proxyService.bapCLientApi(data)
+            console.log("res", JSON.stringify(response.data))
             if (response.data) {
                 let arrayOfObjects = []
                 for (const responses of response.data.responses) {

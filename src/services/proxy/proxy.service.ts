@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class ProxyService {
 
     async bapCLientApi(data) {
-        console.log("bapCLientApi api calling")
+        console.log("bapCLientApi api calling", data)
         const axios = require('axios');
         // let data = JSON.stringify({
         //     "context": {
@@ -43,7 +43,7 @@ export class ProxyService {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://65.0.93.247:8001/search',
+            url: 'https://jobs-client.tekdinext.com/search',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -69,7 +69,7 @@ export class ProxyService {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: `http://65.0.93.247:8001/${endPoint}`,
+            url: `https://jobs-client.tekdinext.com/${endPoint}`,
             headers: {
                 'Content-Type': 'application/json'
             },
