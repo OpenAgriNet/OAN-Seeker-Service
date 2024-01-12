@@ -82,7 +82,8 @@ export class JobsService {
                                 provider_id: providers.id,
                                 provider_name: providers.descriptor.name,
                                 bpp_id: responses.context.bpp_id,
-                                bpp_uri: responses.context.bpp_uri
+                                bpp_uri: responses.context.bpp_uri,
+                                company: item.creator.descriptor.name ? item.creator.descriptor.name : ''
                             }
                             arrayOfObjects.push(obj)
                         }
@@ -91,6 +92,7 @@ export class JobsService {
 
                 }
                 console.log("arrayOfObjects", arrayOfObjects)
+                //return arrayOfObjects
                 return this.hasuraService.insertCacheData(arrayOfObjects)
             }
 
