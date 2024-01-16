@@ -83,7 +83,7 @@ export class JobsService {
                                 provider_name: providers.descriptor.name,
                                 bpp_id: responses.context.bpp_id,
                                 bpp_uri: responses.context.bpp_uri,
-                                company: item.creator.descriptor.name ? item.creator.descriptor.name : ''
+                                company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : ''
                             }
                             arrayOfObjects.push(obj)
                         }
