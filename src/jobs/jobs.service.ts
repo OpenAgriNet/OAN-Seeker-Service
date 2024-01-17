@@ -6,7 +6,11 @@ const crypto = require('crypto');
 @Injectable()
 export class JobsService {
 
-    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService) { }
+    private domain = process.env.DOMAIN;
+    private bap_id = process.env.BAP_ID;
+    private bap_uri = process.env.BAP_URI;
+
+    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService) {}
 
     async getJobs(getContentdto) {
         return this.hasuraService.findJobsCache(getContentdto);
@@ -15,13 +19,13 @@ export class JobsService {
     async jobsApiCall() {
         console.log("jobs api calling")
         const axios = require('axios');
-        let data = JSON.stringify({
+        let data = {
             "context": {
-                "domain": "onest:work-opportunities",
+                "domain": this.domain,
                 "action": "search",
                 "version": "1.1.0",
-                "bap_id": "jobs-bap.tekdinext.com",
-                "bap_uri": "https://jobs-bap.tekdinext.com/",
+                "bap_id": this.bap_id,
+                "bap_uri": this.bap_uri,
                 "location": {
                     "country": {
                         "name": "India",
@@ -32,8 +36,8 @@ export class JobsService {
                         "code": "std:080"
                     }
                 },
-                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60008",
-                "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60009",
+                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60025",
+                "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60025",
                 "timestamp": "2023-02-06T09:55:41.161Z"
             },
             "message": {
@@ -45,25 +49,15 @@ export class JobsService {
                     }
                 }
             }
-        });
-
-        // let config = {
-        //     method: 'post',
-        //     maxBodyLength: Infinity,
-        //     url: 'http://65.0.93.247:8001/search',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     data: data
-        // };
+        }
 
         try {
-            
-            let response = await this.proxyService.bapCLientApi(data)
-            console.log("res", JSON.stringify(response.data))
-            if (response.data) {
+
+            let response = await this.proxyService.bapCLientApi2('search', data)
+            console.log("res", JSON.stringify(response))
+            if (response) {
                 let arrayOfObjects = []
-                for (const responses of response.data.responses) {
+                for (const responses of response.responses) {
 
                     for (const providers of responses.message.catalog.providers) {
 
@@ -72,12 +66,12 @@ export class JobsService {
                             let obj = {
                                 unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
                                 item_id: item.id,
-                                title: item.descriptor.name ? item.descriptor.name : '',
-                                description: item.descriptor.long_desc ? item.descriptor.long_desc: '',
-                                location_id: item.location_ids[0] ? item.location_ids[0]: '',
+                                title: item?.descriptor?.name ? item.descriptor.name : '',
+                                description: item?.descriptor?.long_desc ? item.descriptor.long_desc : '',
+                                location_id: item?.location_ids[0] ? item.location_ids[0] : '',
                                 //city: providers.locations.find(item => item.id === items.location_ids[0]) ? providers.locations.find(item => item.id === items.location_ids[0]).city.name : null,
-                                city: providers.locations[index].city.name? providers.locations[index].city.name: '',
-                                state: providers.locations[index].state.name? providers.locations[index].state.name: '',
+                                city: providers?.locations[index]?.city.name ? providers.locations[index].city.name : '',
+                                state: providers?.locations[index]?.state.name ? providers.locations[index].state.name : '',
                                 //country: providers.locations[index].country.name ? providers.locations[index].country.name: '',
                                 provider_id: providers.id,
                                 provider_name: providers.descriptor.name,
@@ -108,18 +102,11 @@ export class JobsService {
         return this.hasuraService.searchResponse(body);
     }
 
-
-    
-
     generateFixedId(...strings) {
-      const combinedString = strings.join('-'); // Combine strings using a separator
-      const hash = crypto.createHash('sha256').update(combinedString).digest('hex');
-      return hash;
+        const combinedString = strings.join('-'); // Combine strings using a separator
+        const hash = crypto.createHash('sha256').update(combinedString).digest('hex');
+        return hash;
     }
-
-    // Example usage
-    // const id = generateFixedId('prefix', 'user', '123');
-    // console.log(id);
 
     async testApiCall() {
         const data = {
@@ -4007,7 +3994,7 @@ export class JobsService {
         return this.hasuraService.getState();
     }
 
-    async getCity(state:string) {
+    async getCity(state: string) {
         return this.hasuraService.getCity(state);
     }
 
@@ -4018,6 +4005,5 @@ export class JobsService {
     async deleteResponse() {
         return this.hasuraService.deleteResponse();
     }
-
 
 }
