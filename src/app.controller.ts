@@ -1,10 +1,11 @@
 import { Body, Controller, Get, Post, Request } from '@nestjs/common';
 import { AppService } from './app.service';
+import { LoggerService } from './logger/logger.service';
 import { ProxyService } from './services/proxy/proxy.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private readonly proxyService: ProxyService) { }
+  constructor(private readonly appService: AppService, private readonly proxyService: ProxyService, private readonly logger: LoggerService) { }
 
   @Get()
   getHello(): string {

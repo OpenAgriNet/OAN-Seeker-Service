@@ -229,4 +229,20 @@ export class HasuraService {
     }
   }
 
+  async deleteJobs() {
+    const query = `mutation MyMutation {
+            delete_${this.cache_db}(where: {}) {
+              affected_rows
+            }
+          }
+        `;
+    try {
+      return await this.queryDb(query);
+
+    } catch (error) {
+
+      throw new HttpException("Bad request", HttpStatus.BAD_REQUEST);
+    }
+  }
+
 }

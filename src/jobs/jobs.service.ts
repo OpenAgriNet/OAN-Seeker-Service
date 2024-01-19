@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { LoggerService } from 'src/logger/logger.service';
 import { HasuraService } from 'src/services/hasura/hasura.service';
 import { ProxyService } from 'src/services/proxy/proxy.service';
 const crypto = require('crypto');
@@ -10,15 +11,14 @@ export class JobsService {
     private bap_id = process.env.BAP_ID;
     private bap_uri = process.env.BAP_URI;
 
-    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService) {}
+    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService, private readonly logger: LoggerService) {}
 
     async getJobs(getContentdto) {
         return this.hasuraService.findJobsCache(getContentdto);
     }
 
     async jobsApiCall() {
-        console.log("jobs api calling")
-        const axios = require('axios');
+        this.logger.log('create jobs api calling')
         let data = {
             "context": {
                 "domain": this.domain,
@@ -93,8 +93,6 @@ export class JobsService {
         } catch (error) {
             console.log("error", error)
         }
-
-
 
     }
 
@@ -4004,6 +4002,10 @@ export class JobsService {
 
     async deleteResponse() {
         return this.hasuraService.deleteResponse();
+    }
+
+    async deleteJobs() {
+        return this.hasuraService.deleteJobs();
     }
 
 }

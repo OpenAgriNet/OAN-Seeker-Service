@@ -1,54 +1,74 @@
 import { Body, Controller, Get, Post, Query, Request } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { LoggerService } from 'src/logger/logger.service';
 import { JobsService } from './jobs.service';
 
 @Controller('jobs')
 export class JobsController {
 
-    constructor(private readonly jobsServise: JobsService) { }
+    constructor(private readonly jobsServise: JobsService, private readonly logger: LoggerService) { }
 
     @Post('/search')
     async getContent(@Request() request, @Body() body) {
+        this.logger.log('POST /search')
         return this.jobsServise.getJobs(body)
-    }
-
-    @Post('/create')
-    async contentapi() {
-        return this.jobsServise.jobsApiCall()
-        //return this.jobsServise.testApiCall()
     }
 
     @Post('/responseSearch')
     async searchResponse(@Request() request, @Body() body) {
+        this.logger.log('POST /responseSearch')
         return this.jobsServise.searchResponse(body)
-    }
-
-    @Cron(CronExpression.EVERY_10_MINUTES)
-    async jobsApiCall() {
-        console.log('Cron job jobsApiCall executed!');
-        return this.jobsServise.jobsApiCall()
     }
 
     @Get('/getState')
     async getState(){
+        this.logger.log('GET /getState')
         return this.jobsServise.getState()
     }
 
     @Get('/getCity')
     async getCity(@Query('state') state: string){
+        this.logger.log('GET /getCity')
         return this.jobsServise.getCity(state)
     }
 
     @Get('/getTitle')
     async getTitle(){
+        this.logger.log('GET /getTitle')
         return this.jobsServise.getTitle()
     }
 
-    @Cron(CronExpression.EVERY_HOUR)
+    // create jobs manually
+    @Post('/create')
+    async contentapi() {
+        this.logger.log('POST /create')
+        return this.jobsServise.jobsApiCall()
+        //return this.jobsServise.testApiCall()
+    }
+
+    // create jobs by cronjob
+    @Cron(CronExpression.EVERY_2_HOURS)
+    async jobsApiCall() {
+        this.logger.log('Cronjob create service executed at')
+        return this.jobsServise.jobsApiCall()
+    }
+
+    // delete jobs by cronjob
+    @Cron(CronExpression.EVERY_DAY_AT_1AM)
+    async deleteJobs() {
+        this.logger.log('Cronjob delete Jobs service executed at')
+        let deletedResponse = await this.jobsServise.deleteJobs()
+        if(deletedResponse) {
+            console.log("response deleted successfully at " + Date.now())
+            return this.jobsServise.jobsApiCall()
+        }
+    }
+
+    // delete response cache by cronjob
+    @Cron(CronExpression.EVERY_DAY_AT_1AM)
     async deleteResponse() {
-        console.log('Cron job deleteResponse executed!');
+        this.logger.log('Cronjob delete Response executed at')
         return this.jobsServise.deleteResponse()
     }
 
-    
 }
