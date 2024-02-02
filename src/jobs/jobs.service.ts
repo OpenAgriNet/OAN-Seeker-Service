@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { LoggerService } from 'src/logger/logger.service';
 import { HasuraService } from 'src/services/hasura/hasura.service';
 import { ProxyService } from 'src/services/proxy/proxy.service';
+import { v4 as uuidv4 } from 'uuid';
 const crypto = require('crypto');
+
 
 @Injectable()
 export class JobsService {
@@ -26,19 +28,9 @@ export class JobsService {
                 "version": "1.1.0",
                 "bap_id": this.bap_id,
                 "bap_uri": this.bap_uri,
-                "location": {
-                    "country": {
-                        "name": "India",
-                        "code": "IND"
-                    },
-                    "city": {
-                        "name": "Bangalore",
-                        "code": "std:080"
-                    }
-                },
-                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60025",
-                "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60025",
-                "timestamp": "2023-02-06T09:55:41.161Z"
+                "transaction_id": uuidv4(),
+                "message_id": uuidv4(),
+                "timestamp": new Date().toISOString()
             },
             "message": {
                 "intent": {

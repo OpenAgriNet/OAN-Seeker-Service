@@ -47,7 +47,7 @@ export class JobsController {
     }
 
     // create jobs by cronjob
-    @Cron(CronExpression.EVERY_2_HOURS)
+    @Cron(CronExpression.EVERY_8_HOURS)
     async jobsApiCall() {
         this.logger.log('Cronjob create service executed at')
         return this.jobsServise.jobsApiCall()
@@ -56,7 +56,7 @@ export class JobsController {
     // delete jobs by cronjob
     @Cron(CronExpression.EVERY_DAY_AT_1AM)
     async deleteJobs() {
-        this.logger.log('Cronjob delete Jobs service executed at')
+        this.logger.log('Cronjob delete service executed at')
         let deletedResponse = await this.jobsServise.deleteJobs()
         if(deletedResponse) {
             console.log("response deleted successfully at " + Date.now())
