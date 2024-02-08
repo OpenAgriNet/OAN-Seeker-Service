@@ -13,7 +13,7 @@ export class JobsService {
     private bap_id = process.env.BAP_ID;
     private bap_uri = process.env.BAP_URI;
 
-    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService, private readonly logger: LoggerService) {}
+    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService, private readonly logger: LoggerService) { }
 
     async getJobs(getContentdto) {
         return this.hasuraService.findJobsCache(getContentdto);
@@ -50,28 +50,30 @@ export class JobsService {
             if (response) {
                 let arrayOfObjects = []
                 for (const responses of response.responses) {
+                    if (responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
 
-                    for (const providers of responses.message.catalog.providers) {
+                        for (const providers of responses.message.catalog.providers) {
 
-                        for (const [index, item] of providers.items.entries()) {
+                            for (const [index, item] of providers.items.entries()) {
 
-                            let obj = {
-                                unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
-                                item_id: item.id,
-                                title: item?.descriptor?.name ? item.descriptor.name : '',
-                                description: item?.descriptor?.long_desc ? item.descriptor.long_desc : '',
-                                location_id: item?.location_ids[0] ? item.location_ids[0] : '',
-                                //city: providers.locations.find(item => item.id === items.location_ids[0]) ? providers.locations.find(item => item.id === items.location_ids[0]).city.name : null,
-                                city: providers?.locations[index]?.city.name ? providers.locations[index].city.name : '',
-                                state: providers?.locations[index]?.state.name ? providers.locations[index].state.name : '',
-                                //country: providers.locations[index].country.name ? providers.locations[index].country.name: '',
-                                provider_id: providers.id,
-                                provider_name: providers.descriptor.name,
-                                bpp_id: responses.context.bpp_id,
-                                bpp_uri: responses.context.bpp_uri,
-                                company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : ''
+                                let obj = {
+                                    unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
+                                    item_id: item.id,
+                                    title: item?.descriptor?.name ? item.descriptor.name : '',
+                                    description: item?.descriptor?.long_desc ? item.descriptor.long_desc : '',
+                                    location_id: item?.location_ids[0] ? item.location_ids[0] : '',
+                                    //city: providers.locations.find(item => item.id === items.location_ids[0]) ? providers.locations.find(item => item.id === items.location_ids[0]).city.name : null,
+                                    city: providers?.locations[index]?.city.name ? providers.locations[index].city.name : '',
+                                    state: providers?.locations[index]?.state.name ? providers.locations[index].state.name : '',
+                                    //country: providers.locations[index].country.name ? providers.locations[index].country.name: '',
+                                    provider_id: providers.id,
+                                    provider_name: providers.descriptor.name,
+                                    bpp_id: responses.context.bpp_id,
+                                    bpp_uri: responses.context.bpp_uri,
+                                    company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : ''
+                                }
+                                arrayOfObjects.push(obj)
                             }
-                            arrayOfObjects.push(obj)
                         }
                     }
 
