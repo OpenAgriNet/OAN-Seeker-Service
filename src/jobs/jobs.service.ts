@@ -3993,6 +3993,10 @@ export class JobsService {
         return this.hasuraService.getTitle();
     }
 
+    async getFilterData(data) {
+        return this.hasuraService.getFilterData(data);
+    }
+
     async deleteResponse() {
         return this.hasuraService.deleteResponse();
     }
