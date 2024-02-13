@@ -10,6 +10,4 @@ export class CreateUserDto {
 export class CreateOrderDto {
     content_id: string
     order_id: string
-    seeker_id:string
-
 }
