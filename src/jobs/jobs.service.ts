@@ -13,7 +13,7 @@ export class JobsService {
     private bap_id = process.env.BAP_ID;
     private bap_uri = process.env.BAP_URI;
 
-    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService, private readonly logger: LoggerService) {}
+    constructor(private readonly hasuraService: HasuraService, private readonly proxyService: ProxyService, private readonly logger: LoggerService) { }
 
     async getJobs(getContentdto) {
         return this.hasuraService.findJobsCache(getContentdto);
@@ -50,6 +50,7 @@ export class JobsService {
             if (response) {
                 let arrayOfObjects = []
                 for (const responses of response.responses) {
+                    if (responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
 
                     if(responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
                         for (const providers of responses.message.catalog.providers) {
@@ -82,12 +83,14 @@ export class JobsService {
                 //return arrayOfObjects
                 return this.hasuraService.insertCacheData(arrayOfObjects)
             }
+        }
 
         } catch (error) {
             console.log("error", error)
         }
 
-    }
+    
+}
 
     async searchResponse(body) {
         return this.hasuraService.searchResponse(body);
@@ -4004,5 +4007,6 @@ export class JobsService {
     async deleteJobs() {
         return this.hasuraService.deleteJobs();
     }
+
 
 }

@@ -10,7 +10,7 @@ export class HasuraService {
   private cache_db = process.env.CACHE_DB;
   private response_cache_db = process.env.RESPONSE_CACHE_DB;
 
-  constructor(private httpService: HttpService) { 
+  constructor(private httpService: HttpService) {
     console.log("cache_db", this.cache_db)
     console.log("response_cache_db", this.response_cache_db)
   }
@@ -260,5 +260,87 @@ export class HasuraService {
       throw new HttpException("Bad request", HttpStatus.BAD_REQUEST);
     }
   }
+
+  async createSeekerUser(seeker) {
+    const query = `mutation InsertSeeker($user_id: Int, $email: String , $name:String, $age:String, $gender:String, $phone:String) {
+     insert_jobs_seeker_dev(objects: {user_id: $user_id, email: $email, name: $name ,age: $age, gender: $gender, phone: $phone}) {
+        affected_rows
+        returning {
+          id
+          email
+          name
+          gender
+          age
+          phone
+        }
+      
+    }
+    }`;
+
+    console.log(query)
+
+    // Rest of your code to execute the query
+
+    try {
+      const response = await this.queryDb(query, seeker)
+      return response;
+    } catch (error) {
+      throw new HttpException('Unabe to creatre Seeker user', HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async createOrder(order) {
+    const query = `mutation InsertOrder($content_id: String, $seeker_id: Int, $order_id: String) {
+      insert_jobs_order_dev(objects: {content_id: $content_id, seeker_id: $seeker_id, order_id: $order_id}) {
+        affected_rows
+        returning {
+          content_id
+          id
+          order_id
+          seeker_id
+        }
+      }
+    }
+    `;
+
+    console.log(query)
+
+    // Rest of your code to execute the query
+
+    try {
+      const response = await this.queryDb(query,order)
+      return response;
+    } catch (error) {
+      throw new HttpException('Unabe to create order user', HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async searchOrderByOrderId(order) {
+    const query = `query MyQuery {
+      jobs_order_dev(where: {order_id: {_eq: "${order}"}}) {
+        OrderContentRelationship {
+          bpp_id
+          bpp_uri
+          id
+          provider_id
+          provider_name
+         
+        }
+      }
+    }
+    `;
+
+    console.log(query)
+
+    // Rest of your code to execute the query
+
+    try {
+      const response = await this.queryDb(query)
+      return response;
+    } catch (error) {
+      throw new HttpException('Unabe to create order user', HttpStatus.BAD_REQUEST);
+    }
+  }
+
 
 }
