@@ -7,6 +7,7 @@ import { JobsModule } from './jobs/jobs.module';
 import { HasuraService } from './services/hasura/hasura.service';
 import { ProxyService } from './services/proxy/proxy.service';
 import { LoggerService } from './logger/logger.service';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { LoggerService } from './logger/logger.service';
       ...HttpModule.register({}),
       global: true,
     },
-    JobsModule
+    JobsModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService, HasuraService, ProxyService, LoggerService],
