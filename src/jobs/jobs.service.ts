@@ -83,12 +83,14 @@ export class JobsService {
                 //return arrayOfObjects
                 return this.hasuraService.insertCacheData(arrayOfObjects)
             }
+        }
 
         } catch (error) {
             console.log("error", error)
         }
 
-    }
+    
+}
 
     async searchResponse(body) {
         return this.hasuraService.searchResponse(body);
@@ -4005,5 +4007,6 @@ export class JobsService {
     async deleteJobs() {
         return this.hasuraService.deleteJobs();
     }
+
 
 }
