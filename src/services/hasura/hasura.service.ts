@@ -213,6 +213,22 @@ export class HasuraService {
     }
   }
 
+  async getFilterData(data) {
+    const query = `query MyQuery {
+            ${this.cache_db}(distinct_on: ${data}) {
+              ${data}
+            }
+          }
+        `;
+    try {
+      return await this.queryDb(query);
+
+    } catch (error) {
+
+      throw new HttpException("Bad request", HttpStatus.BAD_REQUEST);
+    }
+  }
+
   async deleteResponse() {
     const query = `mutation MyMutation {
             delete_${this.response_cache_db}(where: {}) {

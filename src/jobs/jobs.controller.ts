@@ -23,7 +23,7 @@ export class JobsController {
     @Get('/getState')
     async getState(){
         this.logger.log('GET /getState')
-        return this.jobsServise.getState()
+        return this.jobsServise.getFilterData('state')
     }
 
     @Get('/getCity')
@@ -35,7 +35,19 @@ export class JobsController {
     @Get('/getTitle')
     async getTitle(){
         this.logger.log('GET /getTitle')
-        return this.jobsServise.getTitle()
+        return this.jobsServise.getFilterData('title')
+    }
+
+    @Get('/getSkills')
+    async getSkills(){
+        this.logger.log('GET /getSkills')
+        return this.jobsServise.getFilterData('skills')
+    }
+
+    @Get('/getGender')
+    async getGender(){
+        this.logger.log('GET /getGender')
+        return this.jobsServise.getFilterData('gender')
     }
 
     // create jobs manually

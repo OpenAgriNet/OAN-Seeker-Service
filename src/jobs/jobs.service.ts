@@ -52,10 +52,11 @@ export class JobsService {
                 for (const responses of response.responses) {
                     if (responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
 
+                    if(responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
                         for (const providers of responses.message.catalog.providers) {
 
                             for (const [index, item] of providers.items.entries()) {
-
+    
                                 let obj = {
                                     unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
                                     item_id: item.id,
@@ -76,7 +77,6 @@ export class JobsService {
                             }
                         }
                     }
-
 
                 }
                 console.log("arrayOfObjects", arrayOfObjects)
@@ -3992,6 +3992,10 @@ export class JobsService {
 
     async getTitle() {
         return this.hasuraService.getTitle();
+    }
+
+    async getFilterData(data) {
+        return this.hasuraService.getFilterData(data);
     }
 
     async deleteResponse() {
