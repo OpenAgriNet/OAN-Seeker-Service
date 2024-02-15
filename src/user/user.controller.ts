@@ -6,6 +6,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+  private cache_db = process.env.CACHE_DB;
+  private response_cache_db = process.env.RESPONSE_CACHE_DB;
 
   @Post("/create")
   create(@Body() createUserDto: CreateUserDto) {
