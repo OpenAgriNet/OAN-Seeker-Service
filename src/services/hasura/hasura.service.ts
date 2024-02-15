@@ -9,6 +9,8 @@ export class HasuraService {
   private adminSecretKey = process.env.HASURA_GRAPHQL_ADMIN_SECRET;
   private cache_db = process.env.CACHE_DB;
   private response_cache_db = process.env.RESPONSE_CACHE_DB;
+  private jobs_seeker_dev = process.env.JOBS_SEEKER_DEV;
+  private jobs_order_dev = process.env.JOBS_ORDER_DEV
 
   constructor(private httpService: HttpService) {
     console.log("cache_db", this.cache_db)
@@ -263,7 +265,7 @@ export class HasuraService {
 
   async createSeekerUser(seeker) {
     const query = `mutation InsertSeeker($user_id: Int, $email: String , $name:String, $age:String, $gender:String, $phone:String) {
-     insert_jobs_seeker_dev(objects: {user_id: $user_id, email: $email, name: $name ,age: $age, gender: $gender, phone: $phone}) {
+     insert_${this.jobs_seeker_dev}(objects: {user_id: $user_id, email: $email, name: $name ,age: $age, gender: $gender, phone: $phone}) {
         affected_rows
         returning {
           id
@@ -283,7 +285,7 @@ export class HasuraService {
 
     try {
       const response = await this.queryDb(query, seeker)
-      return response.data.insert_jobs_seeker_dev.returning[0];
+      return response.data[`insert_${this.jobs_seeker_dev}`].returning[0];
     } catch (error) {
       throw new HttpException('Unabe to creatre Seeker user', HttpStatus.BAD_REQUEST);
     }
@@ -291,7 +293,7 @@ export class HasuraService {
 
   async findSeekerUser(email) {
     const query = `query MyQuery {
-      jobs_seeker_dev(where: {email: {_eq: "${email}"}}) {
+      ${this.jobs_seeker_dev}(where: {email: {_eq: "${email}"}}) {
         id
         name
         email
@@ -306,7 +308,7 @@ export class HasuraService {
 
     try {
       const response = await this.queryDb(query)
-      return response.data.jobs_seeker_dev[0];
+      return response.data[`${this.jobs_seeker_dev}`][0];
     } catch (error) {
       throw new HttpException('Unabe to create order user', HttpStatus.BAD_REQUEST);
     }
@@ -314,7 +316,7 @@ export class HasuraService {
 
   async createOrder(order) {
     const query = `mutation InsertOrder($content_id: String, $seeker_id: Int, $order_id: String) {
-      insert_jobs_order_dev(objects: {content_id: $content_id, seeker_id: $seeker_id, order_id: $order_id}) {
+      insert_${this.jobs_order_dev}(objects: {content_id: $content_id, seeker_id: $seeker_id, order_id: $order_id}) {
         affected_rows
         returning {
           content_id
@@ -340,7 +342,7 @@ export class HasuraService {
 
   async searchOrderByOrderId(order) {
     const query = `query MyQuery {
-      jobs_order_dev(where: {order_id: {_eq: "${order}"}}) {
+      ${this.jobs_order_dev}(where: {order_id: {_eq: "${order}"}}) {
         OrderContentRelationship {
           bpp_id
           bpp_uri
