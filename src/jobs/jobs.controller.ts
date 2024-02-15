@@ -77,10 +77,10 @@ export class JobsController {
     }
 
     // delete response cache by cronjob
-    @Cron(CronExpression.EVERY_DAY_AT_1AM)
-    async deleteResponse() {
-        this.logger.log('Cronjob delete Response executed at')
-        return this.jobsServise.deleteResponse()
-    }
+    // @Cron(CronExpression.EVERY_DAY_AT_1AM)
+    // async deleteResponse() {
+    //     this.logger.log('Cronjob delete Response executed at')
+    //     return this.jobsServise.deleteResponse()
+    // }
 
 }

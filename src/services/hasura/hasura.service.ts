@@ -283,9 +283,32 @@ export class HasuraService {
 
     try {
       const response = await this.queryDb(query, seeker)
-      return response;
+      return response.data.insert_jobs_seeker_dev.returning[0];
     } catch (error) {
       throw new HttpException('Unabe to creatre Seeker user', HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async findSeekerUser(email) {
+    const query = `query MyQuery {
+      jobs_seeker_dev(where: {email: {_eq: "${email}"}}) {
+        id
+        name
+        email
+        phone
+      }
+    }
+    `;
+
+    console.log(query)
+
+    // Rest of your code to execute the query
+
+    try {
+      const response = await this.queryDb(query)
+      return response.data.jobs_seeker_dev[0];
+    } catch (error) {
+      throw new HttpException('Unabe to create order user', HttpStatus.BAD_REQUEST);
     }
   }
 
