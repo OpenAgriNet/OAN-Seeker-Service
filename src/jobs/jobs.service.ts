@@ -51,12 +51,10 @@ export class JobsService {
                 let arrayOfObjects = []
                 for (const responses of response.responses) {
                     if (responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
-
-                    if(responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
                         for (const providers of responses.message.catalog.providers) {
 
                             for (const [index, item] of providers.items.entries()) {
-    
+
                                 let obj = {
                                     unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
                                     item_id: item.id,
@@ -77,20 +75,18 @@ export class JobsService {
                             }
                         }
                     }
-
                 }
                 console.log("arrayOfObjects", arrayOfObjects)
                 //return arrayOfObjects
                 return this.hasuraService.insertCacheData(arrayOfObjects)
             }
-        }
 
         } catch (error) {
             console.log("error", error)
         }
 
-    
-}
+
+    }
 
     async searchResponse(body) {
         return this.hasuraService.searchResponse(body);
@@ -107,13 +103,13 @@ export class JobsService {
             "context": {
                 "ttl": "PT10M",
                 "action": "search",
-                "timestamp": "2023-12-22T05:59:35.256Z",
-                "message_id": "3c6b273f-d1aa-43b4-9bb1-aa9b5f1d7443",
-                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60019",
+                "timestamp": "2024-02-15T03:36:40.969Z",
+                "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
                 "domain": "onest:work-opportunities",
                 "version": "1.1.0",
-                "bap_id": "jobs-bap.tekdinext.com",
-                "bap_uri": "https://jobs-bap.tekdinext.com/",
+                "bap_id": "jobs-bap-dev.tekdinext.com",
+                "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
                 "location": {
                     "country": {
                         "name": "India",
@@ -131,3277 +127,157 @@ export class JobsService {
                         "domain": "onest:work-opportunities",
                         "action": "on_search",
                         "version": "1.1.0",
-                        "bpp_id": "dash-beckn.tibilapps.com",
-                        "bpp_uri": "https://dash-beckn.tibilapps.com/protocol-network",
+                        "bpp_id": "dev.sahi1.online",
+                        "bpp_uri": "https://dev.sahi1.online/",
                         "country": "IND",
                         "city": "std:080",
-                        "location": {
-                            "country": {
-                                "name": "India",
-                                "code": "IND"
-                            },
-                            "city": {
-                                "name": "Bangalore",
-                                "code": "std:080"
-                            }
-                        },
-                        "bap_id": "jobs-bap.tekdinext.com",
-                        "bap_uri": "https://jobs-bap.tekdinext.com/",
-                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60019",
-                        "message_id": "3c6b273f-d1aa-43b4-9bb1-aa9b5f1d7443",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
                         "ttl": "PT10M",
-                        "timestamp": "2023-12-22T05:59:40.000Z"
+                        "timestamp": "2024-02-15T03:36:47.533Z"
                     },
                     "message": {
                         "catalog": {
+                            "descriptor": {
+                                "name": "Sahi Jobs",
+                                "short_desc": "short desp",
+                                "images": []
+                            },
                             "providers": [
                                 {
-                                    "id": "1",
+                                    "id": "dev.sahi1.online",
                                     "descriptor": {
-                                        "name": "PGI technologies"
+                                        "name": "Sahi Jobs",
+                                        "short_desc": "short desp",
+                                        "images": []
                                     },
-                                    "locations": [
-                                        {
-                                            "id": "1",
-                                            "city": {
-                                                "name": "Noida",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "2",
-                                            "city": {
-                                                "name": "Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "3",
-                                            "city": {
-                                                "name": "Delhi",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "4",
-                                            "city": {
-                                                "name": " Mumbai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "5",
-                                            "city": {
-                                                "name": " Lucknow",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "6",
-                                            "city": {
-                                                "name": " Chandigarh",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "7",
-                                            "city": {
-                                                "name": " Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "8",
-                                            "city": {
-                                                "name": " Hyderabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "9",
-                                            "city": {
-                                                "name": " Chennai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "10",
-                                            "city": {
-                                                "name": "\nMadhya Pradesh ",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "11",
-                                            "city": {
-                                                "name": " Baroda",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "12",
-                                            "city": {
-                                                "name": " Ahmedabad.",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "13",
-                                            "city": {
-                                                "name": "Pan India",
-                                                "code": "IND"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "14",
-                                            "city": {
-                                                "name": "Pan India",
-                                                "code": "IND"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "15",
-                                            "city": {
-                                                "name": "Kolar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "16",
-                                            "city": {
-                                                "name": "Karnataka",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "17",
-                                            "city": {
-                                                "name": "Bengaluru",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "18",
-                                            "city": {
-                                                "name": "Koramangala",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "19",
-                                            "city": {
-                                                "name": "Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "20",
-                                            "city": {
-                                                "name": "Ludhiana",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Punjab",
-                                                "code": "PB"
-                                            }
-                                        },
-                                        {
-                                            "id": "21",
-                                            "city": {
-                                                "name": "Gurugram",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "22",
-                                            "city": {
-                                                "name": "Neemrana",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "23",
-                                            "city": {
-                                                "name": "Gurugram",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "24",
-                                            "city": {
-                                                "name": " Manesar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "25",
-                                            "city": {
-                                                "name": "Guwhati ",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Assam",
-                                                "code": "AS"
-                                            }
-                                        },
-                                        {
-                                            "id": "26",
-                                            "city": {
-                                                "name": "Ranchi",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Jharkhand",
-                                                "code": "JH"
-                                            }
-                                        },
-                                        {
-                                            "id": "27",
-                                            "city": {
-                                                "name": "Hazaribagh",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Jharkhand",
-                                                "code": "JH"
-                                            }
-                                        },
-                                        {
-                                            "id": "28",
-                                            "city": {
-                                                "name": "Daltenganj",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Jharkhand",
-                                                "code": "JH"
-                                            }
-                                        },
-                                        {
-                                            "id": "29",
-                                            "city": {
-                                                "name": "Deogarh/Pakur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Jharkhand",
-                                                "code": "JH"
-                                            }
-                                        },
-                                        {
-                                            "id": "30",
-                                            "city": {
-                                                "name": "Patna ",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Bihar",
-                                                "code": "BR"
-                                            }
-                                        },
-                                        {
-                                            "id": "31",
-                                            "city": {
-                                                "name": "Midnipur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "West Bengal",
-                                                "code": "WB"
-                                            }
-                                        },
-                                        {
-                                            "id": "32",
-                                            "city": {
-                                                "name": "Behrampore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "West Bengal",
-                                                "code": "WB"
-                                            }
-                                        },
-                                        {
-                                            "id": "33",
-                                            "city": {
-                                                "name": "Burdwan",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "West Bengal",
-                                                "code": "WB"
-                                            }
-                                        },
-                                        {
-                                            "id": "34",
-                                            "city": {
-                                                "name": "Howrah",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "West Bengal",
-                                                "code": "WB"
-                                            }
-                                        },
-                                        {
-                                            "id": "35",
-                                            "city": {
-                                                "name": "Dimapur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Nagaland",
-                                                "code": "NL"
-                                            }
-                                        },
-                                        {
-                                            "id": "36",
-                                            "city": {
-                                                "name": "Shillong",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Meghalaya",
-                                                "code": "ML"
-                                            }
-                                        },
-                                        {
-                                            "id": "37",
-                                            "city": {
-                                                "name": "Agartala",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tripura",
-                                                "code": "TR"
-                                            }
-                                        },
-                                        {
-                                            "id": "38",
-                                            "city": {
-                                                "name": "Balasore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Odisha",
-                                                "code": "OD"
-                                            }
-                                        },
-                                        {
-                                            "id": "39",
-                                            "city": {
-                                                "name": "Jaypore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Odisha",
-                                                "code": "OD"
-                                            }
-                                        },
-                                        {
-                                            "id": "40",
-                                            "city": {
-                                                "name": "Bolangir",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Odisha",
-                                                "code": "OD"
-                                            }
-                                        },
-                                        {
-                                            "id": "41",
-                                            "city": {
-                                                "name": "Bhubneshwar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Odisha",
-                                                "code": "OD"
-                                            }
-                                        },
-                                        {
-                                            "id": "42",
-                                            "city": {
-                                                "name": "Moradabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "43",
-                                            "city": {
-                                                "name": "Rudrapur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttarakhand",
-                                                "code": "UK"
-                                            }
-                                        },
-                                        {
-                                            "id": "44",
-                                            "city": {
-                                                "name": "Bareilly",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "45",
-                                            "city": {
-                                                "name": "Haridwar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttarakhand",
-                                                "code": "UK"
-                                            }
-                                        },
-                                        {
-                                            "id": "46",
-                                            "city": {
-                                                "name": "Dehradoon",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttarakhand",
-                                                "code": "UK"
-                                            }
-                                        },
-                                        {
-                                            "id": "47",
-                                            "city": {
-                                                "name": "Meerut",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "48",
-                                            "city": {
-                                                "name": "ALWAR",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "49",
-                                            "city": {
-                                                "name": "Gurgaon",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "50",
-                                            "city": {
-                                                "name": "Faridabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "51",
-                                            "city": {
-                                                "name": "LUDHIANA",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Punjab",
-                                                "code": "PB"
-                                            }
-                                        },
-                                        {
-                                            "id": "52",
-                                            "city": {
-                                                "name": "Jalandhar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Punjab",
-                                                "code": "PB"
-                                            }
-                                        },
-                                        {
-                                            "id": "53",
-                                            "city": {
-                                                "name": "Ambala",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "54",
-                                            "city": {
-                                                "name": "Sonipat",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "55",
-                                            "city": {
-                                                "name": "Yamunanagar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "56",
-                                            "city": {
-                                                "name": "Rohtak",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "57",
-                                            "city": {
-                                                "name": "Bahadurgarh",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "58",
-                                            "city": {
-                                                "name": "Mahendergarh",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "59",
-                                            "city": {
-                                                "name": "Karnal",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "60",
-                                            "city": {
-                                                "name": "Hisar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "61",
-                                            "city": {
-                                                "name": "Lucknow",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "62",
-                                            "city": {
-                                                "name": "GORAKHPUR DEORIA",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "63",
-                                            "city": {
-                                                "name": "BALIA AZAMGARH",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "64",
-                                            "city": {
-                                                "name": "KANPUR",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "65",
-                                            "city": {
-                                                "name": "CHITRAKOOT",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "66",
-                                            "city": {
-                                                "name": "Allahabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "67",
-                                            "city": {
-                                                "name": "Jhansi",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "68",
-                                            "city": {
-                                                "name": "Kannauj",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "69",
-                                            "city": {
-                                                "name": "Lalitpur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "70",
-                                            "city": {
-                                                "name": "Etawah",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "71",
-                                            "city": {
-                                                "name": "Kota",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "72",
-                                            "city": {
-                                                "name": "Bhilwara",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "73",
-                                            "city": {
-                                                "name": "Udaipur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "74",
-                                            "city": {
-                                                "name": "Barmer",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "75",
-                                            "city": {
-                                                "name": "Pali",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "76",
-                                            "city": {
-                                                "name": "Jodhpur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "77",
-                                            "city": {
-                                                "name": "Tonk",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Rajasthan",
-                                                "code": "RJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "78",
-                                            "city": {
-                                                "name": "Derhionson",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Uttar Pradesh",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "79",
-                                            "city": {
-                                                "name": "Faridabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "80",
-                                            "city": {
-                                                "name": "Faridabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "81",
-                                            "city": {
-                                                "name": "Gurgaon",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "82",
-                                            "city": {
-                                                "name": "Gurgaon",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "83",
-                                            "city": {
-                                                "name": "Lucknow",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "UP",
-                                                "code": "UP"
-                                            }
-                                        },
-                                        {
-                                            "id": "84",
-                                            "city": {
-                                                "name": "Dharuhera",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "85",
-                                            "city": {
-                                                "name": " Gurugram",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "86",
-                                            "city": {
-                                                "name": "Rewari",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Haryana",
-                                                "code": "HR"
-                                            }
-                                        },
-                                        {
-                                            "id": "87",
-                                            "city": {
-                                                "name": "Surat/ Vadodara",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Gujarat",
-                                                "code": "GJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "88",
-                                            "city": {
-                                                "name": "Surat/ Vadodara",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Gujarat",
-                                                "code": "GJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "89",
-                                            "city": {
-                                                "name": "Surat/ Vadodara",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Gujarat",
-                                                "code": "GJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "90",
-                                            "city": {
-                                                "name": "Surat/ Vadodara",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Gujarat",
-                                                "code": "GJ"
-                                            }
-                                        },
-                                        {
-                                            "id": "91",
-                                            "city": {
-                                                "name": "Mumbai/ Ahmedabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Maharashtra /Gujarat",
-                                                "code": "Maharashtra /Gujarat"
-                                            }
-                                        },
-                                        {
-                                            "id": "92",
-                                            "city": {
-                                                "name": "Mumbai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Maharashtra",
-                                                "code": "MH"
-                                            }
-                                        },
-                                        {
-                                            "id": "93",
-                                            "city": {
-                                                "name": "Mumbai - Pune",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Maharashtra",
-                                                "code": "MH"
-                                            }
-                                        },
-                                        {
-                                            "id": "94",
-                                            "city": {
-                                                "name": "Mumbai/ Pune/Ahmedabad/Bhopal",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Maharashtra/ MP/ Gujarat",
-                                                "code": "Maharashtra/ MP/ Gujarat"
-                                            }
-                                        },
-                                        {
-                                            "id": "95",
-                                            "city": {
-                                                "name": "Mumbai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Maharashtra",
-                                                "code": "MH"
-                                            }
-                                        },
-                                        {
-                                            "id": "96",
-                                            "city": {
-                                                "name": "Pune",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Maharashtra",
-                                                "code": "MH"
-                                            }
-                                        },
-                                        {
-                                            "id": "97",
-                                            "city": {
-                                                "name": "Mumbai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Maharashtra",
-                                                "code": "MH"
-                                            }
-                                        },
-                                        {
-                                            "id": "98",
-                                            "city": {
-                                                "name": "Hyderabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "99",
-                                            "city": {
-                                                "name": "Hyderabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "100",
-                                            "city": {
-                                                "name": "Hyderabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "101",
-                                            "city": {
-                                                "name": "Chennai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "102",
-                                            "city": {
-                                                "name": "Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "103",
-                                            "city": {
-                                                "name": "Gulbarga",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "104",
-                                            "city": {
-                                                "name": "Madurai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "105",
-                                            "city": {
-                                                "name": "Karnool",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "106",
-                                            "city": {
-                                                "name": "Cumbum",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "107",
-                                            "city": {
-                                                "name": "Piduguralla",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "108",
-                                            "city": {
-                                                "name": "Piduguralla",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "109",
-                                            "city": {
-                                                "name": "Hyderabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "110",
-                                            "city": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "111",
-                                            "city": {
-                                                "name": "Telangana",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "112",
-                                            "city": {
-                                                "name": "Cochin",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Kerala",
-                                                "code": "KL"
-                                            }
-                                        },
-                                        {
-                                            "id": "113",
-                                            "city": {
-                                                "name": "Trichur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Kerala",
-                                                "code": "KL"
-                                            }
-                                        },
-                                        {
-                                            "id": "114",
-                                            "city": {
-                                                "name": "Peenya",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "115",
-                                            "city": {
-                                                "name": "Hosur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "116",
-                                            "city": {
-                                                "name": "Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "117",
-                                            "city": {
-                                                "name": "Pan India",
-                                                "code": "IND"
-                                            },
-                                            "state": {
-                                                "name": "Pan India",
-                                                "code": "Pan India"
-                                            }
-                                        },
-                                        {
-                                            "id": "118",
-                                            "city": {
-                                                "name": "Noida/ Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "UP / Karnataka",
-                                                "code": "UP / Karnataka"
-                                            }
-                                        },
-                                        {
-                                            "id": "119",
-                                            "city": {
-                                                "name": "Hyderabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "120",
-                                            "city": {
-                                                "name": "Secunderabad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "121",
-                                            "city": {
-                                                "name": "Vijaywada",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "122",
-                                            "city": {
-                                                "name": "Vizag",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "123",
-                                            "city": {
-                                                "name": "Ananthpur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "124",
-                                            "city": {
-                                                "name": "Nellore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "125",
-                                            "city": {
-                                                "name": "Warangal",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "126",
-                                            "city": {
-                                                "name": "Guntur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhra Pradesh",
-                                                "code": "AP"
-                                            }
-                                        },
-                                        {
-                                            "id": "127",
-                                            "city": {
-                                                "name": "Karimnagar",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Telangana",
-                                                "code": "TG"
-                                            }
-                                        },
-                                        {
-                                            "id": "128",
-                                            "city": {
-                                                "name": "Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "129",
-                                            "city": {
-                                                "name": "Bijapur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "130",
-                                            "city": {
-                                                "name": "Shimogga",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "131",
-                                            "city": {
-                                                "name": "Chitradurga",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "132",
-                                            "city": {
-                                                "name": "Tumkur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "133",
-                                            "city": {
-                                                "name": "Davengere",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "134",
-                                            "city": {
-                                                "name": "Kottyam",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Kerala",
-                                                "code": "KL"
-                                            }
-                                        },
-                                        {
-                                            "id": "135",
-                                            "city": {
-                                                "name": "Palakkad",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Kerala",
-                                                "code": "KL"
-                                            }
-                                        },
-                                        {
-                                            "id": "136",
-                                            "city": {
-                                                "name": "Kesaragod",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Kerala",
-                                                "code": "KL"
-                                            }
-                                        },
-                                        {
-                                            "id": "137",
-                                            "city": {
-                                                "name": "Erode",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "138",
-                                            "city": {
-                                                "name": "Chennai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "139",
-                                            "city": {
-                                                "name": "Krishnagiri",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "140",
-                                            "city": {
-                                                "name": "Namakkal",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "141",
-                                            "city": {
-                                                "name": "Salem",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        },
-                                        {
-                                            "id": "142",
-                                            "city": {
-                                                "name": "Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "143",
-                                            "city": {
-                                                "name": "Bangalore",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka",
-                                                "code": "KA"
-                                            }
-                                        },
-                                        {
-                                            "id": "144",
-                                            "city": {
-                                                "name": "Chowdavaram",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhrapradesh",
-                                                "code": "Andhrapradesh"
-                                            }
-                                        },
-                                        {
-                                            "id": "145",
-                                            "city": {
-                                                "name": "Vankayalapadu",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Andhrapradesh",
-                                                "code": "Andhrapradesh"
-                                            }
-                                        },
-                                        {
-                                            "id": "146",
-                                            "city": {
-                                                "name": "Bangalore and chennai",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Karnataka and tamilnadu",
-                                                "code": "Karnataka and tamilnadu"
-                                            }
-                                        },
-                                        {
-                                            "id": "147",
-                                            "city": {
-                                                "name": "Hosur",
-                                                "code": "std: 000"
-                                            },
-                                            "state": {
-                                                "name": "Tamil Nadu",
-                                                "code": "TN"
-                                            }
-                                        }
-                                    ],
                                     "fulfillments": [
                                         {
                                             "id": "1",
                                             "type": "remote",
                                             "tracking": false
+                                        }
+                                    ],
+                                    "locations": [
+                                        {
+                                            "id": "L1",
+                                            "city": {
+                                                "name": "Alappuzha",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
                                         },
                                         {
-                                            "id": "2",
-                                            "type": "hybrid",
-                                            "tracking": false
+                                            "id": "L2",
+                                            "city": {
+                                                "name": "Ahmedabad",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "GUJARAT",
+                                                "code": ""
+                                            }
                                         },
                                         {
-                                            "id": "3",
-                                            "type": "Onsite",
-                                            "tracking": false
+                                            "id": "L3",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KARNATAKA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L4",
+                                            "city": {
+                                                "name": "Coimbatore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "TAMIL NADU",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L5",
+                                            "city": {
+                                                "name": "Ernakulam",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
                                         }
                                     ],
                                     "items": [
                                         {
-                                            "id": "1",
+                                            "id": "6543851a0f5ef5f799705b32",
                                             "descriptor": {
-                                                "name": "BDE/CIC - Just Dial"
+                                                "name": "Service Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
                                             },
                                             "location_ids": [
-                                                "1"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "2",
-                                            "descriptor": {
-                                                "name": "Customer Support/Credit Card Sales/BPO - Vindhya E-Infomedia Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "2"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "3",
-                                            "descriptor": {
-                                                "name": "Associate / Sr. Associate - JM Financials"
-                                            },
-                                            "location_ids": [
-                                                "3",
-                                                "4",
-                                                "5",
-                                                "6",
-                                                "7",
-                                                "8",
-                                                "9",
-                                                "10",
-                                                "11",
-                                                "12"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "4",
-                                            "descriptor": {
-                                                "name": "Sahayak's - Jeevitam Sahayaks"
-                                            },
-                                            "location_ids": [
-                                                "13"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "5",
-                                            "descriptor": {
-                                                "name": "ICICI Direct Freelancers - ICICI Direct"
-                                            },
-                                            "location_ids": [
-                                                "14"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "6",
-                                            "descriptor": {
-                                                "name": "Assembly Line Operator - Wistron"
-                                            },
-                                            "location_ids": [
-                                                "15",
-                                                "16"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "7",
-                                            "descriptor": {
-                                                "name": "CASA Marketing Associates - Karnataka Bank Limited"
-                                            },
-                                            "location_ids": [
-                                                "17"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "8",
-                                            "descriptor": {
-                                                "name": "Telecaller - Fore Blend Infiscripts Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "18",
-                                                "19"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "9",
-                                            "descriptor": {
-                                                "name": "NAPS Trainee - Avon Cycles "
-                                            },
-                                            "location_ids": [
-                                                "20"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "10",
-                                            "descriptor": {
-                                                "name": "Production Trainee - SKH Metals Limited"
-                                            },
-                                            "location_ids": [
-                                                "21"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "11",
-                                            "descriptor": {
-                                                "name": "NAPS Trainee - Daido India Pvt. Ltd"
-                                            },
-                                            "location_ids": [
-                                                "22"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "12",
-                                            "descriptor": {
-                                                "name": "Production Trainee - Bharat Seats Ltd"
-                                            },
-                                            "location_ids": [
-                                                "23",
-                                                "24"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "13",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "25"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "14",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "26"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "15",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "27"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "16",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "28"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "17",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "29"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "18",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "30"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "19",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "31"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "20",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "32"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "21",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "33"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "22",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "34"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "23",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "35"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "24",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "36"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "25",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "37"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "26",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "38"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "27",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "39"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "28",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "40"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "29",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "41"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "30",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "42"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "31",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "43"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "32",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "44"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "33",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "45"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "34",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "46"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "35",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "47"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "36",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "48"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "37",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "49"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "38",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "50"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "39",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "51"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "40",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "52"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "41",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "53"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "42",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "54"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "43",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "55"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "44",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "56"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "45",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "57"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "46",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "58"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "47",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "59"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "48",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "60"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "49",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "61"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "50",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "62"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "51",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "63"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "52",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "64"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "53",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "65"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "54",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "66"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "55",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "67"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "56",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "68"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "57",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "69"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "58",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "70"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "59",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "71"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "60",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "72"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "61",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "73"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "62",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "74"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "63",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "75"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "64",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "76"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "65",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "77"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "66",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "78"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "67",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Grasim Industries "
-                                            },
-                                            "location_ids": [
-                                                "79"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "68",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Grasim Industries "
-                                            },
-                                            "location_ids": [
-                                                "80"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "69",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Grasim Industries "
-                                            },
-                                            "location_ids": [
-                                                "81"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "70",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Grasim Industries "
-                                            },
-                                            "location_ids": [
-                                                "82"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "71",
-                                            "descriptor": {
-                                                "name": "ITI Fitter  - PTC Industry Limited"
-                                            },
-                                            "location_ids": [
-                                                "83"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "72",
-                                            "descriptor": {
-                                                "name": "Operator  - APTIV Components India Pvt. Ltd."
-                                            },
-                                            "location_ids": [
-                                                "84"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "73",
-                                            "descriptor": {
-                                                "name": "Operator  - ARGL LIMITED"
-                                            },
-                                            "location_ids": [
-                                                "85"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "74",
-                                            "descriptor": {
-                                                "name": "Operator  - ROKI MINDA"
-                                            },
-                                            "location_ids": [
-                                                "86"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "75",
-                                            "descriptor": {
-                                                "name": "ITI - IntelliSmart Infrastructure Pvt. Ltd"
-                                            },
-                                            "location_ids": [
-                                                "87"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "76",
-                                            "descriptor": {
-                                                "name": "Helper - IntelliSmart Infrastructure Pvt. Ltd"
-                                            },
-                                            "location_ids": [
-                                                "88"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "77",
-                                            "descriptor": {
-                                                "name": "Data Entry - IntelliSmart Infrastructure Pvt. Ltd"
-                                            },
-                                            "location_ids": [
-                                                "89"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "78",
-                                            "descriptor": {
-                                                "name": "Field Engg. - IntelliSmart Infrastructure Pvt. Ltd"
-                                            },
-                                            "location_ids": [
-                                                "90"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "79",
-                                            "descriptor": {
-                                                "name": "Sales Executive - TATA Teleservices"
-                                            },
-                                            "location_ids": [
-                                                "91"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "80",
-                                            "descriptor": {
-                                                "name": "Sales Asso. - Big FM"
-                                            },
-                                            "location_ids": [
-                                                "92"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "81",
-                                            "descriptor": {
-                                                "name": "Sales Executive - Max publicity"
-                                            },
-                                            "location_ids": [
-                                                "93"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "82",
-                                            "descriptor": {
-                                                "name": "Sales Executive - Luman"
-                                            },
-                                            "location_ids": [
-                                                "94"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "83",
-                                            "descriptor": {
-                                                "name": "Telemarketing - Sheerdrive Private Limited"
-                                            },
-                                            "location_ids": [
-                                                "95"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "84",
-                                            "descriptor": {
-                                                "name": "CAD Designer - HYOSUNG"
-                                            },
-                                            "location_ids": [
-                                                "96"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "85",
-                                            "descriptor": {
-                                                "name": "Department Secretary/ Hr Generalist - Aker Solutions"
-                                            },
-                                            "location_ids": [
-                                                "97"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "86",
-                                            "descriptor": {
-                                                "name": "Splicers,Asst Technicians, Sales and promoters, Customer care Executive - Reach Broadband"
-                                            },
-                                            "location_ids": [
-                                                "98"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "87",
-                                            "descriptor": {
-                                                "name": "Splicers,Asst Technicians, Sales and promoters, Customer care Executive - Reach Broadband"
-                                            },
-                                            "location_ids": [
-                                                "99"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "88",
-                                            "descriptor": {
-                                                "name": "Marketing - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "100"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "89",
-                                            "descriptor": {
-                                                "name": "Marketing - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "101"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "90",
-                                            "descriptor": {
-                                                "name": "Marketing - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "102"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "91",
-                                            "descriptor": {
-                                                "name": "Marketing - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "103"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "92",
-                                            "descriptor": {
-                                                "name": "Marketing - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "104"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "93",
-                                            "descriptor": {
-                                                "name": "Marketing - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "105"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "94",
-                                            "descriptor": {
-                                                "name": "Marketing - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "106"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "95",
-                                            "descriptor": {
-                                                "name": "Lab Assistant - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "107"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "96",
-                                            "descriptor": {
-                                                "name": "Lab Chemist - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "108"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "97",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "109"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "98",
-                                            "descriptor": {
-                                                "name": "Sales Head (Tile Adhesive) - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "110"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "99",
-                                            "descriptor": {
-                                                "name": "Sales Head (Tile Adhesive) - Surya Colour Products Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "111"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "100",
-                                            "descriptor": {
-                                                "name": "Business Development Executives - INDIGO Paints"
-                                            },
-                                            "location_ids": [
-                                                "112",
-                                                "113"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "101",
-                                            "descriptor": {
-                                                "name": "In Leagal Team - ABB"
-                                            },
-                                            "location_ids": [
-                                                "114"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "102",
-                                            "descriptor": {
-                                                "name": "Blue collar workers female - Tata Electronics"
-                                            },
-                                            "location_ids": [
-                                                "115"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "103",
-                                            "descriptor": {
-                                                "name": "engenieers and other - FirePro System"
-                                            },
-                                            "location_ids": [
-                                                "116"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "104",
-                                            "descriptor": {
-                                                "name": "Office assistance - Essense Renewal"
-                                            },
-                                            "location_ids": [
-                                                "117"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "105",
-                                            "descriptor": {
-                                                "name": "Property Advisor/ Tele Caller Sales - MagicBricks Reality Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "118"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "106",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "119"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "107",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "120"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "108",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "121"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "109",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "122"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "110",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "123"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "111",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "124"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "112",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "125"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "113",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "126"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "114",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "127"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "115",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "128"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "116",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "129"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "117",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "130"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "118",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "131"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "119",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "132"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "120",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "133"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "121",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "134"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "122",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "135"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "123",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "136"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "124",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "137"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "125",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "138"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "126",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "139"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "127",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "140"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "128",
-                                            "descriptor": {
-                                                "name": "Sales Executives - Luman Industries Ltd"
-                                            },
-                                            "location_ids": [
-                                                "141"
-                                            ],
-                                            "fulfillment_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "129",
-                                            "descriptor": {
-                                                "name": "Front Office/ Receptionist - CapitaLand Services Pvt Ltd"
-                                            },
-                                            "location_ids": [
-                                                "142"
+                                                "L1"
                                             ],
                                             "fulfillment_ids": [
                                                 "1"
                                             ]
                                         },
                                         {
-                                            "id": "130",
+                                            "id": "65782e1ae50b97b52eebc499",
                                             "descriptor": {
-                                                "name": "Sales Executives - Tejas Networks"
+                                                "name": "Promoters",
+                                                "long_desc": "Promoting Amazon pay to The Auto rickshaws drivers to use it\ncashless benefits\nfield work\nC2C "
                                             },
                                             "location_ids": [
-                                                "143"
+                                                "L2"
                                             ],
                                             "fulfillment_ids": [
                                                 "1"
                                             ]
                                         },
                                         {
-                                            "id": "131",
+                                            "id": "659791405040d97b2ab615fa",
                                             "descriptor": {
-                                                "name": "Machine Operatpor - ITC Agribusiness"
+                                                "name": "Inside Sales Excutive",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
                                             },
                                             "location_ids": [
-                                                "144",
-                                                "145"
+                                                "L3"
                                             ],
                                             "fulfillment_ids": [
                                                 "1"
                                             ]
                                         },
                                         {
-                                            "id": "132",
+                                            "id": "65ad0e8c4021c783142c9cce",
                                             "descriptor": {
-                                                "name": "sr technicians, jr technicians,QC Engineers,Floor Manager - Beepkart"
+                                                "name": "Brand Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
                                             },
                                             "location_ids": [
-                                                "146"
+                                                "L4"
                                             ],
                                             "fulfillment_ids": [
                                                 "1"
                                             ]
                                         },
                                         {
-                                            "id": "133",
+                                            "id": "65c30d1e8d2cd84b77814682",
                                             "descriptor": {
-                                                "name": "Blue collar workers female - OLA"
+                                                "name": "Cafetaria Manager",
+                                                "long_desc": "Job"
                                             },
                                             "location_ids": [
-                                                "147"
+                                                "L5"
                                             ],
                                             "fulfillment_ids": [
                                                 "1"
@@ -3409,7 +285,8 @@ export class JobsService {
                                         }
                                     ]
                                 }
-                            ]
+                            ],
+                            "payments": []
                         }
                     }
                 },
@@ -3428,12 +305,12 @@ export class JobsService {
                                 "code": "IND"
                             }
                         },
-                        "bap_id": "jobs-bap.tekdinext.com",
-                        "bap_uri": "https://jobs-bap.tekdinext.com/",
-                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60019",
-                        "message_id": "3c6b273f-d1aa-43b4-9bb1-aa9b5f1d7443",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
                         "ttl": "PT10M",
-                        "timestamp": "2023-12-22T05:59:42.551Z"
+                        "timestamp": "2024-02-15T03:36:48.748Z"
                     },
                     "message": {
                         "catalog": {
@@ -3495,13 +372,37 @@ export class JobsService {
                                             "country": {
                                                 "name": ""
                                             }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
                                         }
                                     ],
                                     "items": [
                                         {
-                                            "id": "5f6e21de6f7ed6b7a3259091194384ccbf290218e4c95d24a5ee8b59538fadf2",
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
                                             "descriptor": {
-                                                "name": "Fullstack Engineer",
+                                                "name": "Mobile application Developer",
                                                 "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
@@ -3509,9 +410,9 @@ export class JobsService {
                                             ]
                                         },
                                         {
-                                            "id": "D7F8606A370DA9966DF15E62A81C374B",
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
                                             "descriptor": {
-                                                "name": "Database Engineer",
+                                                "name": "Database Developer",
                                                 "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
@@ -3519,9 +420,9 @@ export class JobsService {
                                             ]
                                         },
                                         {
-                                            "id": "0253719F295521CED39EC9C2F3C8DCDE",
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
                                             "descriptor": {
-                                                "name": "Fullstack Engineer",
+                                                "name": "Fullstack Developer",
                                                 "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
@@ -3529,13 +430,33 @@ export class JobsService {
                                             ]
                                         },
                                         {
-                                            "id": "e8eff1c9e63d87f41010c0e2ee7381ee3e06aaccfbc036fc2701e2f4e6461261",
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
                                             "descriptor": {
-                                                "name": "Rojgar Engineer",
+                                                "name": "Pyhton Developer",
                                                 "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
                                                 "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
                                             ]
                                         }
                                     ]
@@ -3586,68 +507,6 @@ export class JobsService {
                                             "id": "5",
                                             "city": {
                                                 "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        }
-                                    ],
-                                    "items": [
-                                        {
-                                            "id": "5f6e21de6f7ed6b7a3259091194384ccbf290218e4c95d24a5ee8b59538fadf2",
-                                            "descriptor": {
-                                                "name": "Fullstack Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "D7F8606A370DA9966DF15E62A81C374B",
-                                            "descriptor": {
-                                                "name": "Database Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "2"
-                                            ]
-                                        },
-                                        {
-                                            "id": "0253719F295521CED39EC9C2F3C8DCDE",
-                                            "descriptor": {
-                                                "name": "Fullstack Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "4"
-                                            ]
-                                        },
-                                        {
-                                            "id": "e8eff1c9e63d87f41010c0e2ee7381ee3e06aaccfbc036fc2701e2f4e6461261",
-                                            "descriptor": {
-                                                "name": "Rojgar Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "5"
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "2",
-                                    "descriptor": {
-                                        "name": "cognizant technology solutions"
-                                    },
-                                    "locations": [
-                                        {
-                                            "id": "3",
-                                            "city": {
-                                                "name": " kolkata"
                                             },
                                             "state": {
                                                 "name": ""
@@ -3659,7 +518,19 @@ export class JobsService {
                                         {
                                             "id": "6",
                                             "city": {
-                                                "name": " kolkata<br><br> ID created for your job!"
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
                                             },
                                             "state": {
                                                 "name": ""
@@ -3671,219 +542,63 @@ export class JobsService {
                                     ],
                                     "items": [
                                         {
-                                            "id": "6c3338c2574f092809d312c8b79ca9f8aea19794b6ffa356af952fdc9f1b21dd",
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
                                             "descriptor": {
-                                                "name": "ui engineer",
-                                                "long_desc": "ui engineer job by cognizant technology solutions on Rojgaar"
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
-                                                "3"
+                                                "1"
                                             ]
                                         },
                                         {
-                                            "id": "6868ca2ab59d0f4b73b062a12fcfbb0fe36a3f92e4f566e1842afccf63fb9b22",
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
                                             "descriptor": {
-                                                "name": "ui engineer",
-                                                "long_desc": "ui engineer job by cognizant technology solutions on Rojgaar"
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
                                                 "6"
                                             ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "1",
-                                    "descriptor": {
-                                        "name": "Affinidi"
-                                    },
-                                    "locations": [
-                                        {
-                                            "id": "1",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
                                         },
                                         {
-                                            "id": "2",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        },
-                                        {
-                                            "id": "4",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        },
-                                        {
-                                            "id": "5",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        }
-                                    ],
-                                    "items": [
-                                        {
-                                            "id": "5f6e21de6f7ed6b7a3259091194384ccbf290218e4c95d24a5ee8b59538fadf2",
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
                                             "descriptor": {
-                                                "name": "Fullstack Engineer",
+                                                "name": "IOS Developer",
                                                 "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "D7F8606A370DA9966DF15E62A81C374B",
-                                            "descriptor": {
-                                                "name": "Database Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "2"
-                                            ]
-                                        },
-                                        {
-                                            "id": "0253719F295521CED39EC9C2F3C8DCDE",
-                                            "descriptor": {
-                                                "name": "Fullstack Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "4"
-                                            ]
-                                        },
-                                        {
-                                            "id": "e8eff1c9e63d87f41010c0e2ee7381ee3e06aaccfbc036fc2701e2f4e6461261",
-                                            "descriptor": {
-                                                "name": "Rojgar Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "5"
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "1",
-                                    "descriptor": {
-                                        "name": "Affinidi"
-                                    },
-                                    "locations": [
-                                        {
-                                            "id": "1",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        },
-                                        {
-                                            "id": "2",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        },
-                                        {
-                                            "id": "4",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        },
-                                        {
-                                            "id": "5",
-                                            "city": {
-                                                "name": "Bangalore"
-                                            },
-                                            "state": {
-                                                "name": ""
-                                            },
-                                            "country": {
-                                                "name": ""
-                                            }
-                                        }
-                                    ],
-                                    "items": [
-                                        {
-                                            "id": "5f6e21de6f7ed6b7a3259091194384ccbf290218e4c95d24a5ee8b59538fadf2",
-                                            "descriptor": {
-                                                "name": "Fullstack Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "1"
-                                            ]
-                                        },
-                                        {
-                                            "id": "D7F8606A370DA9966DF15E62A81C374B",
-                                            "descriptor": {
-                                                "name": "Database Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "2"
-                                            ]
-                                        },
-                                        {
-                                            "id": "0253719F295521CED39EC9C2F3C8DCDE",
-                                            "descriptor": {
-                                                "name": "Fullstack Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "4"
-                                            ]
-                                        },
-                                        {
-                                            "id": "e8eff1c9e63d87f41010c0e2ee7381ee3e06aaccfbc036fc2701e2f4e6461261",
-                                            "descriptor": {
-                                                "name": "Rojgar Engineer",
-                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
-                                            },
-                                            "location_ids": [
-                                                "5"
+                                                "7"
                                             ]
                                         }
                                     ]
@@ -3891,13 +606,103 @@ export class JobsService {
                                 {
                                     "id": "2",
                                     "descriptor": {
-                                        "name": "cognizant technology solutions"
+                                        "name": "test"
                                     },
                                     "locations": [
                                         {
                                             "id": "3",
                                             "city": {
-                                                "name": " kolkata"
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "name": "test"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "424587a9b09d1c3edbc06087fc39aa8546be81ed788cb0698509e9e4be2272c6",
+                                            "descriptor": {
+                                                "name": "Developer",
+                                                "long_desc": "Develop code"
+                                            },
+                                            "location_ids": [
+                                                "3"
+                                            ]
+                                        },
+                                        {
+                                            "id": "2b86f151821a60b8462a2e9462cc05120d05ffbc48ccac1c30774cec236a74f5",
+                                            "descriptor": {
+                                                "name": "Staff Mobile Developer - test",
+                                                "long_desc": "test"
+                                            },
+                                            "location_ids": [
+                                                "8"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
                                             },
                                             "state": {
                                                 "name": ""
@@ -3909,7 +714,19 @@ export class JobsService {
                                         {
                                             "id": "6",
                                             "city": {
-                                                "name": " kolkata<br><br> ID created for your job!"
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
                                             },
                                             "state": {
                                                 "name": ""
@@ -3921,23 +738,9109 @@ export class JobsService {
                                     ],
                                     "items": [
                                         {
-                                            "id": "6c3338c2574f092809d312c8b79ca9f8aea19794b6ffa356af952fdc9f1b21dd",
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
                                             "descriptor": {
-                                                "name": "ui engineer",
-                                                "long_desc": "ui engineer job by cognizant technology solutions on Rojgaar"
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "2",
+                                    "descriptor": {
+                                        "name": "test"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "name": "test"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "424587a9b09d1c3edbc06087fc39aa8546be81ed788cb0698509e9e4be2272c6",
+                                            "descriptor": {
+                                                "name": "Developer",
+                                                "long_desc": "Develop code"
                                             },
                                             "location_ids": [
                                                 "3"
                                             ]
                                         },
                                         {
-                                            "id": "6868ca2ab59d0f4b73b062a12fcfbb0fe36a3f92e4f566e1842afccf63fb9b22",
+                                            "id": "2b86f151821a60b8462a2e9462cc05120d05ffbc48ccac1c30774cec236a74f5",
                                             "descriptor": {
-                                                "name": "ui engineer",
-                                                "long_desc": "ui engineer job by cognizant technology solutions on Rojgaar"
+                                                "name": "Staff Mobile Developer - test",
+                                                "long_desc": "test"
+                                            },
+                                            "location_ids": [
+                                                "8"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev.sahi1.online",
+                        "bpp_uri": "https://dev.sahi1.online/",
+                        "country": "IND",
+                        "city": "std:080",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:50.683Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "descriptor": {
+                                "name": "Sahi Jobs",
+                                "short_desc": "short desp",
+                                "images": []
+                            },
+                            "providers": [
+                                {
+                                    "id": "dev.sahi1.online",
+                                    "descriptor": {
+                                        "name": "Sahi Jobs",
+                                        "short_desc": "short desp",
+                                        "images": []
+                                    },
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "locations": [
+                                        {
+                                            "id": "L1",
+                                            "city": {
+                                                "name": "Alappuzha",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L2",
+                                            "city": {
+                                                "name": "Ahmedabad",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "GUJARAT",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L3",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KARNATAKA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L4",
+                                            "city": {
+                                                "name": "Coimbatore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "TAMIL NADU",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L5",
+                                            "city": {
+                                                "name": "Ernakulam",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "6543851a0f5ef5f799705b32",
+                                            "descriptor": {
+                                                "name": "Service Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L1"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65782e1ae50b97b52eebc499",
+                                            "descriptor": {
+                                                "name": "Promoters",
+                                                "long_desc": "Promoting Amazon pay to The Auto rickshaws drivers to use it\ncashless benefits\nfield work\nC2C "
+                                            },
+                                            "location_ids": [
+                                                "L2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "659791405040d97b2ab615fa",
+                                            "descriptor": {
+                                                "name": "Inside Sales Excutive",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L3"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65ad0e8c4021c783142c9cce",
+                                            "descriptor": {
+                                                "name": "Brand Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L4"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65c30d1e8d2cd84b77814682",
+                                            "descriptor": {
+                                                "name": "Cafetaria Manager",
+                                                "long_desc": "Job"
+                                            },
+                                            "location_ids": [
+                                                "L5"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "payments": []
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+                        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io/",
+                        "country": "IND",
+                        "city": "std:080",
+                        "location": {
+                            "country": {
+                                "name": "India",
+                                "code": "IND"
+                            }
+                        },
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:48.748Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "descriptor": {
+                                "name": "Affindi Jobs"
+                            },
+                            "payments": [],
+                            "providers": [
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
                                             },
                                             "location_ids": [
                                                 "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "2",
+                                    "descriptor": {
+                                        "name": "test"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "name": "test"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "424587a9b09d1c3edbc06087fc39aa8546be81ed788cb0698509e9e4be2272c6",
+                                            "descriptor": {
+                                                "name": "Developer",
+                                                "long_desc": "Develop code"
+                                            },
+                                            "location_ids": [
+                                                "3"
+                                            ]
+                                        },
+                                        {
+                                            "id": "2b86f151821a60b8462a2e9462cc05120d05ffbc48ccac1c30774cec236a74f5",
+                                            "descriptor": {
+                                                "name": "Staff Mobile Developer - test",
+                                                "long_desc": "test"
+                                            },
+                                            "location_ids": [
+                                                "8"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "Affinidi"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "name": "Bangalore"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "08282D2ED9D1A22571DF114E58EA8B70",
+                                            "descriptor": {
+                                                "name": "Mobile application Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "B29ACB6CD4AB1D02A210F15AC070205F",
+                                            "descriptor": {
+                                                "name": "Database Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "2"
+                                            ]
+                                        },
+                                        {
+                                            "id": "FCB4FB0798490F195E703AD75E0B775C",
+                                            "descriptor": {
+                                                "name": "Fullstack Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "4"
+                                            ]
+                                        },
+                                        {
+                                            "id": "a1a37f3be54e432b50aed78aa3cb16e4a4f592ee02387cd6815d1dfff285c0f1",
+                                            "descriptor": {
+                                                "name": "Pyhton Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "5"
+                                            ]
+                                        },
+                                        {
+                                            "id": "ac8bfcb77612a9817cbb06902a4b076776608726e0fcdd6b0665133789da69eb",
+                                            "descriptor": {
+                                                "name": "Andorid Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "6"
+                                            ]
+                                        },
+                                        {
+                                            "id": "5a2d0f05fe2890ce5040d8c00298902aed7a8398e487017287211614888c532a",
+                                            "descriptor": {
+                                                "name": "IOS Developer",
+                                                "long_desc": "We’re on a search for a Staff Mobile Developer with the following attributes: Critical Thinking- You are able to skillfully conceptualise, apply, analyse and evaluate information gathered from observation, experience or communication and use it as a guide to action Data-Driven attitude — You often propose solutions or make a point in a logical and objective manner, substantiated with accurate data and evidence Dealing with Ambiguity — You can effectively cope with change and uncertainty, and are comfortable when things are up in the air Goal-oriented — You are driven and can be counted on to exceed goals. You steadfastly push yourself and others to achieve results all the time Problem Solving — You can easily identify and solve complex problems in a methodological manner "
+                                            },
+                                            "location_ids": [
+                                                "7"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "2",
+                                    "descriptor": {
+                                        "name": "test"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "name": "test"
+                                            },
+                                            "state": {
+                                                "name": ""
+                                            },
+                                            "country": {
+                                                "name": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "424587a9b09d1c3edbc06087fc39aa8546be81ed788cb0698509e9e4be2272c6",
+                                            "descriptor": {
+                                                "name": "Developer",
+                                                "long_desc": "Develop code"
+                                            },
+                                            "location_ids": [
+                                                "3"
+                                            ]
+                                        },
+                                        {
+                                            "id": "2b86f151821a60b8462a2e9462cc05120d05ffbc48ccac1c30774cec236a74f5",
+                                            "descriptor": {
+                                                "name": "Staff Mobile Developer - test",
+                                                "long_desc": "test"
+                                            },
+                                            "location_ids": [
+                                                "8"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev.sahi1.online",
+                        "bpp_uri": "https://dev.sahi1.online/",
+                        "country": "IND",
+                        "city": "std:080",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:47.533Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "descriptor": {
+                                "name": "Sahi Jobs",
+                                "short_desc": "short desp",
+                                "images": []
+                            },
+                            "providers": [
+                                {
+                                    "id": "dev.sahi1.online",
+                                    "descriptor": {
+                                        "name": "Sahi Jobs",
+                                        "short_desc": "short desp",
+                                        "images": []
+                                    },
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "locations": [
+                                        {
+                                            "id": "L1",
+                                            "city": {
+                                                "name": "Alappuzha",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L2",
+                                            "city": {
+                                                "name": "Ahmedabad",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "GUJARAT",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L3",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KARNATAKA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L4",
+                                            "city": {
+                                                "name": "Coimbatore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "TAMIL NADU",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L5",
+                                            "city": {
+                                                "name": "Ernakulam",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "6543851a0f5ef5f799705b32",
+                                            "descriptor": {
+                                                "name": "Service Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L1"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65782e1ae50b97b52eebc499",
+                                            "descriptor": {
+                                                "name": "Promoters",
+                                                "long_desc": "Promoting Amazon pay to The Auto rickshaws drivers to use it\ncashless benefits\nfield work\nC2C "
+                                            },
+                                            "location_ids": [
+                                                "L2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "659791405040d97b2ab615fa",
+                                            "descriptor": {
+                                                "name": "Inside Sales Excutive",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L3"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65ad0e8c4021c783142c9cce",
+                                            "descriptor": {
+                                                "name": "Brand Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L4"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65c30d1e8d2cd84b77814682",
+                                            "descriptor": {
+                                                "name": "Cafetaria Manager",
+                                                "long_desc": "Job"
+                                            },
+                                            "location_ids": [
+                                                "L5"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "payments": []
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev.sahi1.online",
+                        "bpp_uri": "https://dev.sahi1.online/",
+                        "country": "IND",
+                        "city": "std:080",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:50.683Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "descriptor": {
+                                "name": "Sahi Jobs",
+                                "short_desc": "short desp",
+                                "images": []
+                            },
+                            "providers": [
+                                {
+                                    "id": "dev.sahi1.online",
+                                    "descriptor": {
+                                        "name": "Sahi Jobs",
+                                        "short_desc": "short desp",
+                                        "images": []
+                                    },
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "locations": [
+                                        {
+                                            "id": "L1",
+                                            "city": {
+                                                "name": "Alappuzha",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L2",
+                                            "city": {
+                                                "name": "Ahmedabad",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "GUJARAT",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L3",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KARNATAKA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L4",
+                                            "city": {
+                                                "name": "Coimbatore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "TAMIL NADU",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L5",
+                                            "city": {
+                                                "name": "Ernakulam",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "6543851a0f5ef5f799705b32",
+                                            "descriptor": {
+                                                "name": "Service Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L1"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65782e1ae50b97b52eebc499",
+                                            "descriptor": {
+                                                "name": "Promoters",
+                                                "long_desc": "Promoting Amazon pay to The Auto rickshaws drivers to use it\ncashless benefits\nfield work\nC2C "
+                                            },
+                                            "location_ids": [
+                                                "L2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "659791405040d97b2ab615fa",
+                                            "descriptor": {
+                                                "name": "Inside Sales Excutive",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L3"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65ad0e8c4021c783142c9cce",
+                                            "descriptor": {
+                                                "name": "Brand Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L4"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65c30d1e8d2cd84b77814682",
+                                            "descriptor": {
+                                                "name": "Cafetaria Manager",
+                                                "long_desc": "Job"
+                                            },
+                                            "location_ids": [
+                                                "L5"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "payments": []
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev.sahi1.online",
+                        "bpp_uri": "https://dev.sahi1.online/",
+                        "country": "IND",
+                        "city": "std:080",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:54.206Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "descriptor": {
+                                "name": "Sahi Jobs",
+                                "short_desc": "short desp",
+                                "images": []
+                            },
+                            "providers": [
+                                {
+                                    "id": "dev.sahi1.online",
+                                    "descriptor": {
+                                        "name": "Sahi Jobs",
+                                        "short_desc": "short desp",
+                                        "images": []
+                                    },
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "locations": [
+                                        {
+                                            "id": "L1",
+                                            "city": {
+                                                "name": "Alappuzha",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L2",
+                                            "city": {
+                                                "name": "Ahmedabad",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "GUJARAT",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L3",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KARNATAKA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L4",
+                                            "city": {
+                                                "name": "Coimbatore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "TAMIL NADU",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L5",
+                                            "city": {
+                                                "name": "Ernakulam",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "6543851a0f5ef5f799705b32",
+                                            "descriptor": {
+                                                "name": "Service Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L1"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65782e1ae50b97b52eebc499",
+                                            "descriptor": {
+                                                "name": "Promoters",
+                                                "long_desc": "Promoting Amazon pay to The Auto rickshaws drivers to use it\ncashless benefits\nfield work\nC2C "
+                                            },
+                                            "location_ids": [
+                                                "L2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "659791405040d97b2ab615fa",
+                                            "descriptor": {
+                                                "name": "Inside Sales Excutive",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L3"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65ad0e8c4021c783142c9cce",
+                                            "descriptor": {
+                                                "name": "Brand Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L4"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65c30d1e8d2cd84b77814682",
+                                            "descriptor": {
+                                                "name": "Cafetaria Manager",
+                                                "long_desc": "Job"
+                                            },
+                                            "location_ids": [
+                                                "L5"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "payments": []
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev-onest.tibilprojects.com",
+                        "bpp_uri": "https://dev-onest.tibilprojects.com/protocol-network",
+                        "country": "IND",
+                        "city": "std:080",
+                        "location": {
+                            "country": {
+                                "name": "India",
+                                "code": "IND"
+                            },
+                            "city": {
+                                "name": "Bangalore",
+                                "code": "std:080"
+                            }
+                        },
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:52.398Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "providers": [
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "tibil"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "code": "std:0512",
+                                                "name": "Kanpur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "code": "std:0522",
+                                                "name": "Lucknow"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "code": "std:0542",
+                                                "name": "Varanasi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "code": "std:011",
+                                                "name": "Delhi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "code": "std:022",
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "code": "std:020",
+                                                "name": "Pune"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "9",
+                                            "city": {
+                                                "code": "std:040",
+                                                "name": "Hyderabad"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "10",
+                                            "city": {
+                                                "code": "std:08922",
+                                                "name": "Vizayanagaram"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "11",
+                                            "city": {
+                                                "code": "std:044",
+                                                "name": "Chennai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "12",
+                                            "city": {
+                                                "code": "std:080",
+                                                "name": "Bengaluru"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "13",
+                                            "city": {
+                                                "name": "Mysore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "14",
+                                            "city": {
+                                                "code": "std:0836",
+                                                "name": "Hubli"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "15",
+                                            "city": {
+                                                "name": "Tumkur",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "16",
+                                            "city": {
+                                                "name": "Jharkh",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "17",
+                                            "city": {
+                                                "name": "Bihar",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "18",
+                                            "city": {
+                                                "name": "Orissa",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "19",
+                                            "city": {
+                                                "code": "std:0141",
+                                                "name": "Jaipur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "20",
+                                            "city": {
+                                                "name": "Gujarat",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "21",
+                                            "city": {
+                                                "code": "std:0755",
+                                                "name": "Bhopal"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "22",
+                                            "city": {
+                                                "name": "4 Sahayaks per geography)",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "code": "std:08152",
+                                                "name": "Kolar"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Karnataka",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "25",
+                                            "city": {
+                                                "name": "Koramangala",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "26",
+                                            "city": {
+                                                "code": "std:0120",
+                                                "name": "Greater Noida"
+                                            },
+                                            "state": {
+                                                "code": "UP",
+                                                "name": "Uttar Pradesh"
+                                            }
+                                        }
+                                    ],
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "2",
+                                            "type": "hybrid",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "3",
+                                            "type": "Onsite",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "3",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "Technician"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Tata Electronics"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Under Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "2",
+                                            "descriptor": {
+                                                "name": "Sahayak's",
+                                                "long_desc": "Jeevitam is building an ecosystem of Livelihood Partners by providing adequate freelancing opportunities. Sahayaks or Livelihood partners can be any individual looking for work opportunities as an additional source of income, flexible working hours and remote working i.e. work from home at your convenience. Sahayaks can be anywhere in India."
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Jeevitam Sahayaks"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "3",
+                                                "4",
+                                                "5",
+                                                "6",
+                                                "7",
+                                                "8",
+                                                "9",
+                                                "10",
+                                                "11",
+                                                "12",
+                                                "13",
+                                                "14",
+                                                "15",
+                                                "16",
+                                                "17",
+                                                "18",
+                                                "19",
+                                                "20",
+                                                "21",
+                                                "22"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "8th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "55"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "1",
+                                            "descriptor": {
+                                                "name": "Assembly Line Operator",
+                                                "long_desc": "Assemble the Mobile Phone Quality Inspection Quality Management"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Wistron"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "1",
+                                                "2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Diploma"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "ITI"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Female"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "26"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "4",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "OLA Electric bike Manufacturing"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "OLA"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "12th pass +"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "16000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "6",
+                                            "descriptor": {
+                                                "name": "Telecaller",
+                                                "long_desc": "1. Opening of Demat Accounts and to complete his/her targets. 2. Will be responsible to map potential customers and existing clients for referrals to generate sales leads. 3. Document collections, KYC and other verifications. 4. Responsible in making outbound calls to open Demat Accounts for leads. 5.Any Graduate & Freshers also can apply. 6.Salary with good incentives, Preferring both Male and Female 7.Candidates with good fluency in Tamil,Kannada,Telugu,Malayalam,Hindi are preferred "
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Fore Blend Infiscripts Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "25",
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "15000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "20000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "25"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "20"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "5",
+                                            "descriptor": {
+                                                "name": "Customer Support/Credit Card Sales/BPO",
+                                                "long_desc": "Inbound Call receiving & providing desired information to the caller, Documentation of customer details, Identify the needs of customers, resolve issues, and provide solutions,"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Vindhya E-Infomedia Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "10th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "13000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "Good communication skills in english and hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "7",
+                                            "descriptor": {
+                                                "name": "BDE/CIC",
+                                                "long_desc": "Increase free & Paid listing in Justdial Platform, Manager sales & Post sales queries of Customers"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Just Dial"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "26"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "30000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "communication skills in  hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev.sahi1.online",
+                        "bpp_uri": "https://dev.sahi1.online/",
+                        "country": "IND",
+                        "city": "std:080",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:47.533Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "descriptor": {
+                                "name": "Sahi Jobs",
+                                "short_desc": "short desp",
+                                "images": []
+                            },
+                            "providers": [
+                                {
+                                    "id": "dev.sahi1.online",
+                                    "descriptor": {
+                                        "name": "Sahi Jobs",
+                                        "short_desc": "short desp",
+                                        "images": []
+                                    },
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "locations": [
+                                        {
+                                            "id": "L1",
+                                            "city": {
+                                                "name": "Alappuzha",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L2",
+                                            "city": {
+                                                "name": "Ahmedabad",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "GUJARAT",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L3",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KARNATAKA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L4",
+                                            "city": {
+                                                "name": "Coimbatore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "TAMIL NADU",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L5",
+                                            "city": {
+                                                "name": "Ernakulam",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "6543851a0f5ef5f799705b32",
+                                            "descriptor": {
+                                                "name": "Service Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L1"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65782e1ae50b97b52eebc499",
+                                            "descriptor": {
+                                                "name": "Promoters",
+                                                "long_desc": "Promoting Amazon pay to The Auto rickshaws drivers to use it\ncashless benefits\nfield work\nC2C "
+                                            },
+                                            "location_ids": [
+                                                "L2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "659791405040d97b2ab615fa",
+                                            "descriptor": {
+                                                "name": "Inside Sales Excutive",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L3"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65ad0e8c4021c783142c9cce",
+                                            "descriptor": {
+                                                "name": "Brand Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L4"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65c30d1e8d2cd84b77814682",
+                                            "descriptor": {
+                                                "name": "Cafetaria Manager",
+                                                "long_desc": "Job"
+                                            },
+                                            "location_ids": [
+                                                "L5"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "payments": []
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev-onest.tibilprojects.com",
+                        "bpp_uri": "https://dev-onest.tibilprojects.com/protocol-network",
+                        "country": "IND",
+                        "city": "std:080",
+                        "location": {
+                            "country": {
+                                "name": "India",
+                                "code": "IND"
+                            },
+                            "city": {
+                                "name": "Bangalore",
+                                "code": "std:080"
+                            }
+                        },
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:56.442Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "providers": [
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "tibil"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "code": "std:0512",
+                                                "name": "Kanpur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "code": "std:0522",
+                                                "name": "Lucknow"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "code": "std:0542",
+                                                "name": "Varanasi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "code": "std:011",
+                                                "name": "Delhi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "code": "std:022",
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "code": "std:020",
+                                                "name": "Pune"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "9",
+                                            "city": {
+                                                "code": "std:040",
+                                                "name": "Hyderabad"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "10",
+                                            "city": {
+                                                "code": "std:08922",
+                                                "name": "Vizayanagaram"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "11",
+                                            "city": {
+                                                "code": "std:044",
+                                                "name": "Chennai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "12",
+                                            "city": {
+                                                "code": "std:080",
+                                                "name": "Bengaluru"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "13",
+                                            "city": {
+                                                "name": "Mysore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "14",
+                                            "city": {
+                                                "code": "std:0836",
+                                                "name": "Hubli"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "15",
+                                            "city": {
+                                                "name": "Tumkur",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "16",
+                                            "city": {
+                                                "name": "Jharkh",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "17",
+                                            "city": {
+                                                "name": "Bihar",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "18",
+                                            "city": {
+                                                "name": "Orissa",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "19",
+                                            "city": {
+                                                "code": "std:0141",
+                                                "name": "Jaipur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "20",
+                                            "city": {
+                                                "name": "Gujarat",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "21",
+                                            "city": {
+                                                "code": "std:0755",
+                                                "name": "Bhopal"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "22",
+                                            "city": {
+                                                "name": "4 Sahayaks per geography)",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "code": "std:08152",
+                                                "name": "Kolar"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Karnataka",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "25",
+                                            "city": {
+                                                "name": "Koramangala",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "26",
+                                            "city": {
+                                                "code": "std:0120",
+                                                "name": "Greater Noida"
+                                            },
+                                            "state": {
+                                                "code": "UP",
+                                                "name": "Uttar Pradesh"
+                                            }
+                                        }
+                                    ],
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "2",
+                                            "type": "hybrid",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "3",
+                                            "type": "Onsite",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "3",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "Technician"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Tata Electronics"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Under Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "2",
+                                            "descriptor": {
+                                                "name": "Sahayak's",
+                                                "long_desc": "Jeevitam is building an ecosystem of Livelihood Partners by providing adequate freelancing opportunities. Sahayaks or Livelihood partners can be any individual looking for work opportunities as an additional source of income, flexible working hours and remote working i.e. work from home at your convenience. Sahayaks can be anywhere in India."
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Jeevitam Sahayaks"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "3",
+                                                "4",
+                                                "5",
+                                                "6",
+                                                "7",
+                                                "8",
+                                                "9",
+                                                "10",
+                                                "11",
+                                                "12",
+                                                "13",
+                                                "14",
+                                                "15",
+                                                "16",
+                                                "17",
+                                                "18",
+                                                "19",
+                                                "20",
+                                                "21",
+                                                "22"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "8th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "55"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "1",
+                                            "descriptor": {
+                                                "name": "Assembly Line Operator",
+                                                "long_desc": "Assemble the Mobile Phone Quality Inspection Quality Management"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Wistron"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "1",
+                                                "2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Diploma"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "ITI"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Female"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "26"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "4",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "OLA Electric bike Manufacturing"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "OLA"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "12th pass +"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "16000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "6",
+                                            "descriptor": {
+                                                "name": "Telecaller",
+                                                "long_desc": "1. Opening of Demat Accounts and to complete his/her targets. 2. Will be responsible to map potential customers and existing clients for referrals to generate sales leads. 3. Document collections, KYC and other verifications. 4. Responsible in making outbound calls to open Demat Accounts for leads. 5.Any Graduate & Freshers also can apply. 6.Salary with good incentives, Preferring both Male and Female 7.Candidates with good fluency in Tamil,Kannada,Telugu,Malayalam,Hindi are preferred "
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Fore Blend Infiscripts Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "25",
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "15000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "20000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "25"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "20"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "5",
+                                            "descriptor": {
+                                                "name": "Customer Support/Credit Card Sales/BPO",
+                                                "long_desc": "Inbound Call receiving & providing desired information to the caller, Documentation of customer details, Identify the needs of customers, resolve issues, and provide solutions,"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Vindhya E-Infomedia Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "10th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "13000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "Good communication skills in english and hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "7",
+                                            "descriptor": {
+                                                "name": "BDE/CIC",
+                                                "long_desc": "Increase free & Paid listing in Justdial Platform, Manager sales & Post sales queries of Customers"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Just Dial"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "26"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "30000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "communication skills in  hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev.sahi1.online",
+                        "bpp_uri": "https://dev.sahi1.online/",
+                        "country": "IND",
+                        "city": "std:080",
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:50.683Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "descriptor": {
+                                "name": "Sahi Jobs",
+                                "short_desc": "short desp",
+                                "images": []
+                            },
+                            "providers": [
+                                {
+                                    "id": "dev.sahi1.online",
+                                    "descriptor": {
+                                        "name": "Sahi Jobs",
+                                        "short_desc": "short desp",
+                                        "images": []
+                                    },
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "locations": [
+                                        {
+                                            "id": "L1",
+                                            "city": {
+                                                "name": "Alappuzha",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L2",
+                                            "city": {
+                                                "name": "Ahmedabad",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "GUJARAT",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L3",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KARNATAKA",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L4",
+                                            "city": {
+                                                "name": "Coimbatore",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "TAMIL NADU",
+                                                "code": ""
+                                            }
+                                        },
+                                        {
+                                            "id": "L5",
+                                            "city": {
+                                                "name": "Ernakulam",
+                                                "code": ""
+                                            },
+                                            "state": {
+                                                "name": "KERALA",
+                                                "code": ""
+                                            }
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "6543851a0f5ef5f799705b32",
+                                            "descriptor": {
+                                                "name": "Service Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L1"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65782e1ae50b97b52eebc499",
+                                            "descriptor": {
+                                                "name": "Promoters",
+                                                "long_desc": "Promoting Amazon pay to The Auto rickshaws drivers to use it\ncashless benefits\nfield work\nC2C "
+                                            },
+                                            "location_ids": [
+                                                "L2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "659791405040d97b2ab615fa",
+                                            "descriptor": {
+                                                "name": "Inside Sales Excutive",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L3"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65ad0e8c4021c783142c9cce",
+                                            "descriptor": {
+                                                "name": "Brand Champion",
+                                                "long_desc": "1 Customer Handling ● Receiving customer with smile and greet him with Politeness, courteousness and professionalism ● Verify the service requests made by customers & Capture VOC of the customer and update in the system ● Conversational skill for telephonic as well as face to face discussion ● Customer communications about repair updates 2 Diagnosis ● Analyse and Diagnose the Scooter to identify number and type of repairs applicable ● Update the diagnosis report in the WMS (Getafix) ● Perform repairs & final inspection on the vehicle if the desired repairs as per the customer Voice is performed 3 System Handling ● Track the Customer complaint in Zendesk and update the system on live basis ● Operate Workshop Management System (Getafix) and ensure 100 % adherence ● Update operational Status and ETA on timely basis in both CRM and WMS systems ● Check for scooter health in Telematics Command centre for deep diagnosis 4 Technical Repairs ● Service Champion should be fully equipped with knowledge on OLA Scooter ● Could able to repair/replace all the parts of the scooter ● Ensure he/she is updated on OLA technical curricular, news bulletin on EV 5 Process and Operational ● Process adherence at Experience Centre and also ensure bays are clearly marked for Vehicle/Scooters. ● Invoicing and Payment Collections ● Ensure bays are free from any foreign materials and fit for serviceability 6 Parts Operation ● Auditing the inventory and ensure system and physical inventory is same ● Perform GRN and maintain Inventory at Experience Centre ● Ensuring Warranty part reverse logistics to the Mother workshop"
+                                            },
+                                            "location_ids": [
+                                                "L4"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        },
+                                        {
+                                            "id": "65c30d1e8d2cd84b77814682",
+                                            "descriptor": {
+                                                "name": "Cafetaria Manager",
+                                                "long_desc": "Job"
+                                            },
+                                            "location_ids": [
+                                                "L5"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "payments": []
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev-onest.tibilprojects.com",
+                        "bpp_uri": "https://dev-onest.tibilprojects.com/protocol-network",
+                        "country": "IND",
+                        "city": "std:080",
+                        "location": {
+                            "country": {
+                                "name": "India",
+                                "code": "IND"
+                            },
+                            "city": {
+                                "name": "Bangalore",
+                                "code": "std:080"
+                            }
+                        },
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:52.398Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "providers": [
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "tibil"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "code": "std:0512",
+                                                "name": "Kanpur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "code": "std:0522",
+                                                "name": "Lucknow"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "code": "std:0542",
+                                                "name": "Varanasi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "code": "std:011",
+                                                "name": "Delhi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "code": "std:022",
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "code": "std:020",
+                                                "name": "Pune"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "9",
+                                            "city": {
+                                                "code": "std:040",
+                                                "name": "Hyderabad"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "10",
+                                            "city": {
+                                                "code": "std:08922",
+                                                "name": "Vizayanagaram"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "11",
+                                            "city": {
+                                                "code": "std:044",
+                                                "name": "Chennai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "12",
+                                            "city": {
+                                                "code": "std:080",
+                                                "name": "Bengaluru"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "13",
+                                            "city": {
+                                                "name": "Mysore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "14",
+                                            "city": {
+                                                "code": "std:0836",
+                                                "name": "Hubli"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "15",
+                                            "city": {
+                                                "name": "Tumkur",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "16",
+                                            "city": {
+                                                "name": "Jharkh",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "17",
+                                            "city": {
+                                                "name": "Bihar",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "18",
+                                            "city": {
+                                                "name": "Orissa",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "19",
+                                            "city": {
+                                                "code": "std:0141",
+                                                "name": "Jaipur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "20",
+                                            "city": {
+                                                "name": "Gujarat",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "21",
+                                            "city": {
+                                                "code": "std:0755",
+                                                "name": "Bhopal"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "22",
+                                            "city": {
+                                                "name": "4 Sahayaks per geography)",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "code": "std:08152",
+                                                "name": "Kolar"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Karnataka",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "25",
+                                            "city": {
+                                                "name": "Koramangala",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "26",
+                                            "city": {
+                                                "code": "std:0120",
+                                                "name": "Greater Noida"
+                                            },
+                                            "state": {
+                                                "code": "UP",
+                                                "name": "Uttar Pradesh"
+                                            }
+                                        }
+                                    ],
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "2",
+                                            "type": "hybrid",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "3",
+                                            "type": "Onsite",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "3",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "Technician"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Tata Electronics"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Under Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "2",
+                                            "descriptor": {
+                                                "name": "Sahayak's",
+                                                "long_desc": "Jeevitam is building an ecosystem of Livelihood Partners by providing adequate freelancing opportunities. Sahayaks or Livelihood partners can be any individual looking for work opportunities as an additional source of income, flexible working hours and remote working i.e. work from home at your convenience. Sahayaks can be anywhere in India."
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Jeevitam Sahayaks"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "3",
+                                                "4",
+                                                "5",
+                                                "6",
+                                                "7",
+                                                "8",
+                                                "9",
+                                                "10",
+                                                "11",
+                                                "12",
+                                                "13",
+                                                "14",
+                                                "15",
+                                                "16",
+                                                "17",
+                                                "18",
+                                                "19",
+                                                "20",
+                                                "21",
+                                                "22"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "8th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "55"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "1",
+                                            "descriptor": {
+                                                "name": "Assembly Line Operator",
+                                                "long_desc": "Assemble the Mobile Phone Quality Inspection Quality Management"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Wistron"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "1",
+                                                "2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Diploma"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "ITI"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Female"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "26"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "4",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "OLA Electric bike Manufacturing"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "OLA"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "12th pass +"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "16000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "6",
+                                            "descriptor": {
+                                                "name": "Telecaller",
+                                                "long_desc": "1. Opening of Demat Accounts and to complete his/her targets. 2. Will be responsible to map potential customers and existing clients for referrals to generate sales leads. 3. Document collections, KYC and other verifications. 4. Responsible in making outbound calls to open Demat Accounts for leads. 5.Any Graduate & Freshers also can apply. 6.Salary with good incentives, Preferring both Male and Female 7.Candidates with good fluency in Tamil,Kannada,Telugu,Malayalam,Hindi are preferred "
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Fore Blend Infiscripts Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "25",
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "15000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "20000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "25"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "20"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "5",
+                                            "descriptor": {
+                                                "name": "Customer Support/Credit Card Sales/BPO",
+                                                "long_desc": "Inbound Call receiving & providing desired information to the caller, Documentation of customer details, Identify the needs of customers, resolve issues, and provide solutions,"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Vindhya E-Infomedia Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "10th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "13000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "Good communication skills in english and hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "7",
+                                            "descriptor": {
+                                                "name": "BDE/CIC",
+                                                "long_desc": "Increase free & Paid listing in Justdial Platform, Manager sales & Post sales queries of Customers"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Just Dial"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "26"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "30000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "communication skills in  hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev-onest.tibilprojects.com",
+                        "bpp_uri": "https://dev-onest.tibilprojects.com/protocol-network",
+                        "country": "IND",
+                        "city": "std:080",
+                        "location": {
+                            "country": {
+                                "name": "India",
+                                "code": "IND"
+                            },
+                            "city": {
+                                "name": "Bangalore",
+                                "code": "std:080"
+                            }
+                        },
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:56.442Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "providers": [
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "tibil"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "code": "std:0512",
+                                                "name": "Kanpur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "code": "std:0522",
+                                                "name": "Lucknow"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "code": "std:0542",
+                                                "name": "Varanasi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "code": "std:011",
+                                                "name": "Delhi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "code": "std:022",
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "code": "std:020",
+                                                "name": "Pune"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "9",
+                                            "city": {
+                                                "code": "std:040",
+                                                "name": "Hyderabad"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "10",
+                                            "city": {
+                                                "code": "std:08922",
+                                                "name": "Vizayanagaram"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "11",
+                                            "city": {
+                                                "code": "std:044",
+                                                "name": "Chennai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "12",
+                                            "city": {
+                                                "code": "std:080",
+                                                "name": "Bengaluru"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "13",
+                                            "city": {
+                                                "name": "Mysore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "14",
+                                            "city": {
+                                                "code": "std:0836",
+                                                "name": "Hubli"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "15",
+                                            "city": {
+                                                "name": "Tumkur",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "16",
+                                            "city": {
+                                                "name": "Jharkh",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "17",
+                                            "city": {
+                                                "name": "Bihar",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "18",
+                                            "city": {
+                                                "name": "Orissa",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "19",
+                                            "city": {
+                                                "code": "std:0141",
+                                                "name": "Jaipur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "20",
+                                            "city": {
+                                                "name": "Gujarat",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "21",
+                                            "city": {
+                                                "code": "std:0755",
+                                                "name": "Bhopal"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "22",
+                                            "city": {
+                                                "name": "4 Sahayaks per geography)",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "code": "std:08152",
+                                                "name": "Kolar"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Karnataka",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "25",
+                                            "city": {
+                                                "name": "Koramangala",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "26",
+                                            "city": {
+                                                "code": "std:0120",
+                                                "name": "Greater Noida"
+                                            },
+                                            "state": {
+                                                "code": "UP",
+                                                "name": "Uttar Pradesh"
+                                            }
+                                        }
+                                    ],
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "2",
+                                            "type": "hybrid",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "3",
+                                            "type": "Onsite",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "3",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "Technician"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Tata Electronics"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Under Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "2",
+                                            "descriptor": {
+                                                "name": "Sahayak's",
+                                                "long_desc": "Jeevitam is building an ecosystem of Livelihood Partners by providing adequate freelancing opportunities. Sahayaks or Livelihood partners can be any individual looking for work opportunities as an additional source of income, flexible working hours and remote working i.e. work from home at your convenience. Sahayaks can be anywhere in India."
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Jeevitam Sahayaks"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "3",
+                                                "4",
+                                                "5",
+                                                "6",
+                                                "7",
+                                                "8",
+                                                "9",
+                                                "10",
+                                                "11",
+                                                "12",
+                                                "13",
+                                                "14",
+                                                "15",
+                                                "16",
+                                                "17",
+                                                "18",
+                                                "19",
+                                                "20",
+                                                "21",
+                                                "22"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "8th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "55"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "1",
+                                            "descriptor": {
+                                                "name": "Assembly Line Operator",
+                                                "long_desc": "Assemble the Mobile Phone Quality Inspection Quality Management"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Wistron"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "1",
+                                                "2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Diploma"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "ITI"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Female"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "26"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "4",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "OLA Electric bike Manufacturing"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "OLA"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "12th pass +"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "16000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "6",
+                                            "descriptor": {
+                                                "name": "Telecaller",
+                                                "long_desc": "1. Opening of Demat Accounts and to complete his/her targets. 2. Will be responsible to map potential customers and existing clients for referrals to generate sales leads. 3. Document collections, KYC and other verifications. 4. Responsible in making outbound calls to open Demat Accounts for leads. 5.Any Graduate & Freshers also can apply. 6.Salary with good incentives, Preferring both Male and Female 7.Candidates with good fluency in Tamil,Kannada,Telugu,Malayalam,Hindi are preferred "
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Fore Blend Infiscripts Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "25",
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "15000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "20000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "25"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "20"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "5",
+                                            "descriptor": {
+                                                "name": "Customer Support/Credit Card Sales/BPO",
+                                                "long_desc": "Inbound Call receiving & providing desired information to the caller, Documentation of customer details, Identify the needs of customers, resolve issues, and provide solutions,"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Vindhya E-Infomedia Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "10th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "13000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "Good communication skills in english and hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "7",
+                                            "descriptor": {
+                                                "name": "BDE/CIC",
+                                                "long_desc": "Increase free & Paid listing in Justdial Platform, Manager sales & Post sales queries of Customers"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Just Dial"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "26"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "30000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "communication skills in  hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "context": {
+                        "domain": "onest:work-opportunities",
+                        "action": "on_search",
+                        "version": "1.1.0",
+                        "bpp_id": "dev-onest.tibilprojects.com",
+                        "bpp_uri": "https://dev-onest.tibilprojects.com/protocol-network",
+                        "country": "IND",
+                        "city": "std:080",
+                        "location": {
+                            "country": {
+                                "name": "India",
+                                "code": "IND"
+                            },
+                            "city": {
+                                "name": "Bangalore",
+                                "code": "std:080"
+                            }
+                        },
+                        "bap_id": "jobs-bap-dev.tekdinext.com",
+                        "bap_uri": "https://jobs-bap-dev.tekdinext.com/",
+                        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60081",
+                        "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60072",
+                        "ttl": "PT10M",
+                        "timestamp": "2024-02-15T03:36:52.398Z"
+                    },
+                    "message": {
+                        "catalog": {
+                            "providers": [
+                                {
+                                    "id": "1",
+                                    "descriptor": {
+                                        "name": "tibil"
+                                    },
+                                    "locations": [
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "3",
+                                            "city": {
+                                                "code": "std:0512",
+                                                "name": "Kanpur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "4",
+                                            "city": {
+                                                "code": "std:0522",
+                                                "name": "Lucknow"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "5",
+                                            "city": {
+                                                "code": "std:0542",
+                                                "name": "Varanasi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "6",
+                                            "city": {
+                                                "code": "std:011",
+                                                "name": "Delhi"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "7",
+                                            "city": {
+                                                "code": "std:022",
+                                                "name": "Mumbai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "8",
+                                            "city": {
+                                                "code": "std:020",
+                                                "name": "Pune"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "9",
+                                            "city": {
+                                                "code": "std:040",
+                                                "name": "Hyderabad"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "10",
+                                            "city": {
+                                                "code": "std:08922",
+                                                "name": "Vizayanagaram"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "11",
+                                            "city": {
+                                                "code": "std:044",
+                                                "name": "Chennai"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "12",
+                                            "city": {
+                                                "code": "std:080",
+                                                "name": "Bengaluru"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "13",
+                                            "city": {
+                                                "name": "Mysore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "14",
+                                            "city": {
+                                                "code": "std:0836",
+                                                "name": "Hubli"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "15",
+                                            "city": {
+                                                "name": "Tumkur",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "16",
+                                            "city": {
+                                                "name": "Jharkh",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "17",
+                                            "city": {
+                                                "name": "Bihar",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "18",
+                                            "city": {
+                                                "name": "Orissa",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "19",
+                                            "city": {
+                                                "code": "std:0141",
+                                                "name": "Jaipur"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "20",
+                                            "city": {
+                                                "name": "Gujarat",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "21",
+                                            "city": {
+                                                "code": "std:0755",
+                                                "name": "Bhopal"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "22",
+                                            "city": {
+                                                "name": "4 Sahayaks per geography)",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "IND",
+                                                "name": "Pan India"
+                                            }
+                                        },
+                                        {
+                                            "id": "1",
+                                            "city": {
+                                                "code": "std:08152",
+                                                "name": "Kolar"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "2",
+                                            "city": {
+                                                "name": "Karnataka",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "23",
+                                            "city": {
+                                                "code": "std:04344",
+                                                "name": "Hosur"
+                                            },
+                                            "state": {
+                                                "code": "TN",
+                                                "name": "Tamil Nadu"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "25",
+                                            "city": {
+                                                "name": "Koramangala",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "24",
+                                            "city": {
+                                                "name": "Bangalore",
+                                                "code": "std:000"
+                                            },
+                                            "state": {
+                                                "code": "KA",
+                                                "name": "Karnataka"
+                                            }
+                                        },
+                                        {
+                                            "id": "26",
+                                            "city": {
+                                                "code": "std:0120",
+                                                "name": "Greater Noida"
+                                            },
+                                            "state": {
+                                                "code": "UP",
+                                                "name": "Uttar Pradesh"
+                                            }
+                                        }
+                                    ],
+                                    "fulfillments": [
+                                        {
+                                            "id": "1",
+                                            "type": "remote",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "2",
+                                            "type": "hybrid",
+                                            "tracking": false
+                                        },
+                                        {
+                                            "id": "3",
+                                            "type": "Onsite",
+                                            "tracking": false
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "id": "3",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "Technician"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Tata Electronics"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Under Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "2",
+                                            "descriptor": {
+                                                "name": "Sahayak's",
+                                                "long_desc": "Jeevitam is building an ecosystem of Livelihood Partners by providing adequate freelancing opportunities. Sahayaks or Livelihood partners can be any individual looking for work opportunities as an additional source of income, flexible working hours and remote working i.e. work from home at your convenience. Sahayaks can be anywhere in India."
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Jeevitam Sahayaks"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "3",
+                                                "4",
+                                                "5",
+                                                "6",
+                                                "7",
+                                                "8",
+                                                "9",
+                                                "10",
+                                                "11",
+                                                "12",
+                                                "13",
+                                                "14",
+                                                "15",
+                                                "16",
+                                                "17",
+                                                "18",
+                                                "19",
+                                                "20",
+                                                "21",
+                                                "22"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "8th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "55"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "1",
+                                            "descriptor": {
+                                                "name": "Assembly Line Operator",
+                                                "long_desc": "Assemble the Mobile Phone Quality Inspection Quality Management"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Wistron"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "1",
+                                                "2"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Diploma"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "ITI"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Female"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "26"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "4",
+                                            "descriptor": {
+                                                "name": "Blue collar workers female",
+                                                "long_desc": "OLA Electric bike Manufacturing"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "OLA"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "23"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "12th pass +"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "16000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "40"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "6",
+                                            "descriptor": {
+                                                "name": "Telecaller",
+                                                "long_desc": "1. Opening of Demat Accounts and to complete his/her targets. 2. Will be responsible to map potential customers and existing clients for referrals to generate sales leads. 3. Document collections, KYC and other verifications. 4. Responsible in making outbound calls to open Demat Accounts for leads. 5.Any Graduate & Freshers also can apply. 6.Salary with good incentives, Preferring both Male and Female 7.Candidates with good fluency in Tamil,Kannada,Telugu,Malayalam,Hindi are preferred "
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Fore Blend Infiscripts Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "25",
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "5"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "15000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "20000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "25"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "20"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": ""
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "5",
+                                            "descriptor": {
+                                                "name": "Customer Support/Credit Card Sales/BPO",
+                                                "long_desc": "Inbound Call receiving & providing desired information to the caller, Documentation of customer details, Identify the needs of customers, resolve issues, and provide solutions,"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Vindhya E-Infomedia Pvt Ltd"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "24"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "10th Pass"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "13000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "Good communication skills in english and hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "7",
+                                            "descriptor": {
+                                                "name": "BDE/CIC",
+                                                "long_desc": "Increase free & Paid listing in Justdial Platform, Manager sales & Post sales queries of Customers"
+                                            },
+                                            "creator": {
+                                                "descriptor": {
+                                                    "name": "Just Dial"
+                                                }
+                                            },
+                                            "location_ids": [
+                                                "26"
+                                            ],
+                                            "fulfillment_ids": [
+                                                "1"
+                                            ],
+                                            "tags": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Work Experience"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Experience"
+                                                            },
+                                                            "value": "0"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Experience"
+                                                            },
+                                                            "value": "2"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Educational Qualifications"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Qualification"
+                                                            },
+                                                            "value": "Graduate"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Qualification"
+                                                            },
+                                                            "value": "Post Graduate"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Salary Compensation",
+                                                        "code": "salary-info"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Salary"
+                                                            },
+                                                            "value": "18000"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Salary"
+                                                            },
+                                                            "value": "30000"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Gender",
+                                                        "code": "gender"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Gender"
+                                                            },
+                                                            "value": "Both"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Age",
+                                                        "code": "age"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Min Age"
+                                                            },
+                                                            "value": "18"
+                                                        },
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "Max Age"
+                                                            },
+                                                            "value": "35"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "skill requirement",
+                                                        "code": "Skills"
+                                                    },
+                                                    "list": [
+                                                        {
+                                                            "descriptor": {
+                                                                "name": "skill"
+                                                            },
+                                                            "value": "communication skills in  hindi"
+                                                        }
+                                                    ],
+                                                    "display": true
+                                                }
                                             ]
                                         }
                                     ]
