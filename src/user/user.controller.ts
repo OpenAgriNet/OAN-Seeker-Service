@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateOrderDto, CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -22,7 +22,12 @@ export class UserController {
   @Get("/searchOrder/:OredrId")
   async searchOrderByOrderId(@Param('OredrId') OredrId) {
     const Order = await this.userService.searchOrderByOrderId(OredrId);
-    return Order.data.jobs_order_dev[0].OrderContentRelationship[0]
+    if(Order?.data?.jobs_order_dev[0]?.OrderContentRelationship[0]) {
+      return Order.data.jobs_order_dev[0].OrderContentRelationship[0]
+    } else {
+      throw new HttpException('Invalid order id', HttpStatus.BAD_REQUEST);
+    }
+    
   }
 
   @Get()

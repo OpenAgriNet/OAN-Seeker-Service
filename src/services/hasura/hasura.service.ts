@@ -328,7 +328,7 @@ export class HasuraService {
     }
     `;
 
-    console.log(query)
+   // console.log(query)
 
     // Rest of your code to execute the query
 
@@ -341,6 +341,7 @@ export class HasuraService {
   }
 
   async searchOrderByOrderId(order) {
+    console.log("order", order)
     const query = `query MyQuery {
       ${this.jobs_order_dev}(where: {order_id: {_eq: "${order}"}}) {
         OrderContentRelationship {
@@ -355,7 +356,7 @@ export class HasuraService {
     }
     `;
 
-    console.log(query)
+    //console.log(query)
 
     // Rest of your code to execute the query
 
