@@ -8,6 +8,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
   private cache_db = process.env.CACHE_DB;
   private response_cache_db = process.env.RESPONSE_CACHE_DB;
+  private jobs_seeker_dev = process.env.JOBS_SEEKER_DEV;
+  private jobs_order_dev = process.env.JOBS_ORDER_DEV
 
   @Post("/create")
   create(@Body() createUserDto: CreateUserDto) {
@@ -22,8 +24,9 @@ export class UserController {
   @Get("/searchOrder/:OredrId")
   async searchOrderByOrderId(@Param('OredrId') OredrId) {
     const Order = await this.userService.searchOrderByOrderId(OredrId);
-    if(Order?.data?.jobs_order_dev[0]?.OrderContentRelationship[0]) {
-      return Order.data.jobs_order_dev[0].OrderContentRelationship[0]
+    console.log("order", Order)
+    if(Order?.data?.jobs_order[0]?.OrderContentRelationship[0]) {
+      return Order.data.jobs_order[0].OrderContentRelationship[0]
     } else {
       throw new HttpException('Invalid order id', HttpStatus.BAD_REQUEST);
     }
