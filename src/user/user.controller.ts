@@ -22,15 +22,8 @@ export class UserController {
   }
 
   @Get("/searchOrder/:OredrId")
-  async searchOrderByOrderId(@Param('OredrId') OredrId) {
-    const Order = await this.userService.searchOrderByOrderId(OredrId);
-    console.log("order", Order)
-    if(Order?.data?.jobs_order[0]?.OrderContentRelationship[0]) {
-      return Order.data.jobs_order[0].OrderContentRelationship[0]
-    } else {
-      throw new HttpException('Invalid order id', HttpStatus.BAD_REQUEST);
-    }
-    
+  searchOrderByOrderId(@Param('OredrId') OredrId) {
+    return this.userService.searchOrderByOrderId(OredrId);
   }
 
   @Get()

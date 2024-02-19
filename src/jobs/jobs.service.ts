@@ -50,12 +50,14 @@ export class JobsService {
             if (response) {
                 let arrayOfObjects = []
                 for (const responses of response.responses) {
+                    console.log("===1128===", responses.context.bpp_id)
                     if (responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
                         for (const providers of responses.message.catalog.providers) {
-
+                            console.log("===1130===", providers.locations)
                             for (const [index, item] of providers.items.entries()) {
-
+                                console.log("===1132===", item.descriptor.name)
                                 let obj = {
+
                                     unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
                                     item_id: item.id,
                                     title: item?.descriptor?.name ? item.descriptor.name : '',
@@ -69,16 +71,25 @@ export class JobsService {
                                     provider_name: providers.descriptor.name,
                                     bpp_id: responses.context.bpp_id,
                                     bpp_uri: responses.context.bpp_uri,
-                                    company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : ''
+                                    company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : '',
+                                    skills: item?.tags?.find(tag => tag.descriptor.name === "skill requirement")?.list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "skill requirement")?.list[0].value : "",
+                                    gender: item?.tags?.find(tag => tag.descriptor.name === "Gender").list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "Gender").list[0].value : ""
                                 }
                                 arrayOfObjects.push(obj)
                             }
+
                         }
                     }
+
                 }
                 console.log("arrayOfObjects", arrayOfObjects)
-                //return arrayOfObjects
-                return this.hasuraService.insertCacheData(arrayOfObjects)
+                console.log("arrayOfObjects length", arrayOfObjects.length)
+                let uniqueObjects = Array.from(new Set(arrayOfObjects.map(obj => obj.unique_id))).map(id => {
+                    return arrayOfObjects.find(obj => obj.unique_id === id);
+                });
+                console.log("uniqueObjects length", uniqueObjects.length)
+                //return uniqueObjects
+                return this.hasuraService.insertCacheData(uniqueObjects)
             }
 
         } catch (error) {
@@ -99,7 +110,7 @@ export class JobsService {
     }
 
     async testApiCall() {
-        const data = {
+        const response = {
             "context": {
                 "ttl": "PT10M",
                 "action": "search",
@@ -10631,35 +10642,36 @@ export class JobsService {
         }
 
         let arrayOfObjects = []
-        for (const responses of data.responses) {
+        for (const responses of response.responses) {
             console.log("===1128===")
-            //if()
-            for (const providers of responses.message.catalog.providers) {
-                console.log("===1130===", providers.locations)
-                for (const [index, item] of providers.items.entries()) {
-                    console.log("===1132===")
-                    let obj = {
+            if (responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
+                for (const providers of responses.message.catalog.providers) {
+                    console.log("===1130===", providers.locations)
+                    for (const [index, item] of providers.items.entries()) {
+                        console.log("===1132===")
+                        let obj = {
 
-                        unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
-                        item_id: item.id,
-                        title: item?.descriptor?.name ? item.descriptor.name : '',
-                        description: item?.descriptor?.long_desc ? item.descriptor.long_desc : '',
-                        location_id: item?.location_ids[0] ? item.location_ids[0] : '',
-                        //city: providers.locations.find(item => item.id === items.location_ids[0]) ? providers.locations.find(item => item.id === items.location_ids[0]).city.name : null,
-                        city: providers?.locations[index]?.city.name ? providers.locations[index].city.name : '',
-                        state: providers?.locations[index]?.state.name ? providers.locations[index].state.name : '',
-                        //country: providers.locations[index].country.name ? providers.locations[index].country.name: '',
-                        provider_id: providers.id,
-                        provider_name: providers.descriptor.name,
-                        bpp_id: responses.context.bpp_id,
-                        bpp_uri: responses.context.bpp_uri,
-                        company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : '',
-                        skills: item?.tags?.find(tag => tag.descriptor.name === "skill requirement")?.list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "skill requirement")?.list[0].value : "English speaking",
-                        //gender: item?.tags?.find(tag => tag.descriptor.name === "Gender").list[0]?.value ?  item.tags.find(tag => tag.descriptor.name === "Gender").list[0].value: "Both"
+                            unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
+                            item_id: item.id,
+                            title: item?.descriptor?.name ? item.descriptor.name : '',
+                            description: item?.descriptor?.long_desc ? item.descriptor.long_desc : '',
+                            location_id: item?.location_ids[0] ? item.location_ids[0] : '',
+                            //city: providers.locations.find(item => item.id === items.location_ids[0]) ? providers.locations.find(item => item.id === items.location_ids[0]).city.name : null,
+                            city: providers?.locations[index]?.city.name ? providers.locations[index].city.name : '',
+                            state: providers?.locations[index]?.state.name ? providers.locations[index].state.name : '',
+                            //country: providers.locations[index].country.name ? providers.locations[index].country.name: '',
+                            provider_id: providers.id,
+                            provider_name: providers.descriptor.name,
+                            bpp_id: responses.context.bpp_id,
+                            bpp_uri: responses.context.bpp_uri,
+                            company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : '',
+                            skills: item?.tags?.find(tag => tag.descriptor.name === "skill requirement")?.list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "skill requirement")?.list[0].value : null,
+                            gender: item?.tags?.find(tag => tag.descriptor.name === "Gender") && ["Male", "Female"].includes(item?.tags?.find(tag => tag.descriptor.name === "Gender").list[0]?.value) ? item.tags.find(tag => tag.descriptor.name === "Gender").list[0].value : null
+                        }
+                        arrayOfObjects.push(obj)
                     }
-                    arrayOfObjects.push(obj)
-                }
 
+                }
             }
 
         }
