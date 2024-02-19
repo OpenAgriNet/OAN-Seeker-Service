@@ -50,12 +50,12 @@ export class JobsService {
             if (response) {
                 let arrayOfObjects = []
                 for (const responses of response.responses) {
-                    console.log("===1128===", responses.context.bpp_id)
+                    console.log("===1128===")
                     if (responses.context.bpp_id !== "beckn-sandbox-bpp.becknprotocol.io") {
                         for (const providers of responses.message.catalog.providers) {
                             console.log("===1130===", providers.locations)
                             for (const [index, item] of providers.items.entries()) {
-                                console.log("===1132===", item.descriptor.name)
+                                console.log("===1132===")
                                 let obj = {
 
                                     unique_id: this.generateFixedId(item.id, item.descriptor.name, responses.context.bpp_id),
@@ -72,8 +72,8 @@ export class JobsService {
                                     bpp_id: responses.context.bpp_id,
                                     bpp_uri: responses.context.bpp_uri,
                                     company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : '',
-                                    skills: item?.tags?.find(tag => tag.descriptor.name === "skill requirement")?.list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "skill requirement")?.list[0].value : "",
-                                    gender: item?.tags?.find(tag => tag.descriptor.name === "Gender").list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "Gender").list[0].value : ""
+                                    skills: item?.tags?.find(tag => tag.descriptor.name === "skill requirement")?.list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "skill requirement")?.list[0].value : null,
+                                    gender: item?.tags?.find(tag => tag.descriptor.name === "Gender") && ["Male", "Female"].includes(item?.tags?.find(tag => tag.descriptor.name === "Gender").list[0]?.value) ? item.tags.find(tag => tag.descriptor.name === "Gender").list[0].value : null
                                 }
                                 arrayOfObjects.push(obj)
                             }
