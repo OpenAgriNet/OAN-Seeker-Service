@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, Request } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Request } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { LoggerService } from 'src/logger/logger.service';
 import { JobsService } from './jobs.service';
@@ -48,6 +48,13 @@ export class JobsController {
     async getGender(){
         this.logger.log('GET /getGender')
         return this.jobsServise.getFilterData('gender')
+    }
+
+    @Get('/getfilter/:filter')
+    async getfilter(@Param('filter') filter){
+        this.logger.log('GET /getfilter')
+        console.log(filter)
+        return this.jobsServise.getFilterData(filter)
     }
 
     // create jobs manually
