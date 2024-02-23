@@ -67,6 +67,8 @@ export class HasuraService {
             provider_name
             bpp_id
             bpp_uri
+            fulfillments
+            item
           }
           }`;
     try {
