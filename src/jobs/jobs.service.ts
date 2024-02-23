@@ -74,10 +74,8 @@ export class JobsService {
                                     company: item?.creator?.descriptor?.name ? item.creator.descriptor.name : '',
                                     skills: item?.tags?.find(tag => tag.descriptor.name === "skill requirement")?.list[0]?.value ? item.tags.find(tag => tag.descriptor.name === "skill requirement")?.list[0].value : null,
                                     gender: item?.tags?.find(tag => tag.descriptor.name === "Gender") && ["Male", "Female"].includes(item?.tags?.find(tag => tag.descriptor.name === "Gender").list[0]?.value) ? item.tags.find(tag => tag.descriptor.name === "Gender").list[0].value : null,
-                                    item: item,
-                                    descriptor: providers.descriptor,
-                                    categories: providers.categories,
-                                    fulfillments: providers.fulfillments
+                                    fulfillments: providers?.fulfillments[index]?.type ? providers.fulfillments[index].type : null,
+                                    item: item
                                 }
                                 arrayOfObjects.push(obj)
                             }
