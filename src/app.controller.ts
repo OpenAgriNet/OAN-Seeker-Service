@@ -27,9 +27,14 @@ export class AppController {
     console.log("select method calling...")
     //return await this.proxyService.bapCLientApi2(endPoint, body)
     let response = await this.jobsServise.select(body)
-    console.log("response 30", response)
+    console.log("body 30", body)
+    console.log("response 31", response)
     if(response) {
-      return response
+      let selectResponse = {
+        context: body.context,
+        responses: [response.response]
+      }
+      return selectResponse
     } else {
       console.log("calling proxyservice")
       return await this.proxyService.bapCLientApi2(endPoint, body)

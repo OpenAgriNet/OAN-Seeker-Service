@@ -143,7 +143,7 @@ export class JobsService {
     return this.hasuraService.searchResponse(body);
   }
 
-  async select(body): Promise<ResponseCache[]> {
+  async select(body) {
     console.log('fetchDataFromCache');
     console.log("item_id", body.message.order.items[0].id)
     console.log("provider_id", body.message.order.provider.id)
