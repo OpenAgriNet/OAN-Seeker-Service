@@ -10,14 +10,22 @@ export class JobsController {
 
     @Post('/search')
     async getContent(@Request() request, @Body() body) {
-        this.logger.log('POST /search')
+        this.logger.log('POST /search', JSON.stringify(body))
         return this.jobsServise.getJobs(body)
+    }
+
+    @Post('/select')
+    async selectContent(@Request() request, @Body() body) {
+        console.log("request", request.headers)
+        this.logger.log('POST /select', JSON.stringify(body))
+        return this.jobsServise.select(body)
     }
 
     @Post('/responseSearch')
     async searchResponse(@Request() request, @Body() body) {
         this.logger.log('POST /responseSearch')
         return this.jobsServise.searchResponse(body)
+        
     }
 
     @Get('/getState')

@@ -1,11 +1,12 @@
 import { Body, Controller, Get, Post, Request } from '@nestjs/common';
 import { AppService } from './app.service';
+import { JobsService } from './jobs/jobs.service';
 import { LoggerService } from './logger/logger.service';
 import { ProxyService } from './services/proxy/proxy.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private readonly proxyService: ProxyService, private readonly logger: LoggerService) { }
+  constructor(private readonly appService: AppService, private readonly proxyService: ProxyService, private readonly logger: LoggerService, private readonly jobsServise: JobsService) { }
 
   @Get()
   getHello(): string {
@@ -14,6 +15,7 @@ export class AppController {
 
   @Post('/search')
   async searchContent(@Request() request, @Body() body) {
+    this.logger.log('POST /search', JSON.stringify(body))
     let endPoint = 'search'
     console.log("search method calling...")
     return await this.proxyService.bapCLientApi2(endPoint, body)
@@ -23,7 +25,15 @@ export class AppController {
   async selectContent(@Request() request, @Body() body) {
     let endPoint = 'select'
     console.log("select method calling...")
-    return await this.proxyService.bapCLientApi2(endPoint, body)
+    //return await this.proxyService.bapCLientApi2(endPoint, body)
+    let response = await this.jobsServise.select(body)
+    console.log("response 30", response)
+    if(response) {
+      return response
+    } else {
+      console.log("calling proxyservice")
+      return await this.proxyService.bapCLientApi2(endPoint, body)
+    }
   }
 
   @Post('/init')
