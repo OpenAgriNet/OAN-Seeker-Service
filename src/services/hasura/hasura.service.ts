@@ -11,6 +11,7 @@ export class HasuraService {
   private response_cache_db = process.env.RESPONSE_CACHE_DB;
   private jobs_seeker_dev = process.env.JOBS_SEEKER_DEV;
   private jobs_order_dev = process.env.JOBS_ORDER_DEV
+  private jobs_telemetry_db = process.env.JOBS_TELEMETRY_DB
 
   constructor(private httpService: HttpService) {
     console.log("cache_db", this.cache_db)
@@ -34,7 +35,7 @@ export class HasuraService {
         console.log('The value is not an array');
         result += `${key}: {_in: "${value}"},`
       }
-      
+
     });
     result += '}';
     console.log("result", result);
@@ -371,6 +372,29 @@ export class HasuraService {
       return response.data[`${this.jobs_order_dev}`][0].OrderContentRelationship[0]
     } catch (error) {
       throw new HttpException('Invalid order id', HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async addTelemetry(data) {
+    console.log("data", data)
+    const query = `
+      mutation ($id: String, $ver: String, $events:jsonb) {
+        insert_${this.jobs_telemetry_db}(objects: [{id: $id, ver: $ver, events: $events}]) {
+          returning {
+            id
+            events
+          }
+        }
+      }
+    `;
+
+    console.log(query)
+
+    try {
+      const response = await this.queryDb(query, data)
+      return response;
+    } catch (error) {
+      throw new HttpException('Unabe to add telemetry', HttpStatus.BAD_REQUEST);
     }
   }
 
