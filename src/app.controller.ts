@@ -23,22 +23,23 @@ export class AppController {
 
   @Post('/select')
   async selectContent(@Request() request, @Body() body) {
+    this.logger.log('POST /select', JSON.stringify(body))
     let endPoint = 'select'
     console.log("select method calling...")
-    //return await this.proxyService.bapCLientApi2(endPoint, body)
-    let response = await this.jobsServise.select(body)
-    console.log("body 30", body)
-    console.log("response 31", response)
-    if(response) {
-      let selectResponse = {
-        context: body.context,
-        responses: [response.response]
-      }
-      return selectResponse
-    } else {
-      console.log("calling proxyservice")
-      return await this.proxyService.bapCLientApi2(endPoint, body)
-    }
+    return await this.proxyService.bapCLientApi2(endPoint, body)
+    // let response = await this.jobsServise.select(body)
+    // console.log("body 30", body)
+    // console.log("response 31", response)
+    // if(response) {
+    //   let selectResponse = {
+    //     context: body.context,
+    //     responses: [response.response]
+    //   }
+    //   return selectResponse
+    // } else {
+    //   console.log("calling proxyservice")
+    //   return await this.proxyService.bapCLientApi2(endPoint, body)
+    // }
   }
 
   @Post('/init')
