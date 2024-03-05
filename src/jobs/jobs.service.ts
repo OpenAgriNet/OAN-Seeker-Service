@@ -13,6 +13,7 @@ export class JobsService {
     private domain = process.env.DOMAIN;
     private bap_id = process.env.BAP_ID;
     private bap_uri = process.env.BAP_URI;
+    private response_cache_db = process.env.RESPONSE_CACHE_DB;
 
     constructor(
         private readonly hasuraService: HasuraService,
@@ -10630,5 +10631,41 @@ export class JobsService {
         
         //return this.hasuraService.addTelemetry(telemetry_data)
         return Promise.all(promises)
+    }
+
+    async analytics() {
+
+        let response = await  this.hasuraService.searchResponse({"action": "on_confirm"});
+
+        console.log("response", response.data.response_cache_dev)
+
+        let analytics =  response.data[`${this.response_cache_db}`]
+
+        let arrayOfObj = analytics.map((item) => {
+            let obj = {
+                order_id: item.response.message.order.id,
+                action: item.action,
+                transaction_id: item.transaction_id,
+                bpp_id: item.response.context.bpp_id,
+                bpp_uri: item.response.context.bpp_uri,
+                customer_email: item.response.message.order.fulfillments[0].customer.contact.email,
+                customer_phone: item.response.message.order.fulfillments[0].customer.contact.phone,
+                customer_name: item.response.message.order.fulfillments[0].customer.person.name,
+                customer_gender: item.response.message.order.fulfillments[0].customer.person.gender,
+                provider_name: item.response.message.order?.provider?.descriptor?.name ? item.response.message.order.provider.descriptor.name : null,
+                content_name: item.response.message.order?.items[0]?.descriptor?.name ? item.response.message.order.items[0].descriptor.name : null,
+                content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : null,
+                distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : null,
+                agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : null,
+                createdAt: item.createdAt,
+
+            }
+            return obj
+        })
+
+        console.log("arrayOfObj", arrayOfObj)
+
+        return arrayOfObj;
+
     }
 }

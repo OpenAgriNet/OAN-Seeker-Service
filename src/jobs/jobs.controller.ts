@@ -104,4 +104,11 @@ export class JobsController {
         return this.jobsService.addTelemetry(body)
     }
 
+    @Post('/analytics')
+    async analytics(@Request() request, @Body() body) {
+        this.logger.log('POST /analytics')
+        return this.jobsService.analytics()
+        
+    }
+
 }
