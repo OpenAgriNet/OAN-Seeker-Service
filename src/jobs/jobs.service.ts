@@ -10652,11 +10652,12 @@ export class JobsService {
                 customer_phone: item.response.message.order.fulfillments[0].customer.contact.phone,
                 customer_name: item.response.message.order.fulfillments[0].customer.person.name,
                 customer_gender: item.response.message.order.fulfillments[0].customer.person.gender,
-                provider_name: item.response.message.order?.provider?.descriptor?.name ? item.response.message.order.provider.descriptor.name : null,
-                content_name: item.response.message.order?.items[0]?.descriptor?.name ? item.response.message.order.items[0].descriptor.name : null,
-                content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : null,
-                distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : null,
-                agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : null,
+                provider_name: item.response.message.order?.provider?.descriptor?.name ? item.response.message.order.provider.descriptor.name : "",
+                job_id: item.response.message.order?.items[0]?.id ? item.response.message.order.items[0].id : "",
+                job_name: item.response.message.order?.items[0]?.descriptor?.name ? item.response.message.order.items[0].descriptor.name : "",
+                content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : "",
+                distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : "",
+                agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : "",
                 createdAt: item.createdAt,
 
             }
