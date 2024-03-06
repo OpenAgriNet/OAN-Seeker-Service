@@ -10666,7 +10666,13 @@ export class JobsService {
 
         console.log("arrayOfObj", arrayOfObj)
 
-        return arrayOfObj;
+        let uniqueObjects = Array.from(
+            new Set(arrayOfObj.map((obj) => obj.order_id)),
+        ).map((id) => {
+            return arrayOfObj.find((obj) => obj.order_id === id);
+        });
+
+        return uniqueObjects;
 
     }
 }
