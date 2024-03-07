@@ -240,7 +240,7 @@ export class JobsService {
     generateQuery(filters) {
         let query = `
             SELECT *
-            FROM response_cache_dev`;
+            FROM ${this.response_cache_db}`;
     
         if (filters.action) {
             query += `
