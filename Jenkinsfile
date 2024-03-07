@@ -7,7 +7,7 @@ pipeline {
             steps{
                 cleanWs()
                 sh 'rm -rf *'
-              //
+                checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'ONEST-ID', url: 'https://github.com/tekdi/jobs-backend.git']])
           }
         }
         
