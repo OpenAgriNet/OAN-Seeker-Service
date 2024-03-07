@@ -102,7 +102,7 @@ export class HasuraService {
                 id
                 action
                 transaction_id
-                createdat
+                created_at
                 response
           }
           }`;

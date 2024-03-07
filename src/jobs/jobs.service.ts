@@ -161,11 +161,10 @@ export class JobsService {
         return result[0];
     }
 
-    async selectResponseCache(body) {
-        console.log('selectResponseCache', body);
+    async selectResponseCache(filters) {
+        console.log('filters', filters);
 
-        
-        const query = `
+        const query1 = `
         SELECT *
         FROM response_cache_dev
         WHERE response->'context'->>'action'='on_confirm';
@@ -214,8 +213,120 @@ export class JobsService {
         CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
         WHERE fulfillment->'customer'->'person'->>'gender' = 'Female'       
         `;
-        return await this.responseCacheRepository.query(query5);
+
+        const query6 = `
+        WITH confirm_actions AS (
+            SELECT *
+            FROM response_cache_dev
+            WHERE response->'context'->>'action' = 'on_confirm'
+            AND response->'message'->'order'->'provider'->'descriptor'->>'name' = 'tibil'
+            AND createdat BETWEEN '2024-01-01' AND '2024-02-29'
+        )
+        SELECT *
+        FROM confirm_actions
+        CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+        WHERE fulfillment->'customer'->'person'->>'gender' = 'female'
+        AND fulfillment->'customer'->'contact'->>'phone' = '9822334455'
+        AND fulfillment->'customer'->'contact'->>'email' = 'alice@gmail.com'
+        `;
+
+        const generatedQuery = this.generateQuery(filters);
+        console.log(generatedQuery);
+
+        return await this.responseCacheRepository.query(generatedQuery);
+
+    }
+
+    generateQuery(filters) {
+        let query = `
+            SELECT *
+            FROM response_cache_dev`;
     
+        if (filters.action) {
+            query += `
+            WHERE response->'context'->>'action' = '${filters.action}'`;
+        }
+    
+        if (filters.order_id) {
+            query += `
+            AND response->'message'->'order'->>'id' = '${filters.order_id}'`;
+        }
+    
+        if (filters.provider_name) {
+            query += `
+            AND response->'message'->'order'->'provider'->'descriptor'->>'name' = '${filters.provider_name}'`;
+        }
+    
+        if (filters.created_at) {
+            query += `
+            AND created_at BETWEEN '${filters.created_at.from}' AND '${filters.created_at.to}' 
+            `;
+        }
+
+        if (filters.gender) {
+            if(this.hasWhereKeyword(query)) {
+                query += `
+                AND fulfillment->'customer'->'person'->>'gender' = '${filters.gender}'
+                `
+            }
+            query = `
+            WITH confirm_actions AS (
+                ${query}
+            )
+            SELECT *
+            FROM confirm_actions
+            CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+            WHERE fulfillment->'customer'->'person'->>'gender' = '${filters.gender}'
+            `;
+        }
+
+        if(filters.phone) {
+
+            if(this.hasWhereKeyword(query)) {
+                query += `
+                AND fulfillment->'customer'->'contact'->>'phone' = '${filters.phone}'
+                `;
+            } else {
+                query = `
+                WITH confirm_actions AS (
+                    ${query}
+                )
+                SELECT *
+                FROM confirm_actions
+                CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+                WHERE fulfillment->'customer'->'contact'->>'phone' = '${filters.phone}'
+                `;
+            }
+
+        }if(filters.email) {
+
+            if(this.hasWhereKeyword(query)) {
+                query += `
+                AND fulfillment->'customer'->'contact'->>'email' = '${filters.email}'
+                `;
+            } else {
+                query = `
+                WITH confirm_actions AS (
+                    ${query}
+                )
+                SELECT *
+                FROM confirm_actions
+                CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+                WHERE fulfillment->'customer'->'contact'->>'email' = '${filters.email}'
+                `;
+            }
+
+        }
+
+
+
+
+    
+        return query;
+    }
+
+    hasWhereKeyword(queryString) {
+        return queryString.toLowerCase().includes('fulfillment');
     }
 
     generateFixedId(...strings) {
@@ -254,10 +365,10 @@ export class JobsService {
     async addTelemetry(data) {
         const promises = []
         data.events.map((event) => {
-            promises.push(this.hasuraService.addTelemetry({id: data.id, ver: data.ver, events: event}))
+            promises.push(this.hasuraService.addTelemetry({ id: data.id, ver: data.ver, events: event }))
             //return {id: data.id, ver: data.ver, events: event}
-        } )
-        
+        })
+
         //return this.hasuraService.addTelemetry(telemetry_data)
         return Promise.all(promises)
     }
@@ -269,7 +380,7 @@ export class JobsService {
         // let analytics =  response.data[`${this.response_cache_db}`]
         //let analytics =  response.data[`${this.response_cache_db}`]
 
-        let response = await  this.selectResponseCache(body);
+        let response = await this.selectResponseCache(body);
 
         //console.log("response", response)
         //return response
@@ -293,7 +404,7 @@ export class JobsService {
                 content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : "",
                 distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : "",
                 agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : "",
-                createdAt: item.createdat,
+                create_at: item.created_at,
 
             }
             return obj
