@@ -6,6 +6,6 @@ services:
     container_name: "jobs-backend-onest"
     restart: always
     ports:
-      - 4000:3000
+      - 8003:3000
     env_file:
       - /home/ubuntu/onest/jobs-backend/.env
