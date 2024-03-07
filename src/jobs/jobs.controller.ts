@@ -107,7 +107,7 @@ export class JobsController {
     @Post('/analytics')
     async analytics(@Request() request, @Body() body) {
         this.logger.log('POST /analytics')
-        return this.jobsService.analytics()
+        return this.jobsService.analytics(body)
         
     }
 
