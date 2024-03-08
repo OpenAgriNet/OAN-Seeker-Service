@@ -263,10 +263,10 @@ export class JobsService {
             `;
         }
 
-        if (filters.gender) {
+        if (filters.customer_gender) {
             if(this.hasWhereKeyword(query)) {
                 query += `
-                AND fulfillment->'customer'->'person'->>'gender' = '${filters.gender}'
+                AND fulfillment->'customer'->'person'->>'gender' = '${filters.customer_gender}'
                 `
             }
             query = `
@@ -276,15 +276,15 @@ export class JobsService {
             SELECT *
             FROM confirm_actions
             CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
-            WHERE fulfillment->'customer'->'person'->>'gender' = '${filters.gender}'
+            WHERE fulfillment->'customer'->'person'->>'gender' = '${filters.customer_gender}'
             `;
         }
 
-        if(filters.phone) {
+        if(filters.customer_phone) {
 
             if(this.hasWhereKeyword(query)) {
                 query += `
-                AND fulfillment->'customer'->'contact'->>'phone' = '${filters.phone}'
+                AND fulfillment->'customer'->'contact'->>'phone' = '${filters.customer_phone}'
                 `;
             } else {
                 query = `
@@ -294,15 +294,15 @@ export class JobsService {
                 SELECT *
                 FROM confirm_actions
                 CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
-                WHERE fulfillment->'customer'->'contact'->>'phone' = '${filters.phone}'
+                WHERE fulfillment->'customer'->'contact'->>'phone' = '${filters.customer_phone}'
                 `;
             }
 
-        }if(filters.email) {
+        }if(filters.customer_email) {
 
             if(this.hasWhereKeyword(query)) {
                 query += `
-                AND fulfillment->'customer'->'contact'->>'email' = '${filters.email}'
+                AND fulfillment->'customer'->'contact'->>'email' = '${filters.customer_email}'
                 `;
             } else {
                 query = `
@@ -312,7 +312,7 @@ export class JobsService {
                 SELECT *
                 FROM confirm_actions
                 CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
-                WHERE fulfillment->'customer'->'contact'->>'email' = '${filters.email}'
+                WHERE fulfillment->'customer'->'contact'->>'email' = '${filters.customer_email}'
                 `;
             }
 
@@ -404,7 +404,7 @@ export class JobsService {
                 content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : "",
                 distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : "",
                 agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : "",
-                create_at: item.created_at,
+                created_at: item.created_at,
 
             }
             return obj
