@@ -276,6 +276,8 @@ export class JobsService {
             SELECT *
             FROM confirm_actions
             CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+            CROSS JOIN LATERAL json_array_elements(fulfillment->'customer'->'person'->'tags') AS tags
+            CROSS JOIN LATERAL json_array_elements(tags->'list') AS list
             WHERE fulfillment->'customer'->'person'->>'gender' = '${filters.customer_gender}'
             `;
         }
@@ -294,11 +296,15 @@ export class JobsService {
                 SELECT *
                 FROM confirm_actions
                 CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+                CROSS JOIN LATERAL json_array_elements(fulfillment->'customer'->'person'->'tags') AS tags
+                CROSS JOIN LATERAL json_array_elements(tags->'list') AS list
                 WHERE fulfillment->'customer'->'contact'->>'phone' = '${filters.customer_phone}'
                 `;
             }
 
-        }if(filters.customer_email) {
+        }
+        
+        if(filters.customer_email) {
 
             if(this.hasWhereKeyword(query)) {
                 query += `
@@ -312,21 +318,67 @@ export class JobsService {
                 SELECT *
                 FROM confirm_actions
                 CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+                CROSS JOIN LATERAL json_array_elements(fulfillment->'customer'->'person'->'tags') AS tags
+                CROSS JOIN LATERAL json_array_elements(tags->'list') AS list
                 WHERE fulfillment->'customer'->'contact'->>'email' = '${filters.customer_email}'
                 `;
             }
 
         }
 
+        if(filters.distributor_name) {
 
+            if(this.hasListKeyword(query)) {
+                query += `
+                AND list->>'value'='${filters.distributor_name}'
+                `;
+            } else {
+                query = `
+                WITH confirm_actions AS (
+                    ${query}
+                )
+                SELECT *
+                FROM confirm_actions
+                CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+                CROSS JOIN LATERAL json_array_elements(fulfillment->'customer'->'person'->'tags') AS tags
+                CROSS JOIN LATERAL json_array_elements(tags->'list') AS list
+                WHERE list->>'value'='${filters.distributor_name}'
+                `;
+            }
 
+        }
 
-    
+        if(filters.agent_id) {
+
+            if(this.hasListKeyword(query)) {
+                query += `
+                AND list->>'value'='${filters.agent_id}'
+                `;
+            } else {
+                query = `
+                WITH confirm_actions AS (
+                    ${query}
+                )
+                SELECT *
+                FROM confirm_actions
+                CROSS JOIN LATERAL json_array_elements(confirm_actions.response->'message'->'order'->'fulfillments') AS fulfillment
+                CROSS JOIN LATERAL json_array_elements(fulfillment->'customer'->'person'->'tags') AS tags
+                CROSS JOIN LATERAL json_array_elements(tags->'list') AS list
+                WHERE list->>'value'='${filters.agent_id}'
+                `;
+            }
+
+        }
+
         return query;
     }
 
     hasWhereKeyword(queryString) {
         return queryString.toLowerCase().includes('fulfillment');
+    }
+
+    hasListKeyword(queryString) {
+        return queryString.toLowerCase().includes('tags');
     }
 
     generateFixedId(...strings) {
