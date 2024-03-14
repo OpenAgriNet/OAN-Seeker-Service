@@ -14,6 +14,7 @@ export class JobsService {
     private bap_id = process.env.BAP_ID;
     private bap_uri = process.env.BAP_URI;
     private response_cache_db = process.env.RESPONSE_CACHE_DB;
+    private telemetry_db = process.env.JOBS_TELEMETRY_DB
 
     constructor(
         private readonly hasuraService: HasuraService,
@@ -474,5 +475,46 @@ export class JobsService {
 
         return uniqueObjects;
 
+    }
+
+    async telemetryAnalytics(body) {
+
+        let query = ''
+
+        if(body.agent) {
+        query = `SELECT
+            events->'edata'->>'pageurl' AS unique_pageurl,
+            COUNT(*) AS data_count
+            FROM
+            ${this.telemetry_db}
+            WHERE
+                events->'edata'->>'pageurl' LIKE '%${body.agent}%'
+            GROUP BY
+            unique_pageurl;`
+        } else {
+            query = `SELECT
+            events->'edata'->>'pageurl' AS unique_pageurl,
+            COUNT(*) AS data_count
+            FROM
+            ${this.telemetry_db}
+            GROUP BY
+            unique_pageurl;`
+        }
+
+
+        let data =  await this.responseCacheRepository.query(query);
+
+        function calculateTotalDataCount(data) {
+            let totalDataCount = 0;
+            for (let entry of data) {
+                totalDataCount += parseInt(entry["data_count"]);
+            }
+            return totalDataCount;
+        }
+        
+        const totalDataCount = calculateTotalDataCount(data);
+        console.log("Total sum of data_count:", totalDataCount);
+
+        return {agent: body.agent, transactionCount: totalDataCount, transactions: data}
     }
 }
