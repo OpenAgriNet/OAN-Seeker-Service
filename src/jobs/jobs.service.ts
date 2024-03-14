@@ -479,10 +479,16 @@ export class JobsService {
 
     async telemetryAnalytics(body) {
 
-        let query = ''
+        let query = `SELECT
+            events->'edata'->>'pageurl' AS unique_pageurl,
+            COUNT(*) AS data_count
+            FROM
+            ${this.telemetry_db}
+            GROUP BY
+            unique_pageurl;`
 
         if(body.agent) {
-        query = `SELECT
+            query = `SELECT
             events->'edata'->>'pageurl' AS unique_pageurl,
             COUNT(*) AS data_count
             FROM
@@ -491,14 +497,37 @@ export class JobsService {
                 events->'edata'->>'pageurl' LIKE '%${body.agent}%'
             GROUP BY
             unique_pageurl;`
-        } else {
+        }
+
+        if(body.date) {
+            var fromDate = Date.parse(body.date.from)
+            var toDate = Date.parse(body.date.to)
+
             query = `SELECT
             events->'edata'->>'pageurl' AS unique_pageurl,
             COUNT(*) AS data_count
             FROM
             ${this.telemetry_db}
+            WHERE events->>'ets'>='${fromDate}'
+            AND events->>'ets'<'${toDate}'
             GROUP BY
             unique_pageurl;`
+            
+            if(body.agent) {
+                query = `SELECT
+                events->'edata'->>'pageurl' AS unique_pageurl,
+                COUNT(*) AS data_count
+                FROM
+                ${this.telemetry_db}
+                WHERE
+                    events->'edata'->>'pageurl' LIKE '%${body.agent}%'
+                    AND events->>'ets'>='${fromDate}'
+                    AND events->>'ets'<'${toDate}'
+                GROUP BY
+                unique_pageurl;`
+            }
+
+
         }
 
 
