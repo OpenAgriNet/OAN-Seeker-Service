@@ -258,9 +258,14 @@ export class JobsService {
             AND response->'message'->'order'->'provider'->'descriptor'->>'name' = '${filters.provider_name}'`;
         }
     
-        if (filters.created_at) {
+        if (filters.date) {
+            // let fromDate = this.convertToUTC(filters.date.from)
+            // let toDate = this.convertToUTC(filters.date.to)
+            let fromDate = filters.date.from
+            let toDate = filters.date.to
             query += `
-            AND created_at BETWEEN '${filters.created_at.from}' AND '${filters.created_at.to}' 
+            AND created_at >= '${fromDate}' 
+            AND created_at <'${toDate}' 
             `;
         }
 
@@ -457,7 +462,7 @@ export class JobsService {
                 content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : "",
                 distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : "",
                 agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : "",
-                created_at: item.created_at,
+                created_at: this.formatTimestamp(item.created_at),
 
             }
             return obj
@@ -545,5 +550,41 @@ export class JobsService {
         console.log("Total sum of data_count:", totalDataCount);
 
         return {agent: body.agent, transactionCount: totalDataCount, transactions: data}
+    }
+
+    convertToUTC(dateStr) {
+        // Parse the date string
+        let parts = dateStr.split("-");
+        let year = parseInt(parts[0]);
+        let month = parseInt(parts[1]) - 1; // Months are 0-based in JavaScript
+        let day = parseInt(parts[2]);
+        
+        // Create a Date object with the parsed date
+        let date = new Date(Date.UTC(year, month, day));
+
+        console.log("date", date)
+        console.log("date.toISOString()",date.toISOString())
+
+        //return date.toISOString()
+    
+        return date.toISOString().split('T')[0]; // Convert to UTC and return as string
+    }
+
+    formatTimestamp(timestamp) {
+        // Create a new Date object using the timestamp
+        let date = new Date(timestamp);
+    
+        // Extract date components
+        let year = date.getFullYear();
+        let month = String(date.getMonth() + 1).padStart(2, '0'); // Adding 1 because month is zero-based
+        let day = String(date.getDate()).padStart(2, '0');
+        let hours = String(date.getHours()).padStart(2, '0');
+        let minutes = String(date.getMinutes()).padStart(2, '0');
+        let seconds = String(date.getSeconds()).padStart(2, '0');
+    
+        // Construct the formatted string
+        let formattedTimestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    
+        return formattedTimestamp;
     }
 }
