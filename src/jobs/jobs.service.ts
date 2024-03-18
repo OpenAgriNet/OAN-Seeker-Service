@@ -568,6 +568,63 @@ export class JobsService {
         return { agent: body.agent, transactionCount: totalDataCount, transactions: data }
     }
 
+    async telemetryAnalytics1(body) {
+
+        let query = `SELECT *
+            FROM
+            ${this.telemetry_db}
+            ;`
+
+        if (body.agent) {
+            query = `SELECT *
+            FROM
+            ${this.telemetry_db}
+            WHERE
+                events->'edata'->>'pageurl' LIKE '%${body.agent}%'
+            ;`
+        }
+
+        if (body.date) {
+            var fromDate = Date.parse(body.date.from)
+            var toDate = Date.parse(body.date.to)
+
+            query = `SELECT *
+            FROM
+            ${this.telemetry_db}
+            WHERE events->>'ets'>='${fromDate}'
+            AND events->>'ets'<'${toDate}'
+            ;`
+
+            if (body.agent) {
+                query = `SELECT *
+                FROM
+                ${this.telemetry_db}
+                WHERE
+                    events->'edata'->>'pageurl' LIKE '%${body.agent}%'
+                    AND events->>'ets'>='${fromDate}'
+                    AND events->>'ets'<'${toDate}'
+               ;`
+            }
+
+
+        }
+
+
+        let data = await this.responseCacheRepository.query(query);
+
+        //const totalDataCount = calculateTotalDataCount(data);
+
+        const totalDataCount = data.length
+        console.log("Total sum of data_count:", totalDataCount);
+
+        const transactionsData = data.map((item) => {
+            item.events.ets = this.convertEts(item.events.ets)
+            return item
+        })
+
+        return { agent: body.agent, transactionCount: totalDataCount, transactions: transactionsData }
+    }
+
     convertToUTC(dateStr) {
         // Parse the date string
         let parts = dateStr.split("-");
@@ -602,5 +659,15 @@ export class JobsService {
         let formattedTimestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
         return formattedTimestamp;
+    }
+
+    convertEts(timestamp) {
+        //const timestamp = 1709530559681; // Example timestamp in milliseconds
+        const date = new Date(timestamp);
+        const formattedDate = date.toISOString().replace(/[TZ]/g, ' ').trim(); // Convert to UTC ISO string and format
+
+        //console.log(formattedDate); // Output: '2024-12-23 03:22:39'
+        return formattedDate;
+
     }
 }

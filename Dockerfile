@@ -1,17 +1,7 @@
-FROM node:16.18-alpine3.15
-
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-WORKDIR /usr/src/app
-
-RUN npm i -g pm2
-EXPOSE 3056
-RUN mkdir -p /usr/src/app/logs
-CMD [ "pm2-runtime", "ecosystem.config.js" ]
+FROM node:16.20.2 as dependencies
+WORKDIR /app
+COPY . ./
+RUN npm i
+RUN apt-get update && apt-get install -y wkhtmltopdf
+EXPOSE 3000
+CMD ["npm", "start"]
