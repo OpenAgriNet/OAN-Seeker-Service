@@ -242,22 +242,22 @@ export class JobsService {
         let query = `
             SELECT *
             FROM ${this.response_cache_db}`;
-    
+
         if (filters.action) {
             query += `
             WHERE response->'context'->>'action' = '${filters.action}'`;
         }
-    
+
         if (filters.order_id) {
             query += `
             AND response->'message'->'order'->>'id' = '${filters.order_id}'`;
         }
-    
+
         if (filters.provider_name) {
             query += `
             AND response->'message'->'order'->'provider'->'descriptor'->>'name' = '${filters.provider_name}'`;
         }
-    
+
         if (filters.date) {
             // let fromDate = this.convertToUTC(filters.date.from)
             // let toDate = this.convertToUTC(filters.date.to)
@@ -270,7 +270,7 @@ export class JobsService {
         }
 
         if (filters.customer_gender) {
-            if(this.hasWhereKeyword(query)) {
+            if (this.hasWhereKeyword(query)) {
                 query += `
                 AND fulfillment->'customer'->'person'->>'gender' = '${filters.customer_gender}'
                 `
@@ -288,9 +288,9 @@ export class JobsService {
             `;
         }
 
-        if(filters.customer_phone) {
+        if (filters.customer_phone) {
 
-            if(this.hasWhereKeyword(query)) {
+            if (this.hasWhereKeyword(query)) {
                 query += `
                 AND fulfillment->'customer'->'contact'->>'phone' = '${filters.customer_phone}'
                 `;
@@ -309,10 +309,10 @@ export class JobsService {
             }
 
         }
-        
-        if(filters.customer_email) {
 
-            if(this.hasWhereKeyword(query)) {
+        if (filters.customer_email) {
+
+            if (this.hasWhereKeyword(query)) {
                 query += `
                 AND fulfillment->'customer'->'contact'->>'email' = '${filters.customer_email}'
                 `;
@@ -332,9 +332,9 @@ export class JobsService {
 
         }
 
-        if(filters.distributor_name) {
+        if (filters.distributor_name) {
 
-            if(this.hasListKeyword(query)) {
+            if (this.hasListKeyword(query)) {
                 query += `
                 AND list->>'value'='${filters.distributor_name}'
                 `;
@@ -354,9 +354,9 @@ export class JobsService {
 
         }
 
-        if(filters.agent_id) {
+        if (filters.agent_id) {
 
-            if(this.hasListKeyword(query)) {
+            if (this.hasListKeyword(query)) {
                 query += `
                 AND list->>'value'='${filters.agent_id}'
                 `;
@@ -459,11 +459,11 @@ export class JobsService {
                 provider_name: item.response.message.order?.provider?.descriptor?.name ? item.response.message.order.provider.descriptor.name : "",
                 job_id: item.response.message.order?.items[0]?.id ? item.response.message.order.items[0].id : "",
                 job_name: item.response.message.order?.items[0]?.descriptor?.name ? item.response.message.order.items[0].descriptor.name : "",
+                job_location: item.response.message.order?.items[0]?.descriptor?.name ? item.response.message.order.items[0].descriptor.name : "",
                 content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : "",
                 distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : "",
                 agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : "",
                 created_at: this.formatTimestamp(item.created_at),
-
             }
             return obj
         })
@@ -477,6 +477,22 @@ export class JobsService {
         ).map((id) => {
             return arrayOfObj.find((obj) => obj.order_id === id);
         });
+
+        if (body.fields) {
+            console.log("body.fields", body.fields)
+            const keysToKeep = body.fields;
+
+            const result = uniqueObjects.map(obj => {
+                const newObj = {};
+                keysToKeep.forEach(key => {
+                    if (obj.hasOwnProperty(key)) {
+                        newObj[key] = obj[key];
+                    }
+                });
+                return newObj;
+            });
+            return result
+        }
 
         return uniqueObjects;
 
@@ -492,7 +508,7 @@ export class JobsService {
             GROUP BY
             unique_pageurl;`
 
-        if(body.agent) {
+        if (body.agent) {
             query = `SELECT
             events->'edata'->>'pageurl' AS unique_pageurl,
             COUNT(*) AS data_count
@@ -504,7 +520,7 @@ export class JobsService {
             unique_pageurl;`
         }
 
-        if(body.date) {
+        if (body.date) {
             var fromDate = Date.parse(body.date.from)
             var toDate = Date.parse(body.date.to)
 
@@ -517,8 +533,8 @@ export class JobsService {
             AND events->>'ets'<'${toDate}'
             GROUP BY
             unique_pageurl;`
-            
-            if(body.agent) {
+
+            if (body.agent) {
                 query = `SELECT
                 events->'edata'->>'pageurl' AS unique_pageurl,
                 COUNT(*) AS data_count
@@ -536,7 +552,7 @@ export class JobsService {
         }
 
 
-        let data =  await this.responseCacheRepository.query(query);
+        let data = await this.responseCacheRepository.query(query);
 
         function calculateTotalDataCount(data) {
             let totalDataCount = 0;
@@ -545,11 +561,11 @@ export class JobsService {
             }
             return totalDataCount;
         }
-        
+
         const totalDataCount = calculateTotalDataCount(data);
         console.log("Total sum of data_count:", totalDataCount);
 
-        return {agent: body.agent, transactionCount: totalDataCount, transactions: data}
+        return { agent: body.agent, transactionCount: totalDataCount, transactions: data }
     }
 
     convertToUTC(dateStr) {
@@ -558,22 +574,22 @@ export class JobsService {
         let year = parseInt(parts[0]);
         let month = parseInt(parts[1]) - 1; // Months are 0-based in JavaScript
         let day = parseInt(parts[2]);
-        
+
         // Create a Date object with the parsed date
         let date = new Date(Date.UTC(year, month, day));
 
         console.log("date", date)
-        console.log("date.toISOString()",date.toISOString())
+        console.log("date.toISOString()", date.toISOString())
 
         //return date.toISOString()
-    
+
         return date.toISOString().split('T')[0]; // Convert to UTC and return as string
     }
 
     formatTimestamp(timestamp) {
         // Create a new Date object using the timestamp
         let date = new Date(timestamp);
-    
+
         // Extract date components
         let year = date.getFullYear();
         let month = String(date.getMonth() + 1).padStart(2, '0'); // Adding 1 because month is zero-based
@@ -581,10 +597,10 @@ export class JobsService {
         let hours = String(date.getHours()).padStart(2, '0');
         let minutes = String(date.getMinutes()).padStart(2, '0');
         let seconds = String(date.getSeconds()).padStart(2, '0');
-    
+
         // Construct the formatted string
         let formattedTimestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    
+
         return formattedTimestamp;
     }
 }
