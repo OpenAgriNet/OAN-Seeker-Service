@@ -150,7 +150,7 @@ export class JobsService {
         console.log("item_id", body.message.order.items[0].id)
         console.log("provider_id", body.message.order.provider.id)
         const query = `
-    SELECT response
+        SELECT response
         FROM response_cache_dev
         CROSS JOIN LATERAL json_array_elements(response->'message'->'order'->'items') AS items
         WHERE items->>'id' = '${body.message.order.items[0].id}' 
@@ -459,7 +459,8 @@ export class JobsService {
                 provider_name: item.response.message.order?.provider?.descriptor?.name ? item.response.message.order.provider.descriptor.name : "",
                 job_id: item.response.message.order?.items[0]?.id ? item.response.message.order.items[0].id : "",
                 job_name: item.response.message.order?.items[0]?.descriptor?.name ? item.response.message.order.items[0].descriptor.name : "",
-                job_location: item.response.message.order?.items[0]?.descriptor?.name ? item.response.message.order.items[0].descriptor.name : "",
+                job_location_id: item.response.message.order?.items[0]?.location_ids ? item.response.message.order.items[0].location_ids : "",
+                job_location: item.response.message.order?.provider?.locations ? item.response.message.order.provider.locations : "",
                 content_creater_name: item.response.message.order?.items[0]?.creator?.descriptor?.name ? item.response.message.order.items[0].creator.descriptor.name : "",
                 distributor_name: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[0].value : "",
                 agent_id: item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1]?.value ? item.response.message.order.fulfillments[0].customer.person.tags.find((tag) => tag.code === 'distributor-details').list[1].value : "",
