@@ -8,4 +8,4 @@ services:
     ports:
       - 4000:3000
     env_file:
-      - /home/ubuntu/onest/kahani-backend/.env
+      - /Onest/backend/jobs-backend/.env
