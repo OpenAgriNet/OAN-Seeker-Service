@@ -1,0 +1,11 @@
+version: "3.6"
+
+services:
+  backend:
+    image: jobs-backend-dev
+    container_name: "jobs-backend-dev"
+    restart: always
+    ports:
+      - 4000:3000
+    env_file:
+      - /home/ubuntu/onest/kahani-backend/.env
