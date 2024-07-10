@@ -13,7 +13,7 @@ pipeline {
         
         stage ('Build-image') {
             steps {  
-                      sh 'docker build -t jobs-backend .' 
+                      sh 'docker build -t jobs-backend-dev .'
                    }
             }
        
