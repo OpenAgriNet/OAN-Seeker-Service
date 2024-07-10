@@ -2,8 +2,8 @@ version: "3.6"
 
 services:
   backend:
-    image: jobs-backend-dev
-    container_name: "jobs-backend-dev"
+    image: jobs-backend-dev-new
+    container_name: "jobs-backend-dev-new"
     restart: always
     ports:
       - 8003:3000
