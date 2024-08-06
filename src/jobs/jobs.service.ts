@@ -115,9 +115,10 @@ export class JobsService {
                                                 (tag) => tag.descriptor.name === 'Gender',
                                             ).list[0].value
                                             : null,
-                                    fulfillments: providers?.fulfillments[index]?.type
-                                        ? providers.fulfillments[index].type
-                                        : null,
+                                    // fulfillments: providers?.fulfillments[index]?.type
+                                    //     ? providers.fulfillments[index].type
+                                    //     : null,
+                                    fulfillments: null,
                                     item: item,
                                 };
                                 arrayOfObjects.push(obj);
