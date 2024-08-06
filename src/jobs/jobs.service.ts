@@ -60,7 +60,7 @@ export class JobsService {
                 for (const responses of response.responses) {
                     console.log('===1128===');
                     if (
-                        responses.context.bpp_id !== 'beckn-sandbox-bpp.becknprotocol.io'
+                        responses.context.bpp_id !== 'beckn-sandbox-bpp.becknprotocol.io' && responses?.message?.catalog?.providers
                     ) {
                         for (const providers of responses.message.catalog.providers) {
                             console.log('===1130===', providers.locations);
@@ -115,9 +115,9 @@ export class JobsService {
                                                 (tag) => tag.descriptor.name === 'Gender',
                                             ).list[0].value
                                             : null,
-                                    fulfillments: providers?.fulfillments[index]?.type
-                                        ? providers.fulfillments[index].type
-                                        : null,
+                                    fulfillments: providers?.fulfillments && Array.isArray(providers.fulfillments) && index >= 0 && index < providers.fulfillments.length 
+                                    ? providers.fulfillments[index]?.type || null 
+                                    : null,
                                     item: item,
                                 };
                                 arrayOfObjects.push(obj);
