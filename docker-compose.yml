@@ -1,0 +1,11 @@
+version: "3.6"
+
+services:
+  backend:
+    image: jobs-backend-dev-new
+    container_name: "jobs-backend-dev-new"
+    restart: always
+    ports:
+      - 8003:3000
+    env_file:
+      - /Onest/backend/jobs-backend/.env
