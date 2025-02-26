@@ -44,34 +44,27 @@ export class HasuraService {
            ${this.cache_db}(distinct_on: unique_id,${result}) {
             id
             unique_id
-            age_criteria
-            city
-            company
-            item_id
-            country
-            description
-            employee_type
-            end_date
-            experience
-            gender
-            location_id
-            proficiency
-            qualification
-            responsiblities
-            salary
-            skills
-            start_date
-            state
-            title
-            work_mode
-            provider_id
-            provider_name
             bpp_id
             bpp_uri
+            provider_id
+            provider_name
+            item_id
+            title
+            short_desc
+            long_desc
+            image
+            media
+            mimetype
+            categories
             fulfillments
-            item
+            locations
+            tags
+            created_at
+            updated_at
           }
           }`;
+
+    console.log("query=====>", query)
     try {
       const response = await this.queryDb(query);
       return response;
@@ -152,7 +145,7 @@ export class HasuraService {
   async queryDb(query: string, variables?: Record<string, any>): Promise<any> {
     try {
       const response = await axios.post(
-        'https://onest-bap.tekdinext.com/hasura/v1/graphql',
+        'http://localhost:8080/v1/graphql',
         {
           query,
           variables,
@@ -160,7 +153,7 @@ export class HasuraService {
         {
           headers: {
             'Content-Type': 'application/json',
-            'x-hasura-admin-secret': '#z4X39Q!g1W7fDvX'
+            'x-hasura-admin-secret': 'mysecretkey'
           },
         }
       );
@@ -172,6 +165,30 @@ export class HasuraService {
 
     }
   }
+
+  // async queryDb(query: string, variables?: Record<string, any>): Promise<any> {
+  //   try {
+  //     const response = await axios.post(
+  //       'https://onest-bap.tekdinext.com/hasura/v1/graphql',
+  //       {
+  //         query,
+  //         variables,
+  //       },
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'x-hasura-admin-secret': '#z4X39Q!g1W7fDvX'
+  //         },
+  //       }
+  //     );
+  //     console.log("response.data", response.data)
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log("error", error)
+  //     return error;
+
+  //   }
+  // }
 
   async getState() {
     const query = `query MyQuery {

@@ -3,7 +3,7 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import { LoggerService } from 'src/logger/logger.service';
 import { JobsService } from './jobs.service';
 
-@Controller('jobs')
+@Controller('content')
 export class JobsController {
 
     constructor(private readonly jobsService: JobsService, private readonly logger: LoggerService) { }
@@ -69,8 +69,8 @@ export class JobsController {
     @Post('/create')
     async contentapi() {
         this.logger.log('POST /create')
-        return this.jobsService.jobsApiCall()
-        //return this.jobsService.testApiCall()
+        //return this.jobsService.jobsApiCall()
+        return this.jobsService.testApiCall()
     }
 
     // create jobs by cronjob

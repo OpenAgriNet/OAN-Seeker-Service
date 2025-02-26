@@ -1,0 +1,228 @@
+{
+    "context": {
+        "ttl": "PT10M",
+        "action": "search",
+        "timestamp": "2025-02-26T17:27:04.790Z",
+        "message_id": "2b446bb0-0915-458a-9ec9-4c05bd99ce7f",
+        "transaction_id": "503d86e7-655b-4e56-a7db-c39e8ed8282c",
+        "domain": "knowledge-advisory:agrinet:vistaar",
+        "version": "1.1.0",
+        "bap_id": "vistaar-bap.tekdinext.com",
+        "bap_uri": "https://vistaar-bap.tekdinext.com/"
+    },
+    "responses": [
+        {
+            "context": {
+                "domain": "scheme:uai",
+                "action": "on_search",
+                "version": "1.1.0",
+                "bap_id": "scheme-bap.tekdinext.com",
+                "bap_uri": "https://scheme-bap.tekdinext.com/",
+                "bpp_id": "scheme-bpp.tekdinext.com",
+                "bpp_uri": "https://scheme-bpp.tekdinext.com/",
+                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60021",
+                "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60021",
+                "timestamp": "2023-02-06T09:55:41.161Z"
+            },
+            "message": {
+                "catalog": {
+                    "descriptor": {
+                        "name": "Catalog for "
+                    },
+                    "providers": [
+                        {
+                            "id": "p1",
+                            "descriptor": {
+                                "name": "SchemeFinder",
+                                "short_desc": "A Scheme Discovery and Application Service helps users discover",
+                                "long_desc": "The provider has ....",
+                                "images": [
+                                    {
+                                        "url": "https://image_url"
+                                    }
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "c1",
+                                    "descriptor": {
+                                        "name": "Financial Assistance"
+                                    }
+                                },
+                                {
+                                    "id": "c2",
+                                    "descriptor": {
+                                        "name": "Housing Infrastructure"
+                                    }
+                                },
+                                {
+                                    "id": "c3",
+                                    "descriptor": {
+                                        "name": "Agriculture Rural Development"
+                                    }
+                                },
+                                {
+                                    "id": "c4",
+                                    "descriptor": {
+                                        "name": "Education & Skill Development"
+                                    }
+                                }
+                            ],
+                            "fulfillments": [
+                                {
+                                    "id": "f1",
+                                    "descriptor": {
+                                        "name": "Direct Benefit Transfer (DBT)"
+                                    }
+                                },
+                                {
+                                    "id": "f2",
+                                    "descriptor": {
+                                        "name": "Subsidized Services"
+                                    }
+                                },
+                                {
+                                    "id": "f3",
+                                    "descriptor": {
+                                        "name": "Employment & Placement"
+                                    }
+                                },
+                                {
+                                    "id": "f4",
+                                    "descriptor": {
+                                        "name": "Placements"
+                                    }
+                                }
+                            ],
+                            "locations": [
+                                {
+                                    "id": "l1",
+                                    "descriptor": {
+                                        "name": "Nashik"
+                                    },
+                                    "city_code": "Nashik"
+                                },
+                                {
+                                    "id": "l2",
+                                    "descriptor": {
+                                        "name": "Aurangabad"
+                                    },
+                                    "city_code": "Aurangabad"
+                                }
+                            ],
+                            "items": [
+                                {
+                                    "id": "i1",
+                                    "descriptor": {
+                                        "name": "Ayushman Bharat Yojana",
+                                        "short_desc": "Pradhan Mantri Jan Arogya Yoja...",
+                                        "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. 3) The benefit also includes pre and post-hospitalization expenses. 4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures 5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)",
+                                        "media": [
+                                            {
+                                                "mimetype": "video/mp4",
+                                                "url": "https://media_url"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "https://item_image_url"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Target beneficiary type"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual"
+                                                    },
+                                                    "value": null
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme"
+                                                    },
+                                                    "value": null
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence"
+                                                    },
+                                                    "value": null
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity"
+                                                    },
+                                                    "value": "Aadhaar Card"
+                                                },
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste"
+                                                    },
+                                                    "value": "optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f2"
+                                    ],
+                                    "location_ids": [
+                                        "l1", "l2"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
