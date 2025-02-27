@@ -14,8 +14,14 @@ import axios from 'axios';
 import { createClient } from 'redis';
 
 
-const redisClient = createClient();
-redisClient.connect(); // Ensure Redis client is connected
+// const redisClient = createClient();
+// redisClient.connect(); // Ensure Redis client is connected
+
+const redisClient = createClient({
+    url: 'redis://localhost:6382' // Ensure Redis is running on this port
+});
+
+redisClient.on('error', (err) => console.error('Redis Client Error', err));
 
 
 @Injectable()
