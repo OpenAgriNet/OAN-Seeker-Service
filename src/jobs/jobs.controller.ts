@@ -14,6 +14,18 @@ export class JobsController {
         return this.jobsService.getContents(body)
     }
 
+    @Post('/searchWeather')
+    async searchWeather(@Request() request, @Body() body) {
+        this.logger.log('POST /create')
+        if(body.location) {
+            return this.jobsService.weatherApiCall(body.location)
+        } else {
+            return 'Location not found!'
+        }
+        
+       
+    }
+
     @Post('/select')
     async selectContent(@Request() request, @Body() body) {
         console.log("request", request.headers)

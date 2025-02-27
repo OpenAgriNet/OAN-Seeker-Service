@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ResponseCache } from 'src/entity/response.entity';
 import { LoggerService } from 'src/logger/logger.service';
@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 const crypto = require('crypto');
 import responseData from './response.json';
 import { it } from 'node:test';
+import axios from 'axios';
 
 @Injectable()
 export class JobsService {
@@ -19,6 +20,8 @@ export class JobsService {
     private bpp_uri = process.env.BPP_URI;
     private response_cache_db = process.env.RESPONSE_CACHE_DB;
     private telemetry_db = process.env.JOBS_TELEMETRY_DB
+    private readonly API_KEY = 'babaeca73279fbdc6b67d723dd240889';
+    private readonly GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct';
 
     constructor(
         private readonly hasuraService: HasuraService,
@@ -140,6 +143,166 @@ export class JobsService {
             }
         } catch (error) {
             console.log('error', error);
+        }
+    }
+
+    async weatherApiCall(location) {
+        this.logger.log('weather api calling');
+
+        const gps = await this.getGPS(location)
+        
+
+        let data = {
+            context: {
+                domain: this.domain,
+                action: 'search',
+                version: '1.1.0',
+                bap_id: this.bap_id,
+                bap_uri: this.bap_uri,
+                bpp_id: this.bpp_id,
+                bpp_uri: this.bpp_uri,
+                transaction_id: uuidv4(),
+                message_id: uuidv4(),
+                timestamp: new Date().toISOString(),
+            },
+            message: {
+                intent: {
+                    "category": {
+                        "descriptor": {
+                          "name": "Weather-Forecast"
+                      }
+                    },
+                    "item": {
+                      "time" : {
+                        "range" : {
+                          "start" : "2024-03-01T00:00:00.000Z",
+                          "end" : "2024-03-15T00:00:00.000Z"
+                        }
+                      }
+                    },
+                    "fulfillment": {
+                      "stops": [
+                        {
+                          "location": {
+                            "gps": `${gps.lat},  ${gps.lat}`
+                          }
+                        }
+                      ]
+                    }
+                },
+                
+            },
+        };
+
+        try {
+            let response = await this.proxyService.bapCLientApi2('search', data);
+            console.log('res', JSON.stringify(response));
+            return response
+            if (response) {
+                let arrayOfObjects = [];
+    
+                for (const responses of response.responses) {
+                    for (const providers of responses.message.catalog.providers) {
+                        for (const item of providers.items) {
+                            let fulfillmentIds = item.fulfillment_ids || [];
+                            let locationIds = item.location_ids || [];
+                            let categoryIds = item.category_ids || [];
+    
+                            let obj = {
+                                unique_id: this.generateFixedId(
+                                    item.id,
+                                    item.descriptor.name,
+                                    responses.context.bpp_id
+                                ),
+                                provider_id: providers.id,
+                                provider_name: providers.descriptor.name,
+                                bpp_id: responses.context.bpp_id,
+                                bpp_uri: responses.context.bpp_uri,
+    
+                                item_id: item.id,
+                                title: item?.descriptor?.name || '',
+                                short_desc: item?.descriptor?.short_desc || '',
+                                long_desc: item?.descriptor?.long_desc || '',
+    
+                                image: item?.descriptor?.images?.[0]?.url || '',
+                                media: item?.descriptor?.media?.[0]?.url || '',
+                                mimetype: item?.descriptor?.media?.[0]?.mimetype || '',
+    
+                                // Extracting IDs and Names separately for locations, categories, and fulfillments
+                                // location_ids: providers?.locations
+                                //     ?.filter(loc => locationIds.includes(loc.id))
+                                //     .map(loc => loc.id) || [],
+                                locations: providers?.locations
+                                    ?.filter(loc => locationIds.includes(loc.id))
+                                    .map(loc => loc.descriptor?.name) || [],
+    
+                                // category_ids: providers?.categories
+                                //     ?.filter(cat => categoryIds.includes(cat.id))
+                                //     .map(cat => cat.id) || [],
+                                categories: providers?.categories
+                                    ?.filter(cat => categoryIds.includes(cat.id))
+                                    .map(cat => cat.descriptor?.name) || [],
+    
+                                // fulfillment_ids: providers?.fulfillments
+                                //     ?.filter(ful => fulfillmentIds.includes(ful.id))
+                                //     .map(ful => ful.id) || [],
+                                fulfillments: providers?.fulfillments
+                                    ?.filter(ful => fulfillmentIds.includes(ful.id))
+                                    .map(ful => ful.descriptor?.name) || [],
+    
+                                    tags: item?.tags?.reduce((acc, tag) => {
+                                        const tagName = tag?.descriptor?.name || "";
+                                        if (!tagName) return acc;
+                                    
+                                        if (tag?.list.length > 1) {
+                                            acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
+                                        } else if (tag?.list.length === 1) {
+                                            const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
+                                            acc[tagName] = singleValue;
+                                        }
+                                    
+                                        return acc;
+                                    }, {})
+                            };
+    
+                            arrayOfObjects.push(obj);
+                        }
+                    }
+                }
+    
+                console.log('arrayOfObjects', arrayOfObjects);
+                //return arrayOfObjects;
+
+                return this.hasuraService.insertCacheData(arrayOfObjects);
+            }
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
+
+    async getGPS(city) {
+        console.log("city", city)
+        try {
+
+            // Step 1: Get latitude and longitude for the city
+            const geoResponse = await axios.get(this.GEO_URL, {
+                params: {
+                    q: city,
+                    limit: 1,
+                    appid: this.API_KEY,
+                },
+            });
+
+            if (!geoResponse.data.length) {
+                throw new HttpException('City not found', HttpStatus.NOT_FOUND);
+            }
+
+            const { lat, lon, name, country, state } = geoResponse.data[0];
+
+            return { lat, lon, name, country, state }
+            
+        } catch (error) {
+            
         }
     }
 
