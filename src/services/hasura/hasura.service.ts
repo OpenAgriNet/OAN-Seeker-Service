@@ -18,30 +18,35 @@ export class HasuraService {
     console.log("response_cache_db", this.response_cache_db)
   }
 
-  async findJobsCache(getContentdto) {
 
-    console.log("searching jobs from " + this.cache_db)
+  async findContentCache(getContentdto) {
+    console.log("searching jobs from " + this.cache_db);
 
-
-    let result = 'where: {';
+    let whereClause = 'where: {';
     Object.entries(getContentdto).forEach(([key, value]) => {
-      console.log(key, ':', value);
+        console.log(key, ':', value);
 
-      if (Array.isArray(value)) {
-        console.log('The value is an array');
-        const quotedValues = value.map(city => `"${city}"`).join(", ");
-        result += `${key}: {_in: [${quotedValues}]},`;
-      } else {
-        console.log('The value is not an array');
-        result += `${key}: {_in: "${value}"},`
-      }
+        if (Array.isArray(value)) {
+            console.log('The value is an array');
+            const quotedValues = value.map(city => `"${city}"`).join(", ");
 
+            // Use `_contains` for array fields
+            if (["locations", "categories", "fulfillments"].includes(key)) {
+                whereClause += `${key}: {_contains: [${quotedValues}]},`;
+            } else {
+                whereClause += `${key}: {_in: [${quotedValues}]},`;
+            }
+        } else {
+            console.log('The value is not an array');
+            whereClause += `${key}: {_eq: "${value}"},`;
+        }
     });
-    result += '}';
-    console.log("result", result);
-    //console.log("order", order)
+
+    whereClause += '}';
+    console.log("whereClause", whereClause);
+
     const query = `query MyQuery {
-           ${this.cache_db}(distinct_on: unique_id,${result}) {
+        ${this.cache_db}(distinct_on: unique_id, ${whereClause}) {
             id
             unique_id
             bpp_id
@@ -61,19 +66,76 @@ export class HasuraService {
             tags
             created_at
             updated_at
-          }
-          }`;
+        }
+    }`;
 
-    console.log("query=====>", query)
+    console.log("query=====>", query);
     try {
-      const response = await this.queryDb(query);
-      return response;
+        const response = await this.queryDb(query);
+        return response;
     } catch (error) {
-      //this.logger.error("Something Went wrong in creating Admin", error);
-      console.log("error", error)
-      throw new HttpException('Unable to Fetch content!', HttpStatus.BAD_REQUEST);
+        console.log("error", error);
+        throw new HttpException('Unable to Fetch content!', HttpStatus.BAD_REQUEST);
     }
-  }
+}
+
+
+  // async findContentCache(getContentdto) {
+
+  //   console.log("searching jobs from " + this.cache_db)
+
+
+  //   let result = 'where: {';
+  //   Object.entries(getContentdto).forEach(([key, value]) => {
+  //     console.log(key, ':', value);
+
+  //     if (Array.isArray(value)) {
+  //       console.log('The value is an array');
+  //       const quotedValues = value.map(city => `"${city}"`).join(", ");
+  //       result += `${key}: {_in: [${quotedValues}]},`;
+  //     } else {
+  //       console.log('The value is not an array');
+  //       result += `${key}: {_in: "${value}"},`
+  //     }
+
+  //   });
+  //   result += '}';
+  //   console.log("result", result);
+  //   //console.log("order", order)
+  //   const query = `query MyQuery {
+  //          ${this.cache_db}(distinct_on: unique_id,${result}) {
+  //           id
+  //           unique_id
+  //           bpp_id
+  //           bpp_uri
+  //           provider_id
+  //           provider_name
+  //           item_id
+  //           title
+  //           short_desc
+  //           long_desc
+  //           image
+  //           media
+  //           mimetype
+  //           categories
+  //           fulfillments
+  //           locations
+  //           tags
+  //           created_at
+  //           updated_at
+  //         }
+  //         }`;
+
+  //   console.log("query=====>", query)
+  //   try {
+  //     const response = await this.queryDb(query);
+  //     return response;
+  //   } catch (error) {
+  //     //this.logger.error("Something Went wrong in creating Admin", error);
+  //     console.log("error", error)
+  //     throw new HttpException('Unable to Fetch content!', HttpStatus.BAD_REQUEST);
+  //   }
+  // }
 
   async searchResponse(data) {
 

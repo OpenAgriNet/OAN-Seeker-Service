@@ -11,7 +11,7 @@ export class JobsController {
     @Post('/search')
     async getContent(@Request() request, @Body() body) {
         this.logger.log('POST /search', JSON.stringify(body))
-        return this.jobsService.getJobs(body)
+        return this.jobsService.getContents(body)
     }
 
     @Post('/select')

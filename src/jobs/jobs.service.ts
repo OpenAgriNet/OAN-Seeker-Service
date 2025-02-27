@@ -26,8 +26,8 @@ export class JobsService {
         private readonly responseCacheRepository: Repository<ResponseCache>,
     ) { }
 
-    async getJobs(getContentdto) {
-        return this.hasuraService.findJobsCache(getContentdto);
+    async getContents(getContentdto) {
+        return this.hasuraService.findContentCache(getContentdto);
     }
 
     async jobsApiCall() {
