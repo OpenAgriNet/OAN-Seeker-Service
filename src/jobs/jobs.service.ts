@@ -11,17 +11,35 @@ import responseData from './response.json';
 import { it } from 'node:test';
 import axios from 'axios';
 
-import { createClient } from 'redis';
+// import { createClient } from 'redis';
 
 
 // const redisClient = createClient();
 // redisClient.connect(); // Ensure Redis client is connected
 
-const redisClient = createClient({
-    url: 'redis://localhost:6382' // Ensure Redis is running on this port
+// const redisClient = createClient({
+//     url: 'redis://localhost:6379' // Ensure Redis is running on this port
+// });
+
+// redisClient.on('error', (err) => console.error('Redis Client Error', err));
+
+import Redis from 'ioredis';
+
+const redisClient = new Redis({
+  host: 'onest-ondc-dev-bpp', // Use the container name if running in Docker
+  port: 6382,         // Match the exposed Redis port
+  retryStrategy: (times) => Math.min(times * 50, 2000), // Auto-retry
 });
 
-redisClient.on('error', (err) => console.error('Redis Client Error', err));
+// Handle Redis errors
+redisClient.on('error', (err) => {
+  console.error('Redis Error:', err);
+});
+
+// Handle successful connection
+redisClient.on('connect', () => {
+  console.log('Connected to Redis');
+});
 
 
 @Injectable()
@@ -277,9 +295,11 @@ export class JobsService {
             let response = await this.proxyService.bapCLientApi2('search', data);
     
             // Store response in cache for 1 hour (3600 seconds)
-            await redisClient.set(cacheKey, JSON.stringify(response), {
-                EX: 3600,
-            });
+            // await redisClient.set(cacheKey, JSON.stringify(response), {
+            //     EX: 3600,
+            // });
+
+            await redisClient.set(cacheKey, JSON.stringify(response), 'EX', 3600);
     
             return response;
         } catch (error) {
