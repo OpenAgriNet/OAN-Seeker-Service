@@ -11,6 +11,13 @@ import responseData from './response.json';
 import { it } from 'node:test';
 import axios from 'axios';
 
+import { createClient } from 'redis';
+
+
+const redisClient = createClient();
+redisClient.connect(); // Ensure Redis client is connected
+
+
 @Injectable()
 export class JobsService {
     private domain = process.env.DOMAIN;
@@ -146,137 +153,132 @@ export class JobsService {
         }
     }
 
-    async weatherApiCall(location) {
-        this.logger.log('weather api calling');
+    // async weatherApiCall(location) {
+    //     this.logger.log('weather api calling');
 
-        const gps = await this.getGPS(location)
+    //     const gps = await this.getGPS(location)
         
 
-        let data = {
-            context: {
-                domain: this.domain,
-                action: 'search',
-                version: '1.1.0',
-                bap_id: this.bap_id,
-                bap_uri: this.bap_uri,
-                bpp_id: this.bpp_id,
-                bpp_uri: this.bpp_uri,
-                transaction_id: uuidv4(),
-                message_id: uuidv4(),
-                timestamp: new Date().toISOString(),
-            },
-            message: {
-                intent: {
-                    "category": {
-                        "descriptor": {
-                          "name": "Weather-Forecast"
-                      }
-                    },
-                    "item": {
-                      "time" : {
-                        "range" : {
-                          "start" : "2024-03-01T00:00:00.000Z",
-                          "end" : "2024-03-15T00:00:00.000Z"
-                        }
-                      }
-                    },
-                    "fulfillment": {
-                      "stops": [
-                        {
-                          "location": {
-                            "gps": `${gps.lat},  ${gps.lat}`
-                          }
-                        }
-                      ]
-                    }
-                },
+    //     let data = {
+    //         context: {
+    //             domain: this.domain,
+    //             action: 'search',
+    //             version: '1.1.0',
+    //             bap_id: this.bap_id,
+    //             bap_uri: this.bap_uri,
+    //             bpp_id: this.bpp_id,
+    //             bpp_uri: this.bpp_uri,
+    //             transaction_id: uuidv4(),
+    //             message_id: uuidv4(),
+    //             timestamp: new Date().toISOString(),
+    //         },
+    //         message: {
+    //             intent: {
+    //                 "category": {
+    //                     "descriptor": {
+    //                       "name": "Weather-Forecast"
+    //                   }
+    //                 },
+    //                 "item": {
+    //                   "time" : {
+    //                     "range" : {
+    //                       "start" : "2024-03-01T00:00:00.000Z",
+    //                       "end" : "2024-03-15T00:00:00.000Z"
+    //                     }
+    //                   }
+    //                 },
+    //                 "fulfillment": {
+    //                   "stops": [
+    //                     {
+    //                       "location": {
+    //                         "gps": `${gps.lat},  ${gps.lat}`
+    //                       }
+    //                     }
+    //                   ]
+    //                 }
+    //             },
                 
-            },
-        };
+    //         },
+    //     };
 
+    //     try {
+    //         let response = await this.proxyService.bapCLientApi2('search', data);
+    //         console.log('res', JSON.stringify(response));
+    //         return response
+    //     } catch (error) {
+    //         console.log('error', error);
+    //     }
+    // }
+
+    async weatherApiCall(location) {
+        this.logger.log('Checking weather data in cache...');
+    
+        const gps = await this.getGPS(location);
+        const lat = gps.lat;
+        const lon = gps.lon; // Assuming lon is available
+    
+        const cacheKey = `weather:${lat},${lon}`; // Unique cache key for lat, lon
+        console.log("cacheKey", cacheKey)
+    
         try {
-            let response = await this.proxyService.bapCLientApi2('search', data);
-            console.log('res', JSON.stringify(response));
-            return response
-            if (response) {
-                let arrayOfObjects = [];
-    
-                for (const responses of response.responses) {
-                    for (const providers of responses.message.catalog.providers) {
-                        for (const item of providers.items) {
-                            let fulfillmentIds = item.fulfillment_ids || [];
-                            let locationIds = item.location_ids || [];
-                            let categoryIds = item.category_ids || [];
-    
-                            let obj = {
-                                unique_id: this.generateFixedId(
-                                    item.id,
-                                    item.descriptor.name,
-                                    responses.context.bpp_id
-                                ),
-                                provider_id: providers.id,
-                                provider_name: providers.descriptor.name,
-                                bpp_id: responses.context.bpp_id,
-                                bpp_uri: responses.context.bpp_uri,
-    
-                                item_id: item.id,
-                                title: item?.descriptor?.name || '',
-                                short_desc: item?.descriptor?.short_desc || '',
-                                long_desc: item?.descriptor?.long_desc || '',
-    
-                                image: item?.descriptor?.images?.[0]?.url || '',
-                                media: item?.descriptor?.media?.[0]?.url || '',
-                                mimetype: item?.descriptor?.media?.[0]?.mimetype || '',
-    
-                                // Extracting IDs and Names separately for locations, categories, and fulfillments
-                                // location_ids: providers?.locations
-                                //     ?.filter(loc => locationIds.includes(loc.id))
-                                //     .map(loc => loc.id) || [],
-                                locations: providers?.locations
-                                    ?.filter(loc => locationIds.includes(loc.id))
-                                    .map(loc => loc.descriptor?.name) || [],
-    
-                                // category_ids: providers?.categories
-                                //     ?.filter(cat => categoryIds.includes(cat.id))
-                                //     .map(cat => cat.id) || [],
-                                categories: providers?.categories
-                                    ?.filter(cat => categoryIds.includes(cat.id))
-                                    .map(cat => cat.descriptor?.name) || [],
-    
-                                // fulfillment_ids: providers?.fulfillments
-                                //     ?.filter(ful => fulfillmentIds.includes(ful.id))
-                                //     .map(ful => ful.id) || [],
-                                fulfillments: providers?.fulfillments
-                                    ?.filter(ful => fulfillmentIds.includes(ful.id))
-                                    .map(ful => ful.descriptor?.name) || [],
-    
-                                    tags: item?.tags?.reduce((acc, tag) => {
-                                        const tagName = tag?.descriptor?.name || "";
-                                        if (!tagName) return acc;
-                                    
-                                        if (tag?.list.length > 1) {
-                                            acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
-                                        } else if (tag?.list.length === 1) {
-                                            const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
-                                            acc[tagName] = singleValue;
-                                        }
-                                    
-                                        return acc;
-                                    }, {})
-                            };
-    
-                            arrayOfObjects.push(obj);
-                        }
-                    }
-                }
-    
-                console.log('arrayOfObjects', arrayOfObjects);
-                //return arrayOfObjects;
-
-                return this.hasuraService.insertCacheData(arrayOfObjects);
+            // Check cache
+            const cachedResponse = await redisClient.get(cacheKey);
+            if (cachedResponse) {
+                this.logger.log('Returning cached weather data');
+                return JSON.parse(cachedResponse);
             }
+    
+            // If not cached, proceed with API call
+            this.logger.log('Cache miss. Calling weather API...');
+            let data = {
+                context: {
+                    domain: this.domain,
+                    action: 'search',
+                    version: '1.1.0',
+                    bap_id: this.bap_id,
+                    bap_uri: this.bap_uri,
+                    bpp_id: this.bpp_id,
+                    bpp_uri: this.bpp_uri,
+                    transaction_id: uuidv4(),
+                    message_id: uuidv4(),
+                    timestamp: new Date().toISOString(),
+                },
+                message: {
+                    intent: {
+                        category: {
+                            descriptor: { name: "Weather-Forecast" }
+                        },
+                        item: {
+                            time: {
+                                range: {
+                                    start: "2024-03-01T00:00:00.000Z",
+                                    end: "2024-03-15T00:00:00.000Z"
+                                }
+                            }
+                        },
+                        fulfillment: {
+                            stops: [
+                                {
+                                    location: { gps: `${lat},${lon}` }
+                                }
+                            ]
+                        }
+                    },
+                },
+            };
+    
+            // Call the external weather API
+            let response = await this.proxyService.bapCLientApi2('search', data);
+    
+            // Store response in cache for 1 hour (3600 seconds)
+            await redisClient.set(cacheKey, JSON.stringify(response), {
+                EX: 3600,
+            });
+    
+            return response;
         } catch (error) {
-            console.log('error', error);
+            this.logger.error('Error in weatherApiCall:', error);
+            throw error;
         }
     }
 
