@@ -3,6 +3,6 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Jobs-prod-backend is running!';
+    return 'OAN-Seeker-Service is running!';
   }
 }

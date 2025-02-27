@@ -5,8 +5,8 @@ import axios from 'axios';
 @Injectable()
 export class HasuraService {
 
-  private hasurastate = process.env.HASURA_state;
-  private adminSecretKey = process.env.HASURA_GRAPHQL_ADMIN_SECRET;
+  private hasura_url = process.env.HASURA_URL;
+  private admin_secret_key = process.env.HASURA_GRAPHQL_ADMIN_SECRET;
   private cache_db = process.env.CACHE_DB;
   private response_cache_db = process.env.RESPONSE_CACHE_DB;
   private jobs_seeker_dev = process.env.JOBS_SEEKER_DEV;
@@ -207,7 +207,7 @@ export class HasuraService {
   async queryDb(query: string, variables?: Record<string, any>): Promise<any> {
     try {
       const response = await axios.post(
-        'http://localhost:8080/v1/graphql',
+        this.hasura_url,
         {
           query,
           variables,
@@ -215,7 +215,7 @@ export class HasuraService {
         {
           headers: {
             'Content-Type': 'application/json',
-            'x-hasura-admin-secret': 'mysecretkey'
+            'x-hasura-admin-secret': this.admin_secret_key
           },
         }
       );
