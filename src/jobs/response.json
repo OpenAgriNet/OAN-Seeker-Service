@@ -2,27 +2,32 @@
     "context": {
         "ttl": "PT10M",
         "action": "search",
-        "timestamp": "2025-02-26T17:27:04.790Z",
-        "message_id": "2b446bb0-0915-458a-9ec9-4c05bd99ce7f",
-        "transaction_id": "503d86e7-655b-4e56-a7db-c39e8ed8282c",
+        "timestamp": "2025-02-27T11:16:00.566Z",
+        "message_id": "2cbcc29a-9dc6-4052-9078-c53c879d4a7f",
+        "transaction_id": "31d9488b-7701-4e62-9a93-2b1506d751d3",
         "domain": "knowledge-advisory:agrinet:vistaar",
         "version": "1.1.0",
         "bap_id": "vistaar-bap.tekdinext.com",
-        "bap_uri": "https://vistaar-bap.tekdinext.com/"
+        "bap_uri": "https://vistaar-bap.tekdinext.com/",
+        "bpp_id": "icar-bpp.tekdinext.com",
+        "bpp_uri": "https://icar-bpp.tekdinext.com"
     },
     "responses": [
         {
             "context": {
-                "domain": "scheme:uai",
+                "domain": "knowledge-advisory:agrinet:vistaar",
                 "action": "on_search",
                 "version": "1.1.0",
-                "bap_id": "scheme-bap.tekdinext.com",
-                "bap_uri": "https://scheme-bap.tekdinext.com/",
-                "bpp_id": "scheme-bpp.tekdinext.com",
-                "bpp_uri": "https://scheme-bpp.tekdinext.com/",
-                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60021",
-                "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60021",
-                "timestamp": "2023-02-06T09:55:41.161Z"
+                "bpp_id": "icar-bpp.tekdinext.com",
+                "bpp_uri": "https://icar-bpp.tekdinext.com",
+                "country": "IND",
+                "city": "std:080",
+                "bap_id": "vistaar-bap.tekdinext.com",
+                "bap_uri": "https://vistaar-bap.tekdinext.com/",
+                "transaction_id": "31d9488b-7701-4e62-9a93-2b1506d751d3",
+                "message_id": "2cbcc29a-9dc6-4052-9078-c53c879d4a7f",
+                "ttl": "PT10M",
+                "timestamp": "2025-02-27T11:16:03.639Z"
             },
             "message": {
                 "catalog": {
@@ -73,25 +78,22 @@
                                     "id": "f1",
                                     "descriptor": {
                                         "name": "Direct Benefit Transfer (DBT)"
-                                    }
+                                    },
+                                    "tracking": false
                                 },
                                 {
                                     "id": "f2",
                                     "descriptor": {
                                         "name": "Subsidized Services"
-                                    }
+                                    },
+                                    "tracking": false
                                 },
                                 {
                                     "id": "f3",
                                     "descriptor": {
                                         "name": "Employment & Placement"
-                                    }
-                                },
-                                {
-                                    "id": "f4",
-                                    "descriptor": {
-                                        "name": "Placements"
-                                    }
+                                    },
+                                    "tracking": false
                                 }
                             ],
                             "locations": [
@@ -112,9 +114,9 @@
                             ],
                             "items": [
                                 {
-                                    "id": "i1",
+                                    "id": "i6",
                                     "descriptor": {
-                                        "name": "Ayushman Bharat Yojana",
+                                        "name": "Test 1 Ayushman Bharat Yojana",
                                         "short_desc": "Pradhan Mantri Jan Arogya Yoja...",
                                         "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. 3) The benefit also includes pre and post-hospitalization expenses. 4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures 5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)",
                                         "media": [
@@ -132,41 +134,9 @@
                                     "tags": [
                                         {
                                             "descriptor": {
-                                                "name": "Target beneficiary type"
-                                            },
-                                            "list": [
-                                                {
-                                                    "descriptor": {
-                                                        "name": "Individual"
-                                                    },
-                                                    "value": null
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Funding model"
-                                            },
-                                            "list": [
-                                                {
-                                                    "descriptor": {
-                                                        "name": "Central Sector Scheme"
-                                                    },
-                                                    "value": null
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "descriptor": {
                                                 "name": "Required documents"
                                             },
                                             "list": [
-                                                {
-                                                    "descriptor": {
-                                                        "name": "Proof of Residence"
-                                                    },
-                                                    "value": null
-                                                },
                                                 {
                                                     "descriptor": {
                                                         "name": "Proof of Identity"
@@ -179,7 +149,8 @@
                                                     },
                                                     "value": "optional"
                                                 }
-                                            ]
+                                            ],
+                                            "display": true
                                         },
                                         {
                                             "descriptor": {
@@ -192,7 +163,8 @@
                                                     },
                                                     "value": "Maharashtra, Karnataka"
                                                 }
-                                            ]
+                                            ],
+                                            "display": true
                                         },
                                         {
                                             "descriptor": {
@@ -205,7 +177,8 @@
                                                     },
                                                     "value": "Yes"
                                                 }
-                                            ]
+                                            ],
+                                            "display": true
                                         }
                                     ],
                                     "category_ids": [
@@ -215,7 +188,20 @@
                                         "f2"
                                     ],
                                     "location_ids": [
-                                        "l1", "l2"
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "i7",
+                                    "descriptor": {
+                                        "name": "Test2 Pradhan Mantri Kisan Samman Nidhi  Yojana",
+                                        "short_desc": "The Pradhan Mantri Kisan Samma...",
+                                        "long_desc": "The Pradhan Mantri Kisan Samman Nidhi Yojana (PM-Kisan Yojana) is a government of  India-initiated scheme that aims to provide minimum income support of up to Rs. 6000 to all  small and marginal farmers per year.  PM-KISAN Yojana scheme provides a financial benefit of Rs. 6000 per annum to all landholding  farmers’ families. This sum is payable in three equal instalments of Rs. 2000 each every four  months.",
+                                        "media": [],
+                                        "images": []
+                                    },
+                                    "location_ids": [
+                                        "l1"
                                     ]
                                 }
                             ]

@@ -171,38 +171,103 @@ export class HasuraService {
     }
   }
 
+  // async insertCacheData(arrayOfObjects) {
+  //   console.log("inserting jobs into " + this.cache_db)
+  //   console.log("arrayOfObjects", arrayOfObjects)
+
+  //   const query = `mutation MyMutation($item_id: String, $title: String, $description: String, $company: String, $location_id: String, $city: String, $state: String, $country: String, $qualification: String, $experience: String, $age_criteria: String, $skills: String, $proficiency: String, $work_mode: String, $start_date: String, $end_date: String, $responsiblities: String, $provider_id: String, $provider_name: String, $bpp_id: String, $bpp_uri: String, $unique_id: String, $gender: String, $fulfillments: String, $item: json ) { 
+  //           insert_${this.cache_db}(objects: {item_id: $item_id, title: $title, description: $description, company: $company, location_id: $location_id, city: $city, state: $state, country: $country, qualification: $qualification, experience: $experience, age_criteria: $age_criteria, skills: $skills, proficiency: $proficiency, work_mode: $work_mode, start_date: $start_date, end_date: $end_date, responsiblities: $responsiblities, provider_id: $provider_id, provider_name: $provider_name, bpp_id: $bpp_id, bpp_uri: $bpp_uri, unique_id: $unique_id, gender: $gender, fulfillments: $fulfillments, item: $item }) {
+  //           returning {
+  //             id
+  //             item_id
+  //             unique_id
+  //           }
+  //         }
+  //       }
+  //       `
+
+  //   let promises = []
+  //   arrayOfObjects.forEach((item) => {
+  //     promises.push(this.queryDb(query, item))
+  //   })
+
+  //   let insertApiRes = await Promise.all(promises)
+  //   console.log("insertApiRes", insertApiRes)
+  //   return insertApiRes
+
+  //   // try {
+  //   //   const response = await this.queryDb(query, filteredArray[0] );
+  //   //   return response
+  //   // } catch (error) {
+  //   //   throw new HttpException('Failed to create Content', HttpStatus.NOT_FOUND);
+  //   // }
+
+  // }
+
   async insertCacheData(arrayOfObjects) {
-    console.log("inserting jobs into " + this.cache_db)
-    console.log("arrayOfObjects", arrayOfObjects)
+    console.log("Inserting jobs into " + this.cache_db);
+    console.log("arrayOfObjects", JSON.stringify(arrayOfObjects, null, 2));
 
-    const query = `mutation MyMutation($item_id: String, $title: String, $description: String, $company: String, $location_id: String, $city: String, $state: String, $country: String, $qualification: String, $experience: String, $age_criteria: String, $skills: String, $proficiency: String, $work_mode: String, $start_date: String, $end_date: String, $responsiblities: String, $provider_id: String, $provider_name: String, $bpp_id: String, $bpp_uri: String, $unique_id: String, $gender: String, $fulfillments: String, $item: json ) { 
-            insert_${this.cache_db}(objects: {item_id: $item_id, title: $title, description: $description, company: $company, location_id: $location_id, city: $city, state: $state, country: $country, qualification: $qualification, experience: $experience, age_criteria: $age_criteria, skills: $skills, proficiency: $proficiency, work_mode: $work_mode, start_date: $start_date, end_date: $end_date, responsiblities: $responsiblities, provider_id: $provider_id, provider_name: $provider_name, bpp_id: $bpp_id, bpp_uri: $bpp_uri, unique_id: $unique_id, gender: $gender, fulfillments: $fulfillments, item: $item }) {
-            returning {
-              id
-              item_id
-              unique_id
+    const query = `
+        mutation InsertCacheData(
+            $unique_id: String!, $provider_id: String, $provider_name: String,
+            $bpp_id: String, $bpp_uri: String, $item_id: String, $title: String,
+            $short_desc: String, $long_desc: String, $image: String, $media: String,
+            $mimetype: String, $locations: [String!], $categories: [String!], 
+            $fulfillments: [String!], $tags: jsonb
+        ) { 
+            insert_${this.cache_db}(
+                objects: {
+                    unique_id: $unique_id, provider_id: $provider_id, 
+                    provider_name: $provider_name, bpp_id: $bpp_id, 
+                    bpp_uri: $bpp_uri, item_id: $item_id, title: $title, 
+                    short_desc: $short_desc, long_desc: $long_desc, image: $image, 
+                    media: $media, mimetype: $mimetype, locations: $locations, 
+                    categories: $categories, fulfillments: $fulfillments, tags: $tags
+                }) {
+                returning {
+                    id
+                    item_id
+                    unique_id
+                    title
+                }
             }
-          }
         }
-        `
+    `;
 
-    let promises = []
-    arrayOfObjects.forEach((item) => {
-      promises.push(this.queryDb(query, item))
-    })
+    let promises = arrayOfObjects.map((item) => {
+        const variables = {
+            unique_id: item.unique_id,
+            provider_id: item.provider_id || null,
+            provider_name: item.provider_name || null,
+            bpp_id: item.bpp_id || null,
+            bpp_uri: item.bpp_uri || null,
+            item_id: item.item_id || null,
+            title: item.title || null,
+            short_desc: item.short_desc || null,
+            long_desc: item.long_desc || null,
+            image: item.image || null,
+            media: item.media || null,
+            mimetype: item.mimetype || null,
+            locations: item.locations && item.locations.length > 0 ? item.locations : null,
+            categories: item.categories && item.categories.length > 0 ? item.categories : null,
+            fulfillments: item.fulfillments && item.fulfillments.length > 0 ? item.fulfillments : null,
+            tags: item.tags && Object.keys(item.tags).length > 0 ? item.tags : null,
+        };
 
-    let insertApiRes = await Promise.all(promises)
-    console.log("insertApiRes", insertApiRes)
-    return insertApiRes
+        return this.queryDb(query, variables);
+    });
 
-    // try {
-    //   const response = await this.queryDb(query, filteredArray[0] );
-    //   return response
-    // } catch (error) {
-    //   throw new HttpException('Failed to create Content', HttpStatus.NOT_FOUND);
-    // }
+    try {
+        let insertApiRes = await Promise.all(promises);
+        console.log("Insert API Response", insertApiRes);
+        return insertApiRes;
+    } catch (error) {
+        console.error("Error inserting cache data:", error);
+        throw new HttpException("Failed to create Content", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
 
-  }
 
   async queryDb(query: string, variables?: Record<string, any>): Promise<any> {
     try {

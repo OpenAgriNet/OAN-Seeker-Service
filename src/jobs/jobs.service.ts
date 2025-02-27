@@ -15,6 +15,8 @@ export class JobsService {
     private domain = process.env.DOMAIN;
     private bap_id = process.env.BAP_ID;
     private bap_uri = process.env.BAP_URI;
+    private bpp_id = process.env.BPP_ID;
+    private bpp_uri = process.env.BPP_URI;
     private response_cache_db = process.env.RESPONSE_CACHE_DB;
     private telemetry_db = process.env.JOBS_TELEMETRY_DB
 
@@ -39,6 +41,8 @@ export class JobsService {
                 version: '1.1.0',
                 bap_id: this.bap_id,
                 bap_uri: this.bap_uri,
+                bpp_id: this.bpp_id,
+                bpp_uri: this.bpp_uri,
                 transaction_id: uuidv4(),
                 message_id: uuidv4(),
                 timestamp: new Date().toISOString(),
@@ -59,84 +63,80 @@ export class JobsService {
             console.log('res', JSON.stringify(response));
             if (response) {
                 let arrayOfObjects = [];
+    
                 for (const responses of response.responses) {
-                    console.log('===1128===');
-                    if (
-                        responses.context.bpp_id !== 'beckn-sandbox-bpp.becknprotocol.io' && responses?.message?.catalog?.providers
-                    ) {
-                        for (const providers of responses.message.catalog.providers) {
-                            console.log('===1130===', providers.locations);
-                            for (const [index, item] of providers.items.entries()) {
-                                console.log('===1132===');
-                                let obj = {
-                                    unique_id: this.generateFixedId(
-                                        item.id,
-                                        item.descriptor.name,
-                                        responses.context.bpp_id,
-                                    ),
-                                    item_id: item.id,
-                                    title: item?.descriptor?.name ? item.descriptor.name : '',
-                                    description: item?.descriptor?.long_desc
-                                        ? item.descriptor.long_desc
-                                        : '',
-                                    location_id: item?.location_ids[0]
-                                        ? item.location_ids[0]
-                                        : '',
-                                    //city: providers.locations.find(item => item.id === items.location_ids[0]) ? providers.locations.find(item => item.id === items.location_ids[0]).city.name : null,
-                                    city: providers?.locations[index]?.city.name
-                                        ? providers.locations[index].city.name
-                                        : '',
-                                    state: providers?.locations[index]?.state.name
-                                        ? providers.locations[index].state.name
-                                        : '',
-                                    //country: providers.locations[index].country.name ? providers.locations[index].country.name: '',
-                                    provider_id: providers.id,
-                                    provider_name: providers.descriptor.name,
-                                    bpp_id: responses.context.bpp_id,
-                                    bpp_uri: responses.context.bpp_uri,
-                                    company: item?.creator?.descriptor?.name
-                                        ? item.creator.descriptor.name
-                                        : '',
-                                    skills: item?.tags?.find(
-                                        (tag) => tag.descriptor.name === 'skill requirement',
-                                    )?.list[0]?.value
-                                        ? item.tags.find(
-                                            (tag) => tag.descriptor.name === 'skill requirement',
-                                        )?.list[0].value
-                                        : null,
-                                    gender:
-                                        item?.tags?.find(
-                                            (tag) => tag.descriptor.name === 'Gender',
-                                        ) &&
-                                            ['Male', 'Female'].includes(
-                                                item?.tags?.find(
-                                                    (tag) => tag.descriptor.name === 'Gender',
-                                                ).list[0]?.value,
-                                            )
-                                            ? item.tags.find(
-                                                (tag) => tag.descriptor.name === 'Gender',
-                                            ).list[0].value
-                                            : null,
-                                    fulfillments: providers?.fulfillments && Array.isArray(providers.fulfillments) && index >= 0 && index < providers.fulfillments.length
-                                        ? providers.fulfillments[index]?.type || null
-                                        : null,
-                                    item: item,
-                                };
-                                arrayOfObjects.push(obj);
-                            }
+                    for (const providers of responses.message.catalog.providers) {
+                        for (const item of providers.items) {
+                            let fulfillmentIds = item.fulfillment_ids || [];
+                            let locationIds = item.location_ids || [];
+                            let categoryIds = item.category_ids || [];
+    
+                            let obj = {
+                                unique_id: this.generateFixedId(
+                                    item.id,
+                                    item.descriptor.name,
+                                    responses.context.bpp_id
+                                ),
+                                provider_id: providers.id,
+                                provider_name: providers.descriptor.name,
+                                bpp_id: responses.context.bpp_id,
+                                bpp_uri: responses.context.bpp_uri,
+    
+                                item_id: item.id,
+                                title: item?.descriptor?.name || '',
+                                short_desc: item?.descriptor?.short_desc || '',
+                                long_desc: item?.descriptor?.long_desc || '',
+    
+                                image: item?.descriptor?.images?.[0]?.url || '',
+                                media: item?.descriptor?.media?.[0]?.url || '',
+                                mimetype: item?.descriptor?.media?.[0]?.mimetype || '',
+    
+                                // Extracting IDs and Names separately for locations, categories, and fulfillments
+                                // location_ids: providers?.locations
+                                //     ?.filter(loc => locationIds.includes(loc.id))
+                                //     .map(loc => loc.id) || [],
+                                locations: providers?.locations
+                                    ?.filter(loc => locationIds.includes(loc.id))
+                                    .map(loc => loc.descriptor?.name) || [],
+    
+                                // category_ids: providers?.categories
+                                //     ?.filter(cat => categoryIds.includes(cat.id))
+                                //     .map(cat => cat.id) || [],
+                                categories: providers?.categories
+                                    ?.filter(cat => categoryIds.includes(cat.id))
+                                    .map(cat => cat.descriptor?.name) || [],
+    
+                                // fulfillment_ids: providers?.fulfillments
+                                //     ?.filter(ful => fulfillmentIds.includes(ful.id))
+                                //     .map(ful => ful.id) || [],
+                                fulfillments: providers?.fulfillments
+                                    ?.filter(ful => fulfillmentIds.includes(ful.id))
+                                    .map(ful => ful.descriptor?.name) || [],
+    
+                                    tags: item?.tags?.reduce((acc, tag) => {
+                                        const tagName = tag?.descriptor?.name || "";
+                                        if (!tagName) return acc;
+                                    
+                                        if (tag?.list.length > 1) {
+                                            acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
+                                        } else if (tag?.list.length === 1) {
+                                            const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
+                                            acc[tagName] = singleValue;
+                                        }
+                                    
+                                        return acc;
+                                    }, {})
+                            };
+    
+                            arrayOfObjects.push(obj);
                         }
                     }
                 }
+    
                 console.log('arrayOfObjects', arrayOfObjects);
-                console.log('arrayOfObjects length', arrayOfObjects.length);
-                let uniqueObjects = Array.from(
-                    new Set(arrayOfObjects.map((obj) => obj.unique_id)),
-                ).map((id) => {
-                    return arrayOfObjects.find((obj) => obj.unique_id === id);
-                });
-                console.log('uniqueObjects length', uniqueObjects.length);
-                //return uniqueObjects
-                return this.hasuraService.insertCacheData(uniqueObjects);
+                //return arrayOfObjects;
+
+                return this.hasuraService.insertCacheData(arrayOfObjects);
             }
         } catch (error) {
             console.log('error', error);
@@ -751,7 +751,9 @@ export class JobsService {
                 }
     
                 console.log('arrayOfObjects', arrayOfObjects);
-                return arrayOfObjects;
+                //return arrayOfObjects;
+
+                return this.hasuraService.insertCacheData(arrayOfObjects);
             }
         } catch (error) {
             console.log('error', error);

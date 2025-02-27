@@ -69,8 +69,8 @@ export class JobsController {
     @Post('/create')
     async contentapi() {
         this.logger.log('POST /create')
-        //return this.jobsService.jobsApiCall()
-        return this.jobsService.testApiCall()
+        return this.jobsService.jobsApiCall()
+        //return this.jobsService.testApiCall()
     }
 
     // create jobs by cronjob
