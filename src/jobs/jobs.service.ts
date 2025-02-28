@@ -10,36 +10,8 @@ const crypto = require('crypto');
 import responseData from './response.json';
 import { it } from 'node:test';
 import axios from 'axios';
-
-// import { createClient } from 'redis';
-
-
-// const redisClient = createClient();
-// redisClient.connect(); // Ensure Redis client is connected
-
-// const redisClient = createClient({
-//     url: 'redis://localhost:6379' // Ensure Redis is running on this port
-// });
-
-// redisClient.on('error', (err) => console.error('Redis Client Error', err));
-
 import Redis from 'ioredis';
 
-const redisClient = new Redis({
-  host: 'onest-ondc-dev-bpp', // Use the container name if running in Docker
-  port: 6382,         // Match the exposed Redis port
-  retryStrategy: (times) => Math.min(times * 50, 2000), // Auto-retry
-});
-
-// Handle Redis errors
-redisClient.on('error', (err) => {
-  console.error('Redis Error:', err);
-});
-
-// Handle successful connection
-redisClient.on('connect', () => {
-  console.log('Connected to Redis');
-});
 
 
 @Injectable()
@@ -51,8 +23,11 @@ export class JobsService {
     private bpp_uri = process.env.BPP_URI;
     private response_cache_db = process.env.RESPONSE_CACHE_DB;
     private telemetry_db = process.env.JOBS_TELEMETRY_DB
-    private readonly API_KEY = 'babaeca73279fbdc6b67d723dd240889';
-    private readonly GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct';
+    private readonly API_KEY = process.env.API_KEY;
+    private readonly GEO_URL = process.env.GEO_URL;
+    private redis_host = process.env.REDIS_HOST;
+    private redis_port = process.env.REDIS_PORT;
+    private redisClient: Redis;
 
     constructor(
         private readonly hasuraService: HasuraService,
@@ -60,7 +35,23 @@ export class JobsService {
         private readonly logger: LoggerService,
         @InjectRepository(ResponseCache)
         private readonly responseCacheRepository: Repository<ResponseCache>,
-    ) { }
+    ) {
+        this.redisClient = new Redis({
+            host: this.redis_host, // Use the container name if running in Docker
+            port: Number(this.redis_port), // Ensure it's a number
+            retryStrategy: (times) => Math.min(times * 50, 2000), // Auto-retry
+        });
+
+        // Handle Redis errors
+        this.redisClient.on('error', (err) => {
+            console.error('Redis Error:', err);
+        });
+
+        // Handle successful connection
+        this.redisClient.on('connect', () => {
+            console.log('Connected to Redis');
+        });
+    }
 
     async getContents(getContentdto) {
         return this.hasuraService.findContentCache(getContentdto);
@@ -97,14 +88,14 @@ export class JobsService {
             console.log('res', JSON.stringify(response));
             if (response) {
                 let arrayOfObjects = [];
-    
+
                 for (const responses of response.responses) {
                     for (const providers of responses.message.catalog.providers) {
                         for (const item of providers.items) {
                             let fulfillmentIds = item.fulfillment_ids || [];
                             let locationIds = item.location_ids || [];
                             let categoryIds = item.category_ids || [];
-    
+
                             let obj = {
                                 unique_id: this.generateFixedId(
                                     item.id,
@@ -115,16 +106,16 @@ export class JobsService {
                                 provider_name: providers.descriptor.name,
                                 bpp_id: responses.context.bpp_id,
                                 bpp_uri: responses.context.bpp_uri,
-    
+
                                 item_id: item.id,
                                 title: item?.descriptor?.name || '',
                                 short_desc: item?.descriptor?.short_desc || '',
                                 long_desc: item?.descriptor?.long_desc || '',
-    
+
                                 image: item?.descriptor?.images?.[0]?.url || '',
                                 media: item?.descriptor?.media?.[0]?.url || '',
                                 mimetype: item?.descriptor?.media?.[0]?.mimetype || '',
-    
+
                                 // Extracting IDs and Names separately for locations, categories, and fulfillments
                                 // location_ids: providers?.locations
                                 //     ?.filter(loc => locationIds.includes(loc.id))
@@ -132,41 +123,41 @@ export class JobsService {
                                 locations: providers?.locations
                                     ?.filter(loc => locationIds.includes(loc.id))
                                     .map(loc => loc.descriptor?.name) || [],
-    
+
                                 // category_ids: providers?.categories
                                 //     ?.filter(cat => categoryIds.includes(cat.id))
                                 //     .map(cat => cat.id) || [],
                                 categories: providers?.categories
                                     ?.filter(cat => categoryIds.includes(cat.id))
                                     .map(cat => cat.descriptor?.name) || [],
-    
+
                                 // fulfillment_ids: providers?.fulfillments
                                 //     ?.filter(ful => fulfillmentIds.includes(ful.id))
                                 //     .map(ful => ful.id) || [],
                                 fulfillments: providers?.fulfillments
                                     ?.filter(ful => fulfillmentIds.includes(ful.id))
                                     .map(ful => ful.descriptor?.name) || [],
-    
-                                    tags: item?.tags?.reduce((acc, tag) => {
-                                        const tagName = tag?.descriptor?.name || "";
-                                        if (!tagName) return acc;
-                                    
-                                        if (tag?.list.length > 1) {
-                                            acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
-                                        } else if (tag?.list.length === 1) {
-                                            const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
-                                            acc[tagName] = singleValue;
-                                        }
-                                    
-                                        return acc;
-                                    }, {})
+
+                                tags: item?.tags?.reduce((acc, tag) => {
+                                    const tagName = tag?.descriptor?.name || "";
+                                    if (!tagName) return acc;
+
+                                    if (tag?.list.length > 1) {
+                                        acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
+                                    } else if (tag?.list.length === 1) {
+                                        const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
+                                        acc[tagName] = singleValue;
+                                    }
+
+                                    return acc;
+                                }, {})
                             };
-    
+
                             arrayOfObjects.push(obj);
                         }
                     }
                 }
-    
+
                 console.log('arrayOfObjects', arrayOfObjects);
                 //return arrayOfObjects;
 
@@ -181,7 +172,7 @@ export class JobsService {
     //     this.logger.log('weather api calling');
 
     //     const gps = await this.getGPS(location)
-        
+
 
     //     let data = {
     //         context: {
@@ -221,7 +212,7 @@ export class JobsService {
     //                   ]
     //                 }
     //             },
-                
+
     //         },
     //     };
 
@@ -236,22 +227,22 @@ export class JobsService {
 
     async weatherApiCall(location) {
         this.logger.log('Checking weather data in cache...');
-    
+
         const gps = await this.getGPS(location);
         const lat = gps.lat;
         const lon = gps.lon; // Assuming lon is available
-    
+
         const cacheKey = `weather:${lat},${lon}`; // Unique cache key for lat, lon
         console.log("cacheKey", cacheKey)
-    
+
         try {
             // Check cache
-            const cachedResponse = await redisClient.get(cacheKey);
+            const cachedResponse = await this.redisClient.get(cacheKey);
             if (cachedResponse) {
                 this.logger.log('Returning cached weather data');
                 return JSON.parse(cachedResponse);
             }
-    
+
             // If not cached, proceed with API call
             this.logger.log('Cache miss. Calling weather API...');
             let data = {
@@ -290,17 +281,17 @@ export class JobsService {
                     },
                 },
             };
-    
+
             // Call the external weather API
             let response = await this.proxyService.bapCLientApi2('search', data);
-    
+
             // Store response in cache for 1 hour (3600 seconds)
             // await redisClient.set(cacheKey, JSON.stringify(response), {
             //     EX: 3600,
             // });
 
-            await redisClient.set(cacheKey, JSON.stringify(response), 'EX', 3600);
-    
+            await this.redisClient.set(cacheKey, JSON.stringify(response), 'EX', 3600);
+
             return response;
         } catch (error) {
             this.logger.error('Error in weatherApiCall:', error);
@@ -328,9 +319,9 @@ export class JobsService {
             const { lat, lon, name, country, state } = geoResponse.data[0];
 
             return { lat, lon, name, country, state }
-            
+
         } catch (error) {
-            
+
         }
     }
 
@@ -868,17 +859,17 @@ export class JobsService {
     testApiCall() {
         try {
             let response = responseData;
-    
+
             if (response) {
                 let arrayOfObjects = [];
-    
+
                 for (const responses of response.responses) {
                     for (const providers of responses.message.catalog.providers) {
                         for (const item of providers.items) {
                             let fulfillmentIds = item.fulfillment_ids || [];
                             let locationIds = item.location_ids || [];
                             let categoryIds = item.category_ids || [];
-    
+
                             let obj = {
                                 unique_id: this.generateFixedId(
                                     item.id,
@@ -889,16 +880,16 @@ export class JobsService {
                                 provider_name: providers.descriptor.name,
                                 bpp_id: responses.context.bpp_id,
                                 bpp_uri: responses.context.bpp_uri,
-    
+
                                 item_id: item.id,
                                 title: item?.descriptor?.name || '',
                                 short_desc: item?.descriptor?.short_desc || '',
                                 long_desc: item?.descriptor?.long_desc || '',
-    
+
                                 image: item?.descriptor?.images?.[0]?.url || '',
                                 media: item?.descriptor?.media?.[0]?.url || '',
                                 mimetype: item?.descriptor?.media?.[0]?.mimetype || '',
-    
+
                                 // Extracting IDs and Names separately for locations, categories, and fulfillments
                                 // location_ids: providers?.locations
                                 //     ?.filter(loc => locationIds.includes(loc.id))
@@ -906,41 +897,41 @@ export class JobsService {
                                 locations: providers?.locations
                                     ?.filter(loc => locationIds.includes(loc.id))
                                     .map(loc => loc.descriptor?.name) || [],
-    
+
                                 // category_ids: providers?.categories
                                 //     ?.filter(cat => categoryIds.includes(cat.id))
                                 //     .map(cat => cat.id) || [],
                                 categories: providers?.categories
                                     ?.filter(cat => categoryIds.includes(cat.id))
                                     .map(cat => cat.descriptor?.name) || [],
-    
+
                                 // fulfillment_ids: providers?.fulfillments
                                 //     ?.filter(ful => fulfillmentIds.includes(ful.id))
                                 //     .map(ful => ful.id) || [],
                                 fulfillments: providers?.fulfillments
                                     ?.filter(ful => fulfillmentIds.includes(ful.id))
                                     .map(ful => ful.descriptor?.name) || [],
-    
-                                    tags: item?.tags?.reduce((acc, tag) => {
-                                        const tagName = tag?.descriptor?.name || "";
-                                        if (!tagName) return acc;
-                                    
-                                        if (tag?.list.length > 1) {
-                                            acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
-                                        } else if (tag?.list.length === 1) {
-                                            const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
-                                            acc[tagName] = singleValue;
-                                        }
-                                    
-                                        return acc;
-                                    }, {})
+
+                                tags: item?.tags?.reduce((acc, tag) => {
+                                    const tagName = tag?.descriptor?.name || "";
+                                    if (!tagName) return acc;
+
+                                    if (tag?.list.length > 1) {
+                                        acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
+                                    } else if (tag?.list.length === 1) {
+                                        const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
+                                        acc[tagName] = singleValue;
+                                    }
+
+                                    return acc;
+                                }, {})
                             };
-    
+
                             arrayOfObjects.push(obj);
                         }
                     }
                 }
-    
+
                 console.log('arrayOfObjects', arrayOfObjects);
                 //return arrayOfObjects;
 
@@ -950,8 +941,8 @@ export class JobsService {
             console.log('error', error);
         }
     }
-    
-    
-    
-    
+
+
+
+
 }
