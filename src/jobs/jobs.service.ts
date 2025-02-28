@@ -290,7 +290,9 @@ export class JobsService {
             //     EX: 3600,
             // });
 
-            await this.redisClient.set(cacheKey, JSON.stringify(response), 'EX', 3600);
+            if(response.responses.length>0) {
+                await this.redisClient.set(cacheKey, JSON.stringify(response), 'EX', 3600);
+            }
 
             return response;
         } catch (error) {
