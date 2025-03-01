@@ -68,6 +68,16 @@ export class JobsService {
                 bap_uri: this.bap_uri,
                 bpp_id: this.bpp_id,
                 bpp_uri: this.bpp_uri,
+                location: {
+                    country: {
+                        name: "India",
+                        code: "IND"
+                    },
+                    city: {
+                        name: "Bangalore",
+                        code: "std:080"
+                    }
+                },
                 transaction_id: uuidv4(),
                 message_id: uuidv4(),
                 timestamp: new Date().toISOString(),
@@ -254,6 +264,16 @@ export class JobsService {
                     bap_uri: this.bap_uri,
                     bpp_id: this.bpp_id,
                     bpp_uri: this.bpp_uri,
+                    location: {
+                        country: {
+                            name: "India",
+                            code: "IND"
+                        },
+                        city: {
+                            name: "Bangalore",
+                            code: "std:080"
+                        }
+                    },
                     transaction_id: uuidv4(),
                     message_id: uuidv4(),
                     timestamp: new Date().toISOString(),
