@@ -148,19 +148,44 @@ export class JobsService {
                                     ?.filter(ful => fulfillmentIds.includes(ful.id))
                                     .map(ful => ful.descriptor?.name) || [],
 
+                                // tags: item?.tags?.reduce((acc, tag) => {
+                                //     const tagName = tag?.descriptor?.name || "";
+                                //     if (!tagName) return acc;
+
+                                //     // if (tag?.list.length > 1) {
+                                //     //     acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
+                                //     // } else if (tag?.list.length === 1) {
+                                //     //     const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
+                                //     //     acc[tagName] = singleValue;
+                                //     // }
+
+                                //     if (tag?.list.length > 0) {
+                                //         acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
+                                //     }
+
+                                //     return acc;
+                                // }, {})
+
                                 tags: item?.tags?.reduce((acc, tag) => {
-                                    const tagName = tag?.descriptor?.name || "";
+                                    const tagName = tag?.descriptor?.name;
                                     if (!tagName) return acc;
-
-                                    if (tag?.list.length > 1) {
-                                        acc[tagName] = tag.list.map((t) => t?.descriptor?.name || t?.value || null);
-                                    } else if (tag?.list.length === 1) {
-                                        const singleValue = tag.list[0]?.descriptor?.name || tag.list[0]?.value || null;
-                                        acc[tagName] = singleValue;
+                                
+                                    // Ensure tag.list is an array and has elements
+                                    if (Array.isArray(tag?.list) && tag.list.length > 0) {
+                                        acc.push({
+                                            name: tagName,
+                                            list: tag.list.map((t) => ({
+                                                name: t?.descriptor?.name || t?.name || null,
+                                                value: t?.descriptor?.value || t?.value || null,
+                                                short_description: t?.descriptor?.short_description || t?.short_description || null,
+                                            })).filter(item => item.name) // Filter out invalid items
+                                        });
                                     }
-
+                                
                                     return acc;
-                                }, {})
+                                }, [])
+                                
+                                
                             };
 
                             arrayOfObjects.push(obj);
