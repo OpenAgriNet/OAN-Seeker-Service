@@ -11,6 +11,7 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { JobsService } from './jobs/jobs.service';
 import { ResponseCache } from './entity/response.entity';
+import { LocationModule } from './location/location.module';
 
 @Module({
   imports: [
@@ -40,7 +41,8 @@ import { ResponseCache } from './entity/response.entity';
     },
     JobsModule,
     UserModule,
-    TypeOrmModule.forFeature([ResponseCache])
+    TypeOrmModule.forFeature([ResponseCache]),
+    LocationModule
   ],
   controllers: [AppController],
   providers: [AppService, HasuraService, ProxyService, LoggerService, JobsService],

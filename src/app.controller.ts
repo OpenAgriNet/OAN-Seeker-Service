@@ -13,6 +13,14 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Post('/telemetry')
+  async insertTelemetry(@Request() request, @Body() body) {
+    console.log("telemetry api called....")
+    this.logger.log('POST /telemetry', JSON.stringify(body))
+    
+    return body;
+  }
+
   @Post('/search')
   async searchContent(@Request() request, @Body() body) {
     this.logger.log('POST /search', JSON.stringify(body))
