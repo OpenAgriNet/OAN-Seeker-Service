@@ -15,30 +15,27 @@
     "responses": [
         {
             "context": {
-                "domain": "knowledge-advisory:agrinet:vistaar",
+                "domain": "schemes:oan",
                 "action": "on_search",
                 "version": "1.1.0",
-                "bpp_id": "icar-bpp.tekdinext.com",
-                "bpp_uri": "https://icar-bpp.tekdinext.com",
-                "country": "IND",
-                "city": "std:080",
-                "bap_id": "vistaar-bap.tekdinext.com",
-                "bap_uri": "https://vistaar-bap.tekdinext.com/",
-                "transaction_id": "31d9488b-7701-4e62-9a93-2b1506d751d3",
-                "message_id": "2cbcc29a-9dc6-4052-9078-c53c879d4a7f",
-                "ttl": "PT10M",
-                "timestamp": "2025-02-27T11:16:03.639Z"
+                "bap_id": "scheme-bap.tekdinext.com",
+                "bap_uri": "https://scheme-bap.tekdinext.com/",
+                "bpp_id": "scheme-bpp.tekdinext.com",
+                "bpp_uri": "https://scheme-bpp.tekdinext.com/",
+                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c60021",
+                "message_id": "a9aaecca-10b7-4d19-b640-b047a7c60021",
+                "timestamp": "2023-02-06T09:55:41.161Z"
             },
             "message": {
                 "catalog": {
                     "descriptor": {
-                        "name": "Catalog for "
+                        "name": "Catalog for null"
                     },
                     "providers": [
                         {
                             "id": "p1",
                             "descriptor": {
-                                "name": "SchemeFinder",
+                                "name": "Ministry Of Agriculture",
                                 "short_desc": "A Scheme Discovery and Application Service helps users discover",
                                 "long_desc": "The provider has ....",
                                 "images": [
@@ -78,22 +75,25 @@
                                     "id": "f1",
                                     "descriptor": {
                                         "name": "Direct Benefit Transfer (DBT)"
-                                    },
-                                    "tracking": false
+                                    }
                                 },
                                 {
                                     "id": "f2",
                                     "descriptor": {
                                         "name": "Subsidized Services"
-                                    },
-                                    "tracking": false
+                                    }
                                 },
                                 {
                                     "id": "f3",
                                     "descriptor": {
                                         "name": "Employment & Placement"
-                                    },
-                                    "tracking": false
+                                    }
+                                },
+                                {
+                                    "id": "f4",
+                                    "descriptor": {
+                                        "name": "Loan and Financial-Support"
+                                    }
                                 }
                             ],
                             "locations": [
@@ -114,15 +114,15 @@
                             ],
                             "items": [
                                 {
-                                    "id": "i6",
+                                    "id": "i1",
                                     "descriptor": {
-                                        "name": "Test 1 Ayushman Bharat Yojana",
-                                        "short_desc": "Pradhan Mantri Jan Arogya Yoja...",
-                                        "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. 3) The benefit also includes pre and post-hospitalization expenses. 4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures 5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)",
+                                        "name": "Pradhan Mantri Fasal Bima Yojana",
+                                        "short_desc": "Pradhan Mantri Fasal Bima Yojana (PMFBY) aims at supporting sustainable production in agriculture sector.",
+                                        "long_desc": "Pradhan Mantri Fasal Bima Yojana (PMFBY) aims at supporting sustainable production in agriculture sector by way of Providing financial support to farmers suffering crop loss/damage arising out of unforeseen events • Stabilizing the income of farmers to ensure their continuance in farming • Encouraging farmers to adopt innovative and modern agricultural practices • Ensuring flow of credit to the agriculture sector which will contribute to food security, crop diversification and enhancing growth and competitiveness of agriculture sector besides protecting farmers from production risks",
                                         "media": [
                                             {
-                                                "mimetype": "video/mp4",
-                                                "url": "https://media_url"
+                                                "mimetype": "application/pdf",
+                                                "url": "https://agriwelfare.gov.in/Documents/PMFBY_Guidelines.pdf"
                                             }
                                         ],
                                         "images": [
@@ -134,51 +134,63 @@
                                     "tags": [
                                         {
                                             "descriptor": {
-                                                "name": "Required documents"
+                                                "name": "Required documents",
+                                                "code": "required-docs"
                                             },
                                             "list": [
                                                 {
                                                     "descriptor": {
-                                                        "name": "Proof of Identity"
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
                                                     },
                                                     "value": "Aadhaar Card"
-                                                },
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
                                                 {
                                                     "descriptor": {
-                                                        "name": "Proof of caste"
+                                                        "name": "Proof of caste",
+                                                        "code": "POC"
                                                     },
                                                     "value": "optional"
                                                 }
-                                            ],
-                                            "display": true
+                                            ]
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Demographic eligibility"
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
                                             },
                                             "list": [
                                                 {
                                                     "descriptor": {
-                                                        "name": "State of Current Residence"
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
                                                     },
                                                     "value": "Maharashtra, Karnataka"
                                                 }
-                                            ],
-                                            "display": true
+                                            ]
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Additional eligibility"
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
                                             },
                                             "list": [
                                                 {
                                                     "descriptor": {
-                                                        "name": "Has SECC Registration Number"
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "CT0001TU"
                                                     },
                                                     "value": "Yes"
                                                 }
-                                            ],
-                                            "display": true
+                                            ]
                                         }
                                     ],
                                     "category_ids": [
@@ -192,17 +204,1958 @@
                                     ]
                                 },
                                 {
-                                    "id": "i7",
+                                    "id": "i2",
                                     "descriptor": {
-                                        "name": "Test2 Pradhan Mantri Kisan Samman Nidhi  Yojana",
-                                        "short_desc": "The Pradhan Mantri Kisan Samma...",
-                                        "long_desc": "The Pradhan Mantri Kisan Samman Nidhi Yojana (PM-Kisan Yojana) is a government of  India-initiated scheme that aims to provide minimum income support of up to Rs. 6000 to all  small and marginal farmers per year.  PM-KISAN Yojana scheme provides a financial benefit of Rs. 6000 per annum to all landholding  farmers’ families. This sum is payable in three equal instalments of Rs. 2000 each every four  months.",
-                                        "media": [],
+                                        "name": "Pradhan Mantri Kisan Samman Nidhi  Yojana",
+                                        "short_desc": "The Pradhan Mantri Kisan Samman Nidhi Yojana (PM-Kisan Yojana) is a government of India-initiated scheme that aims to provide minimum income support of up to Rs. 6000 to all small and marginal farmers per year.",
+                                        "long_desc": "The Pradhan Mantri Kisan Samman Nidhi Yojana (PM-Kisan Yojana) is a government of India-initiated scheme that aims to provide minimum income support of up to Rs. 6000 to all small and marginal farmers per year.  PM-KISAN Yojana scheme provides a financial benefit of Rs. 6000 per annum to all landholding farmers’ families. This sum is payable in three equal instalments of Rs. 2000 each every four months.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://drive.google.com/file/d/1-_Pma9cbn9Bh7Gvps5Cay7bh38f-1yKy/view?usp=sharing"
+                                            }
+                                        ],
                                         "images": []
                                     },
                                     "location_ids": [
                                         "l1"
                                     ]
+                                },
+                                {
+                                    "id": "OAN0001",
+                                    "descriptor": {
+                                        "name": "Ayushman Bharat Yojana  - M1",
+                                        "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                                        "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://agriwelfare.gov.in/Documents/PMFBY_Guidelines.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "CT0001TU"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "PM000024"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Target beneficiary type",
+                                                "code": "target-beneficiary-type"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f1"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH000",
+                                    "descriptor": {
+                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                        "short_desc": "A comprehensive scheme to improve farm-level irrigation and ensure optimal water resource management for sustainable agriculture. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) focuses on expanding irrigation coverage, promoting efficient water use, and integrating various components such as micro-irrigation, watershed management, and rural water conservation.",
+                                        "long_desc": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) is a flagship program by the Government of India designed to enhance farm-level irrigation, promote sustainable water resource management, and ensure water security for agricultural purposes. The scheme integrates various components, including Accelerated Irrigation Benefit Programme (AIBP), watershed development, and micro-irrigation, to improve irrigation coverage, optimize water usage, and boost agricultural productivity. By ensuring 'Har Khet Ko Pani' (Water for Every Farm), the scheme seeks to boost agricultural productivity, reduce dependency on unpredictable rainfall, and enhance farmer livelihoods through better water access.The initiative supports infrastructure development, advanced irrigation techniques like drip and sprinkler systems, and capacity-building programs for farmers to promote efficient water use.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://pmksy.gov.in/pdflinks/Guidelines_English.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH00008",
+                                    "descriptor": {
+                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                        "short_desc": "A comprehensive scheme to improve farm-level irrigation and ensure optimal water resource management for sustainable agriculture. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) focuses on expanding irrigation coverage, promoting efficient water use, and integrating various components such as micro-irrigation, watershed management, and rural water conservation.",
+                                        "long_desc": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) is a flagship program by the Government of India designed to enhance farm-level irrigation, promote sustainable water resource management, and ensure water security for agricultural purposes. The scheme integrates various components, including Accelerated Irrigation Benefit Programme (AIBP), watershed development, and micro-irrigation, to improve irrigation coverage, optimize water usage, and boost agricultural productivity. By ensuring 'Har Khet Ko Pani' (Water for Every Farm), the scheme seeks to boost agricultural productivity, reduce dependency on unpredictable rainfall, and enhance farmer livelihoods through better water access.The initiative supports infrastructure development, advanced irrigation techniques like drip and sprinkler systems, and capacity-building programs for farmers to promote efficient water use.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://pmksy.gov.in/pdflinks/Guidelines_English.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Pradhan Mantri Krishi Sinchayee Yojana",
+                                                "code": "PMKSY"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "Farmers, FPOs, Rural Communities"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Bank Details",
+                                                        "code": "BD",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Land ownership documents",
+                                                        "code": "LOD"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central & State Government Grants",
+                                                        "code": "BTG12"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "PMKSY"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH0006",
+                                    "descriptor": {
+                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                        "short_desc": "A comprehensive scheme to improve farm-level irrigation and ensure optimal water resource management for sustainable agriculture. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) focuses on expanding irrigation coverage, promoting efficient water use, and integrating various components such as micro-irrigation, watershed management, and rural water conservation.",
+                                        "long_desc": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) is a flagship program by the Government of India designed to enhance farm-level irrigation, promote sustainable water resource management, and ensure water security for agricultural purposes. The scheme integrates various components, including Accelerated Irrigation Benefit Programme (AIBP), watershed development, and micro-irrigation, to improve irrigation coverage, optimize water usage, and boost agricultural productivity. By ensuring 'Har Khet Ko Pani' (Water for Every Farm), the scheme seeks to boost agricultural productivity, reduce dependency on unpredictable rainfall, and enhance farmer livelihoods through better water access.The initiative supports infrastructure development, advanced irrigation techniques like drip and sprinkler systems, and capacity-building programs for farmers to promote efficient water use.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://pmksy.gov.in/pdflinks/Guidelines_English.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central & State Government Grants",
+                                                        "code": "BTG12"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "PMKSY"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Pradhan Mantri Krishi Sinchayee Yojana",
+                                                "code": "PMKSY"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "Farmers, FPOs, Rural Communities"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Bank Details",
+                                                        "code": "BD",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Land ownership documents",
+                                                        "code": "LOD"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH000634",
+                                    "descriptor": {
+                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                        "short_desc": "A comprehensive scheme to improve farm-level irrigation and ensure optimal water resource management for sustainable agriculture. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) focuses on expanding irrigation coverage, promoting efficient water use, and integrating various components such as micro-irrigation, watershed management, and rural water conservation.",
+                                        "long_desc": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) is a flagship program by the Government of India designed to enhance farm-level irrigation, promote sustainable water resource management, and ensure water security for agricultural purposes. The scheme integrates various components, including Accelerated Irrigation Benefit Programme (AIBP), watershed development, and micro-irrigation, to improve irrigation coverage, optimize water usage, and boost agricultural productivity. By ensuring 'Har Khet Ko Pani' (Water for Every Farm), the scheme seeks to boost agricultural productivity, reduce dependency on unpredictable rainfall, and enhance farmer livelihoods through better water access.The initiative supports infrastructure development, advanced irrigation techniques like drip and sprinkler systems, and capacity-building programs for farmers to promote efficient water use.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://pmksy.gov.in/pdflinks/Guidelines_English.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central & State Government Grants",
+                                                        "code": "BTG12"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Bank Details",
+                                                        "code": "BD",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Land ownership documents",
+                                                        "code": "LOD"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "PMKSY"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Pradhan Mantri Krishi Sinchayee Yojana",
+                                                "code": "PMKSY"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "Farmers, FPOs, Rural Communities"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH001",
+                                    "descriptor": {
+                                        "name": "Ayushman Bharat Yojana - II",
+                                        "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                                        "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://agriwelfare.gov.in/Documents/PMFBY_Guidelines.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "CT0001TU"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "PM000024"
+                                                    },
+                                                    "value": "Loan"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f1"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH002",
+                                    "descriptor": {
+                                        "name": "Ayushman Bharat Yojana - II",
+                                        "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                                        "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://agriwelfare.gov.in/Documents/PMFBY_Guidelines.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "CT0001TU"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "PM000024"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Target beneficiary type",
+                                                "code": "target-beneficiary-type"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f1"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH0021",
+                                    "descriptor": {
+                                        "name": "Ayushman Bharat Yojana  - III",
+                                        "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                                        "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://agriwelfare.gov.in/Documents/PMFBY_Guidelines.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "CT0001TU"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Target beneficiary type",
+                                                "code": "target-beneficiary-type"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "PM000024"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f1"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH0022",
+                                    "descriptor": {
+                                        "name": "Chief Minister Sustainable Agriculture Irrigation Scheme - Magel Tyala Shettale (Individual Farm Pond)",
+                                        "short_desc": "Chief Minister Sustainable Agriculture Irrigation Scheme-Magel Tyala Shettale (Individual Farm Pond) has been launched by Ministry of Agriculture, Animal Husbandry,Dairy Development &Fishries Department, Maharashtra State in the year 2022-23 (vide G.R.Dated 29 th June, 2022)",
+                                        "long_desc": " The scheme is implemented in all districts of the state. Under this scheme the subsidy payable to individual farmer is minimum Rs 14433/- and maximum Rs 75000/- depending on the size of the farm pond. Farmers should hold at least 0.20 ha land in Kokan region, while it is 0.40 ha limit for rest of the Maharashtra. Online applications are invited from farmers under Maha-DBT portal. The scheme is implemented by selecting the beneficiaries online through Maha-DBT portal.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://drive.google.com/file/d/1EwAiIC4GUsKBprG0cGK9Fh5gFCQZmJyT/view"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "CT0001TU"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Target beneficiary type",
+                                                "code": "target-beneficiary-type"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "PM000024"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f1"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH003",
+                                    "descriptor": {
+                                        "name": "Agriculture Infrastructure Fund (AIF)",
+                                        "short_desc": "A financial support scheme aimed at developing post-harvest management infrastructure and farming assets. The Agriculture Infrastructure Fund (AIF) provides medium-to-long-term credit facilities to individuals, Farmer Producer Organizations (FPOs), Primary Agricultural Credit Societies (PACS), Agri-entrepreneurs, and Startups. ",
+                                        "long_desc": "The Agriculture Infrastructure Fund (AIF) is a Central Sector Scheme launched to provide ₹1 lakh crore in financing for farm-gate infrastructure and post-harvest management projects. It supports Farmers, FPOs, PACS, Agri-entrepreneurs, Startups, and APMCs to improve agricultural infrastructure and reduce post-harvest losses. The scheme provides interest subvention and credit guarantees to encourage investments in supply chain facilities, cold storage, warehouses, logistics, and farm automation.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://agriinfra.dac.gov.in/Content/DocAttachment/FINALSchemeGuidelinesAIF.pdf"
+                                            }
+                                        ],
+                                        "images": []
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Agriculture Infrastructure Fund",
+                                                "code": "AIF"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "Individual & Organizations"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Credit & Interest Subvention",
+                                                "code": "credit-interest-subvention"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "central-sector-scheme"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "AIF"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Bank details",
+                                                        "code": "BD",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Business registration documents",
+                                                        "code": "BLB"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Land ownership certificate",
+                                                        "code": "LOC"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Project report",
+                                                        "code": "PR"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH004",
+                                    "descriptor": {
+                                        "name": "Kisan Credit Card (KCC)",
+                                        "short_desc": "A credit facility designed to provide farmers with timely access to affordable credit for agricultural and allied activities. The Kisan Credit Card (KCC) scheme enables farmers to obtain short-term loans at subsidized interest rates, ensuring financial liquidity for purchasing inputs such as seeds, fertilizers, pesticides, and covering post-harvest expenses.",
+                                        "long_desc": "The Kisan Credit Card (KCC) scheme is a government initiative aimed at providing farmers with timely and adequate credit support for their cultivation and other agricultural needs. The scheme allows farmers to access short-term credit at subsidized interest rates for purchasing inputs like seeds, fertilizers, and pesticides, as well as covering post-harvest expenses. The KCC can also be used for allied activities such as dairy, poultry, and fisheries. The credit limit is determined based on cropping patterns, and the repayment terms are flexible. The scheme helps reduce farmers' dependency on informal lending sources, ensuring financial inclusion and stability.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://www.rbi.org.in/commonman/Upload/English/Notification/PDFs/CRB5100512KC.pdf"
+                                            }
+                                        ],
+                                        "images": []
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Kisan Credit Card (KCC) ",
+                                                        "code": "KCC"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Bank passbook",
+                                                        "code": "BP",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Domicile certificate",
+                                                        "code": "DC"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Income proof",
+                                                        "code": "IP"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Land ownership documents",
+                                                        "code": "LOD"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Passport-size photograph",
+                                                        "code": "PSP"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "CT0001TU"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Kisan Credit Card Scheme",
+                                                "code": "KCC"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "Individual Agricultural Loan"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Short-term Crop Loan",
+                                                "code": "short-term-crop-loan"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "CT0001TU"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c1"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH005",
+                                    "descriptor": {
+                                        "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+                                        "short_desc": "A government-backed initiative to promote organic farming through financial assistance, training, and certification support. Under the Paramparagat Krishi Vikas Yojana (PKVY), farmers are encouraged to adopt eco-friendly agricultural practices using organic inputs, improving soil fertility, and reducing chemical dependency. ",
+                                        "long_desc": "Paramparagat Krishi Vikas Yojana (PKVY) is an initiative under the National Mission on Sustainable Agriculture (NMSA) to encourage organic farming through a cluster-based approach. The scheme provides financial assistance to farmers to adopt organic practices, supports Participatory Guarantee System (PGS) certification, and promotes organic manure management. The objective is to enhance soil health, reduce dependency on chemical fertilizers, and create market linkages for organic produce. Training, branding, and marketing assistance are also provided to boost the organic farming ecosystem in India.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://darpg.gov.in/sites/default/files/Paramparagat%2520Krishi%2520Vikas%2520Yojana.pdf"
+                                            }
+                                        ],
+                                        "images": []
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Paramparagat Krishi Vikas Yojana",
+                                                "code": "PKVY"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Group registration certificate for organic farming",
+                                                        "code": "GRC"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Land ownership certificate",
+                                                        "code": "LG"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "State of Current Residence",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "PKVY"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "Farmers & Organic Growers"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central Sector Scheme",
+                                                        "code": "PKVY"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH006",
+                                    "descriptor": {
+                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                        "short_desc": "A comprehensive scheme to improve farm-level irrigation and ensure optimal water resource management for sustainable agriculture. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) focuses on expanding irrigation coverage, promoting efficient water use, and integrating various components such as micro-irrigation, watershed management, and rural water conservation.",
+                                        "long_desc": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) is a flagship program by the Government of India designed to enhance farm-level irrigation, promote sustainable water resource management, and ensure water security for agricultural purposes. The scheme integrates various components, including Accelerated Irrigation Benefit Programme (AIBP), watershed development, and micro-irrigation, to improve irrigation coverage, optimize water usage, and boost agricultural productivity. By ensuring 'Har Khet Ko Pani' (Water for Every Farm), the scheme seeks to boost agricultural productivity, reduce dependency on unpredictable rainfall, and enhance farmer livelihoods through better water access.The initiative supports infrastructure development, advanced irrigation techniques like drip and sprinkler systems, and capacity-building programs for farmers to promote efficient water use.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://pmksy.gov.in/pdflinks/Guidelines_English.pdf"
+                                            }
+                                        ],
+                                        "images": []
+                                    },
+                                    "tags": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Demographic eligibility",
+                                                "code": "demographic-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                                        "code": "SOCR"
+                                                    },
+                                                    "value": "Maharashtra, Karnataka"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Identity",
+                                                        "code": "POI"
+                                                    },
+                                                    "value": "Aadhar Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Bank Details",
+                                                        "code": "BD",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Land ownership documents",
+                                                        "code": "LOD"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of caste",
+                                                        "code": "POC",
+                                                        "short_description": "Optional"
+                                                    },
+                                                    "value": "Optional"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Required documents",
+                                                "code": "required-docs"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Proof of Residence",
+                                                        "code": "POR"
+                                                    },
+                                                    "value": "Ration Card"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Funding model",
+                                                "code": "funding-model"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Central & State Government Grants",
+                                                        "code": "BTG12"
+                                                    },
+                                                    "value": "N/A"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Additional eligibility",
+                                                "code": "additional-eligibility"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Has SECC Registration Number",
+                                                        "code": "PMKSY"
+                                                    },
+                                                    "value": "Yes"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Pradhan Mantri Krishi Sinchayee Yojana",
+                                                "code": "PMKSY"
+                                            },
+                                            "list": [
+                                                {
+                                                    "descriptor": {
+                                                        "name": "Individual",
+                                                        "code": "Ind"
+                                                    },
+                                                    "value": "Farmers, FPOs, Rural Communities"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH0066",
+                                    "descriptor": {
+                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY) Test",
+                                        "short_desc": "A comprehensive scheme to improve farm-level irrigation and ensure optimal water resource management for sustainable agriculture. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) focuses on expanding irrigation coverage, promoting efficient water use, and integrating various components such as micro-irrigation, watershed management, and rural water conservation.",
+                                        "long_desc": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) is a flagship program by the Government of India designed to enhance farm-level irrigation, promote sustainable water resource management, and ensure water security for agricultural purposes. The scheme integrates various components, including Accelerated Irrigation Benefit Programme (AIBP), watershed development, and micro-irrigation, to improve irrigation coverage, optimize water usage, and boost agricultural productivity. By ensuring 'Har Khet Ko Pani' (Water for Every Farm), the scheme seeks to boost agricultural productivity, reduce dependency on unpredictable rainfall, and enhance farmer livelihoods through better water access.The initiative supports infrastructure development, advanced irrigation techniques like drip and sprinkler systems, and capacity-building programs for farmers to promote efficient water use.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://pmksy.gov.in/pdflinks/Guidelines_English.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SCH00666",
+                                    "descriptor": {
+                                        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY) Test2",
+                                        "short_desc": "A comprehensive scheme to improve farm-level irrigation and ensure optimal water resource management for sustainable agriculture. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) focuses on expanding irrigation coverage, promoting efficient water use, and integrating various components such as micro-irrigation, watershed management, and rural water conservation.",
+                                        "long_desc": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) is a flagship program by the Government of India designed to enhance farm-level irrigation, promote sustainable water resource management, and ensure water security for agricultural purposes. The scheme integrates various components, including Accelerated Irrigation Benefit Programme (AIBP), watershed development, and micro-irrigation, to improve irrigation coverage, optimize water usage, and boost agricultural productivity. By ensuring 'Har Khet Ko Pani' (Water for Every Farm), the scheme seeks to boost agricultural productivity, reduce dependency on unpredictable rainfall, and enhance farmer livelihoods through better water access.The initiative supports infrastructure development, advanced irrigation techniques like drip and sprinkler systems, and capacity-building programs for farmers to promote efficient water use.",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://pmksy.gov.in/pdflinks/Guidelines_English.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "http://image.com/1.png"
+                                            }
+                                        ]
+                                    },
+                                    "category_ids": [
+                                        "c3"
+                                    ],
+                                    "fulfillment_ids": [
+                                        "f4"
+                                    ],
+                                    "location_ids": [
+                                        "l1"
+                                    ]
+                                },
+                                {
+                                    "id": "SH0123",
+                                    "descriptor": {
+                                        "name": "Testing ",
+                                        "short_desc": "Testing ",
+                                        "long_desc": "Testing ",
+                                        "media": [
+                                            {
+                                                "mimetype": "application/pdf",
+                                                "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                                            }
+                                        ],
+                                        "images": [
+                                            {
+                                                "url": "screenshotfrom2025-03-1316-27-081741929571425.png"
+                                            }
+                                        ]
+                                    }
                                 }
                             ]
                         }

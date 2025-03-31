@@ -96,6 +96,7 @@ export class JobsService {
         try {
             let response = await this.proxyService.bapCLientApi2('search', data);
             console.log('res', JSON.stringify(response));
+            return response
             if (response) {
                 let arrayOfObjects = [];
 

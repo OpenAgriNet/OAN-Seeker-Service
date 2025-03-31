@@ -58,16 +58,50 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+### About
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+OAN-Seeker-Service Reference App
 
-## Stay in touch
+OAN Seeker service is middleware for calling the protocol transaction api and caching the search content in cache db to store and refresh the content on daily basis using corn job. 
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Steps to install this app.
 
-## License
+1. Git clone https://github.com/tekdi/OAN-Seeker-Service
 
-Nest is [MIT licensed](LICENSE).
+2. cd OAN-Seeker-Service
+
+3. npm install
+
+4. npm run start
+
+5. run http://localhost:3000 on your browser to test the app is running
+
+6. Add .env file in this format
+
+        PORT=3000
+        HASURA_URL= {{base_url}}/v1/graphql
+        HASURA_GRAPHQL_ADMIN_SECRET= "<HASURA_GRAPHQL_ADMIN_SECRET>"
+        DB_TYPE=postgres
+        DB_HOST=localhost
+        DB_PORT=5432
+        DB_USERNAME=hasura
+        DB_PASSWORD=hasura
+        DB_NAME=hasura_db
+        CACHE_DB="scheme_cache_data"
+        REDIS_HOST=localhost
+        REDIS_PORT=6379
+        API_KEY=<WEATHERMAT_API_KEY>
+        GEO_URL=http://api.openweathermap.org/geo/1.0/direct
+
+        DOMAIN="schemes:oan"
+        BAP_CLIENT_URL="<BAP_CLIENT_URL>"
+        BAP_ID="<BAP_ID>"
+        BAP_URI="<BAP_URI>"
+        BPP_ID="<BPP_ID>"
+        BPP_URI="<BPP_ID>"
+
+7. Restart the server: npm run start
+
+Postman Documentation:
+
+link: https://grey-escape-31127.postman.co/documentation/18319029-f20a4c89-0dba-45c8-9cc3-0b5b8799fcee/publish?workspaceId=13fbe18d-7c0e-4245-bf2f-0fa5d5758b3a

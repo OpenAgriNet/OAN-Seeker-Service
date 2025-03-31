@@ -65,7 +65,7 @@ export class LocationService {
         }
     }
 
-    // Fetch districts
+    // // Fetch districts
     async getDistricts(state_id: number, lang: string = 'en') {
         try {
             const response = await axios.get(`https://cdn-api.co-vin.in/api/v2/admin/location/districts/${state_id}`);
@@ -77,14 +77,17 @@ export class LocationService {
                         const translatedName = await this.getTranslatedName(en, lang);
 
                         // If district_name is missing, discard this entry
-                        if (!translatedName) return null;
+                        //if (!translatedName) return null;
 
                         return { district_id: district.district_id, district_name: translatedName, en };
                     })
                 )
             ).filter((district) => district !== null); // Remove null values
 
-            return districts;
+            return {
+                districts, // Directly return the array
+                ttl: districts.length // Count of districts
+            };
         } catch (error) {
             throw new HttpException('Failed to fetch districts', HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -99,5 +102,35 @@ export class LocationService {
             return null;
         }
     }
+
+
+
+    // Fetch districts dynamically and translate them
+    // async getDistricts(state_id: number, lang: string = 'en') {
+    //     try {
+    //         const response = await axios.get(`https://cdn-api.co-vin.in/api/v2/admin/location/districts/${state_id}`);
+    //         const districts = await Promise.all(
+    //             response.data.districts.map(async (district) => {
+    //                 const en = district.district_name; // Original district name in English
+    //                 const translatedName = await this.getTranslatedName(district.district_name, lang);
+    //                 return { district_id: district.district_id, district_name: translatedName, en };
+    //             })
+    //         );
+
+    //         return districts;
+    //     } catch (error) {
+    //         throw new HttpException('Failed to fetch districts', HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
+    // }
+
+    // // Fetch translated name using OpenWeather API
+    // async getTranslatedName(name: string, lang: string): Promise<string> {
+    //     try {
+    //         const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(name)}&limit=1&appid=${this.OPENWEATHER_API_KEY}`);
+    //         return response.data[0]?.local_names?.[lang] || name;
+    //     } catch (error) {
+    //         return name; // Fallback to the original name if translation fails
+    //     }
+    // }
 
 }

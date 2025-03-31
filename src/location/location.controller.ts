@@ -12,6 +12,6 @@ export class LocationController {
 
   @Get('districts/:state_id')
   async getDistricts(@Param('state_id') state_id: number, @Query('lang') lang: string) {
-    return { districts: await this.locationService.getDistricts(state_id, lang) };
+    return await this.locationService.getDistricts(state_id, lang) ;
   }
 }
