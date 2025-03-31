@@ -90,7 +90,7 @@ Steps to install this app.
         CACHE_DB="scheme_cache_data"
         REDIS_HOST=localhost
         REDIS_PORT=6379
-        API_KEY=<WEATHERMAT_API_KEY>
+        API_KEY=<WEATHERMAP_API_KEY>
         GEO_URL=http://api.openweathermap.org/geo/1.0/direct
 
         DOMAIN="schemes:oan"
