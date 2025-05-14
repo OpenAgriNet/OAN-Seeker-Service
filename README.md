@@ -66,7 +66,7 @@ OAN Seeker service is middleware for calling the protocol transaction api and ca
 
 Steps to install this app.
 
-1. Git clone https://github.com/tekdi/OAN-Seeker-Service
+1. Git clone https://github.com/OpenAgriNet/OAN-Seeker-Service.git
 
 2. cd OAN-Seeker-Service
 
