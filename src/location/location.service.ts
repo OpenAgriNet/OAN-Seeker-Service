@@ -79,7 +79,7 @@ export class LocationService {
                         // If district_name is missing, discard this entry
                         //if (!translatedName) return null;
 
-                        return { district_id: district.district_id, district_name: translatedName, en };
+                        return { district_id: district.district_id, district_name: translatedName ? district.district_name : en, en };
                     })
                 )
             ).filter((district) => district !== null); // Remove null values
